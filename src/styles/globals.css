@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+
+:root {
+  --bg-color: #fffdf2;
+  --text-color: #242629;
+}
+
+@theme inline {
+  --color-primary: oklch(0.2 0.0079 285.67);
+  --color-secondary: oklch(0.27 0.0063 258.36);
+  --color-terciary: oklch(0.99 0.0146 98.28);
+  --color-button: oklch(0.91 0.15455 194.7689);
+  --color-button-secondary: oklch(0.59 0.2143 289.47);
+  --font-poppins: var(--font-poppins);
+  --font-montserrat: var(--font-montserrat);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #242629;
+    --text-color: #fffdf2;
+  }
+}
+
+body {
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: theme(--font-poppins);
+}
+
+h1,
+h2,
+h3 {
+  font-family: theme(--font-montserrat);
+}
