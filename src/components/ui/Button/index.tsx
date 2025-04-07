@@ -13,6 +13,17 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   onlyIcon?: boolean
 }
 
+const SIZE_ICON_BUTTON: Record<sizeButton, number> = {
+  sm: 16,
+  md: 20,
+  lg: 24
+}
+const WIDTH_ONLY_ICON: Record<sizeButton, string> = {
+  sm: 'w-8',
+  md: 'w-11',
+  lg: 'w-13'
+}
+
 const sizeClasses: Record<sizeButton, string> = {
   sm: 'h-8 px-4 text-sm gap-1',
   md: 'h-11 px-6 gap-2',
@@ -37,32 +48,21 @@ export default function Button({
   className,
   ...props
 }: ButtonProps) {
-  const iconSize = sizeButton === 'sm' ? 16 : sizeButton === 'md' ? 20 : 24
-  const widthOnlyIcon =
-    sizeButton === 'sm' ? 'w-8' : sizeButton === 'md' ? 'w-11' : 'w-13'
-
   return (
     <button
       className={twMerge(
-        `w-fit relative flex items-center justify-center text-terciary rounded cursor-pointer ${
+        `w-fit relative flex ${
+          iconPosition === 'right' && 'flex-row-reverse'
+        } items-center justify-center text-terciary rounded cursor-pointer ${
           sizeClasses[sizeButton]
-        } ${variantClasses[variantButton]} ${onlyIcon && widthOnlyIcon} ${
-          onlyIcon && 'px-0'
-        } ${className}`
+        } ${variantClasses[variantButton]} ${
+          onlyIcon && WIDTH_ONLY_ICON[sizeButton]
+        } ${onlyIcon && 'px-0'} ${className}`
       )}
       {...props}
     >
-      {iconPosition === 'left' ? (
-        <>
-          {Icon && <Icon size={iconSize} />}
-          {!onlyIcon && text}
-        </>
-      ) : (
-        <>
-          {!onlyIcon && text}
-          {Icon && <Icon size={iconSize} />}
-        </>
-      )}
+      {Icon && <Icon size={SIZE_ICON_BUTTON[sizeButton]} />}
+      {!onlyIcon && text}
     </button>
   )
 }

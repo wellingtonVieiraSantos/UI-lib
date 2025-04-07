@@ -13,6 +13,25 @@
   --color-button-secondary: oklch(0.59 0.2143 289.47);
   --font-poppins: var(--font-poppins);
   --font-montserrat: var(--font-montserrat);
+
+  --animate-teste: teste 1s ease-in-out;
+  --animate-teste2: teste2 1s ease-in-out;
+  @keyframes teste {
+    from {
+      width: 100%;
+    }
+    to {
+      width: 0;
+    }
+  }
+  @keyframes teste2 {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -32,4 +51,14 @@ h1,
 h2,
 h3 {
   font-family: theme(--font-montserrat);
+}
+
+.no-spinner::-webkit-inner-spin-button,
+.no-spinner::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.no-spinner[type='number'] {
+  -moz-appearance: textfield;
 }
