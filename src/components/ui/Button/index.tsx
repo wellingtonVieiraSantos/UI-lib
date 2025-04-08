@@ -34,8 +34,7 @@ const variantClasses: Record<variantButton, string> = {
     'bg-button-secondary text-terciary hover:bg-button-secondary/70 transition-color duration-300',
   border:
     'border border-terciary/30 hover:border-terciary transition-color duration-300',
-  ghost:
-    'after:absolute after:inset-y-full after:bg-terciary after:w-0 after:h-[1px] hover:after:w-full transition after:duration-300'
+  ghost: 'hover:bg-terciary/20 transition after:duration-300'
 }
 
 export default function Button({
@@ -57,7 +56,7 @@ export default function Button({
           sizeClasses[sizeButton]
         } ${variantClasses[variantButton]} ${
           onlyIcon && WIDTH_ONLY_ICON[sizeButton]
-        } ${onlyIcon && 'px-0'} ${className}`
+        } ${onlyIcon && 'px-0 grid place-content-center-safe'} ${className}`
       )}
       {...props}
     >

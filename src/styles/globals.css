@@ -13,23 +13,15 @@
   --color-button-secondary: oklch(0.59 0.2143 289.47);
   --font-poppins: var(--font-poppins);
   --font-montserrat: var(--font-montserrat);
-
-  --animate-teste: teste 1s ease-in-out;
-  --animate-teste2: teste2 1s ease-in-out;
-  @keyframes teste {
+  --animate-fadeIn: fadeIn 0.2s ease-in-out;
+  @keyframes fadeIn {
     from {
-      width: 100%;
+      opacity: 0;
+      scale: 0;
     }
     to {
-      width: 0;
-    }
-  }
-  @keyframes teste2 {
-    from {
-      width: 0;
-    }
-    to {
-      width: 100%;
+      opacity: 1;
+      scale: 1;
     }
   }
 }
