@@ -46,7 +46,7 @@ export default function Badge({
   ) : (
     <div
       className={twMerge(
-        `w-fit flex justify-center items-center gap-1 bg-button-secondary px-2 rounded-full ${
+        `w-fit h-fit flex justify-center items-center gap-1 bg-button-secondary px-2 rounded-full ${
           variant !== 'default' && variantClass[variant]
         } ${className}`
       )}

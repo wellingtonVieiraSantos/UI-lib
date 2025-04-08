@@ -21,9 +21,9 @@ export default function Home() {
   }
 
   return (
-    <div className=' p-2 bg-primary grid gap-2'>
+    <div className='w-dvw min-h-dvh p-2 bg-primary grid gap-1 relative'>
       <h1 className='p-4 w-40 rounded text-2xl'>UI Lib</h1>
-      <div className={`w-100 border border-zinc-700 p-4`}>
+      <div className={`w-full max-w-100 border border-zinc-700 p-4`}>
         <span
           className={`leading-relaxed  ${showDescribe ? '' : 'line-clamp-1'}`}
         >
@@ -66,7 +66,7 @@ export default function Home() {
       {/* Search Components example */}
       <Search />
       {/* Badge Components example */}
-      <span className='relative w-fit p-2 border border-terciary'>
+      <span className='relative w-fit h-fit p-2 border border-terciary'>
         Teste
         <Badge text={count.toString()} isNotification />
       </span>
@@ -105,7 +105,6 @@ export default function Home() {
               name='name'
               labelText='Messagem'
               placeholder='Envie uma mensagem'
-              icon={User}
             />
           </div>
           <Modal.Footer>
@@ -124,6 +123,7 @@ export default function Home() {
           </Modal.Footer>
         </Modal.Content>
       </Modal.Root>
+      {/* Radio Component example  */}
     </div>
   )
 }
