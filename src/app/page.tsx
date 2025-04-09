@@ -7,6 +7,7 @@ import { Plus, Minus, ArrowUpRight, LinkIcon, User, X } from 'lucide-react'
 import Search from '@/components/ui/Search'
 import Badge from '@/components/ui/Badge'
 import Modal from '@/components/ui/Modal'
+import Radio from '@/components/ui/Radio'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
@@ -21,7 +22,7 @@ export default function Home() {
   }
 
   return (
-    <div className='w-dvw min-h-dvh p-2 bg-primary grid gap-1 relative'>
+    <div className='w-dvw min-h-dvh p-2 bg-primary grid gap-4 relative'>
       <h1 className='p-4 w-40 rounded text-2xl'>UI Lib</h1>
       <div className={`w-full max-w-100 border border-zinc-700 p-4`}>
         <span
@@ -124,6 +125,118 @@ export default function Home() {
         </Modal.Content>
       </Modal.Root>
       {/* Radio Component example  */}
+      <Radio.Root
+        defaultValue='masculino'
+        groupName='sexo'
+        className='border border-terciary/30 w-[400px] py-2 px-4 gap-2 flex flex-col rounded'
+      >
+        <h2>Qual seu sexo?</h2>
+        <div className='w-full flex gap-4 p-2 items-center justify-between border border-terciary/30 rounded  sexo-label-radio'>
+          <label htmlFor='m' className='block w-full'>
+            <div className='flex flex-col'>
+              Masculino
+              <span className='text-[12px] text-terciary/50'>Homem</span>
+            </div>
+          </label>
+          <Radio.Item id='m' value='masculino' />
+        </div>
+        <div className='w-full flex gap-4 p-2 items-center justify-between border border-terciary/30 rounded  sexo-label-radio'>
+          <label htmlFor='f' className='block w-full'>
+            <div className='flex flex-col'>
+              Feminino
+              <span className='text-[12px] text-terciary/50'>Mulher</span>
+            </div>
+          </label>
+          <Radio.Item id='f' value='feminino' />
+        </div>
+      </Radio.Root>
+      {/* radio Component card exemple */}
+      <Radio.Root
+        defaultValue='normal'
+        groupName='planos'
+        className='flex gap-2'
+      >
+        <Radio.Item
+          id='basico'
+          value='basico'
+          isHidden
+          cardLabelCustom
+          className='w-[300px] h-[400px]'
+        >
+          <div className='w-full flex flex-col justify-evenly gap-4 py-6 px-4 text-center'>
+            <h3 className='text-2xl text-left'>Básico</h3>
+            <span className='text-4xl'>
+              19.90 <span className='text-sm'>R$/mes</span>
+            </span>
+            <p className='text-sm text-terciary/80'>
+              Pacote basico para projetos pequenos
+            </p>
+            <span className='text-sm'>Sem Suporte</span>
+            <Button text='Assinar' sizeButton='md' className='w-full' />
+          </div>
+        </Radio.Item>
+        <Radio.Item
+          id='normal'
+          value='normal'
+          isHidden
+          cardLabelCustom
+          className='w-[300px] h-[400px]'
+        >
+          <div className='w-full flex flex-col justify-evenly gap-4 py-6 px-4 text-center'>
+            <h3 className='text-2xl text-left'>Normal</h3>
+            <span className='text-4xl'>
+              69.99 <span className='text-sm'>R$/mes</span>
+            </span>
+            <p className='text-sm text-terciary/80'>Pacote custo benefício</p>
+            <span className='text-sm'>
+              Suporte <span className='text-xl'>8/5 h</span>
+            </span>
+            <Button text='Assinar' sizeButton='md' className='w-full' />
+          </div>
+        </Radio.Item>
+        <Radio.Item
+          id='premium'
+          value='premium'
+          isHidden
+          cardLabelCustom
+          className='w-[300px] h-[400px]'
+        >
+          <div className='w-full flex flex-col justify-evenly gap-4 py-6 px-4 text-center'>
+            <h3 className='text-2xl text-left'>Premium</h3>
+            <span className='text-4xl'>
+              100 <span className='text-sm'>R$/mes</span>
+            </span>
+            <p className='text-sm text-terciary/80'>
+              Pacote premium para sua empresa
+            </p>
+            <span className='text-sm'>
+              Suporte <span className='text-xl'>12/6 h</span>
+            </span>
+            <Button text='Assinar' sizeButton='md' className='w-full' />
+          </div>
+        </Radio.Item>
+        <Radio.Item
+          id='extra-premium'
+          value='extraPremium'
+          isHidden
+          cardLabelCustom
+          className='w-[300px] h-[400px]'
+        >
+          <div className='w-full flex flex-col justify-evenly gap-4 py-6 px-4 text-center'>
+            <h3 className='text-2xl text-left'>Profissional</h3>
+            <span className='text-4xl'>
+              150 <span className='text-sm'>R$/mes</span>
+            </span>
+            <p className='text-sm text-terciary/80'>
+              Pacote profissional completo pelo menor preço
+            </p>
+            <span className='text-sm'>
+              Suporte <span className='text-xl'>24/7 h</span>
+            </span>
+            <Button text='Assinar' sizeButton='md' className='w-full' />
+          </div>
+        </Radio.Item>
+      </Radio.Root>
     </div>
   )
 }

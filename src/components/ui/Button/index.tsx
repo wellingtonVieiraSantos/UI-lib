@@ -34,7 +34,7 @@ const variantClasses: Record<variantButton, string> = {
     'bg-button-secondary text-terciary hover:bg-button-secondary/70 transition-color duration-300',
   border:
     'border border-terciary/30 hover:border-terciary transition-color duration-300',
-  ghost: 'hover:bg-terciary/20 transition after:duration-300'
+  ghost: 'hover:bg-terciary/20 transition duration-300'
 }
 
 export default function Button({
