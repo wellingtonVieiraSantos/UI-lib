@@ -37,7 +37,7 @@ export default function RadioItem({
         <label
           htmlFor={id}
           className={twMerge(
-            `relative border border-terciary/30 rounded flex peer-checked:border-terciary ${className}`
+            `relative border border-terciary/30 rounded flex peer-checked:border-terciary peer-not-checked:scale-95 transition duration-300 ${className}`
           )}
         >
           <Check

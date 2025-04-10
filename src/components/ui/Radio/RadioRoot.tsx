@@ -8,7 +8,7 @@ import {
 } from 'react'
 
 interface RadioRootProps extends HTMLAttributes<HTMLDivElement> {
-  defaultValue: string
+  defaultValue?: string
   groupName: string
   children: ReactElement[] | ReactElement
 }
@@ -24,7 +24,7 @@ export const radioContext = createContext<RadioContextType | undefined>(
 )
 
 export default function RadioRoot({
-  defaultValue,
+  defaultValue = 'default',
   groupName,
   children,
   className

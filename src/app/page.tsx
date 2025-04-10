@@ -151,11 +151,7 @@ export default function Home() {
         </div>
       </Radio.Root>
       {/* radio Component card exemple */}
-      <Radio.Root
-        defaultValue='normal'
-        groupName='planos'
-        className='flex gap-2'
-      >
+      <Radio.Root groupName='planos' className='flex gap-2'>
         <Radio.Item
           id='basico'
           value='basico'
