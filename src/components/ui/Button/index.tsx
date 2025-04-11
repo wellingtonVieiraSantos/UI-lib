@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, ElementType } from 'react'
+import { ButtonHTMLAttributes, ElementType, ReactElement } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 type sizeButton = 'sm' | 'md' | 'lg'
@@ -11,6 +11,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: ElementType
   text?: string
   onlyIcon?: boolean
+  children?: ReactElement
 }
 
 const SIZE_ICON_BUTTON: Record<sizeButton, number> = {
@@ -45,6 +46,7 @@ export default function Button({
   icon: Icon,
   onlyIcon = false,
   className,
+  children,
   ...props
 }: ButtonProps) {
   return (
@@ -62,6 +64,7 @@ export default function Button({
     >
       {Icon && <Icon size={SIZE_ICON_BUTTON[sizeButton]} />}
       {!onlyIcon && text}
+      {children}
     </button>
   )
 }

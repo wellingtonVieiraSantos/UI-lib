@@ -44,7 +44,7 @@ export default function RadioItem({
             size={24}
             className={`absolute top-1 right-1 ${
               value === valueDefault ? 'block' : 'hidden'
-            } text-button-secondary`}
+            } text-green-500`}
           />
           {children}
         </label>

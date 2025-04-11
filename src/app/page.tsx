@@ -3,11 +3,22 @@ import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 
 import { useState } from 'react'
-import { Plus, Minus, ArrowUpRight, LinkIcon, User, X } from 'lucide-react'
+import {
+  Plus,
+  Minus,
+  ArrowUpRight,
+  LinkIcon,
+  User,
+  X,
+  Check,
+  ChevronRight
+} from 'lucide-react'
 import Search from '@/components/ui/Search'
 import Badge from '@/components/ui/Badge'
 import Modal from '@/components/ui/Modal'
 import Radio from '@/components/ui/Radio'
+import Dropdown from '@/components/ui/Dropdown'
+import DropdownItem from '@/components/ui/Dropdown/DropdownItem'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
@@ -161,13 +172,27 @@ export default function Home() {
         >
           <div className='w-full flex flex-col justify-evenly gap-4 py-6 px-4 text-center'>
             <h3 className='text-2xl text-left'>Básico</h3>
-            <span className='text-4xl'>
-              19.90 <span className='text-sm'>R$/mes</span>
+            <span className='text-5xl font-bold'>
+              19.90 <span className='text-sm font-medium'>R$/mes</span>
             </span>
             <p className='text-sm text-terciary/80'>
               Pacote basico para projetos pequenos
             </p>
             <span className='text-sm'>Sem Suporte</span>
+            <ul className='text-sm text-terciary/80'>
+              <li className='flex justify-center items-center gap-2'>
+                <X size={16} className='text-red-500' />
+                vantagem 1
+              </li>
+              <li className='flex justify-center items-center gap-2'>
+                <X size={16} className='text-red-500' />
+                vantagem 2
+              </li>
+              <li className='flex justify-center items-center gap-2'>
+                <X size={16} className='text-red-500' />
+                vantagem 3
+              </li>
+            </ul>
             <Button text='Assinar' sizeButton='md' className='w-full' />
           </div>
         </Radio.Item>
@@ -180,13 +205,27 @@ export default function Home() {
         >
           <div className='w-full flex flex-col justify-evenly gap-4 py-6 px-4 text-center'>
             <h3 className='text-2xl text-left'>Normal</h3>
-            <span className='text-4xl'>
-              69.99 <span className='text-sm'>R$/mes</span>
+            <span className='text-5xl font-bold'>
+              69.99 <span className='text-sm font-medium'>R$/mes</span>
             </span>
             <p className='text-sm text-terciary/80'>Pacote custo benefício</p>
             <span className='text-sm'>
               Suporte <span className='text-xl'>8/5 h</span>
             </span>
+            <ul className='text-sm text-terciary/80 list-none'>
+              <li className='flex justify-center items-center gap-2'>
+                <Check size={16} className='text-green-500' />
+                vantagem 1
+              </li>
+              <li className='flex justify-center items-center gap-2'>
+                <X size={16} className='text-red-500' />
+                vantagem 2
+              </li>
+              <li className='flex justify-center items-center gap-2'>
+                <X size={16} className='text-red-500' />
+                vantagem 3
+              </li>
+            </ul>
             <Button text='Assinar' sizeButton='md' className='w-full' />
           </div>
         </Radio.Item>
@@ -199,8 +238,8 @@ export default function Home() {
         >
           <div className='w-full flex flex-col justify-evenly gap-4 py-6 px-4 text-center'>
             <h3 className='text-2xl text-left'>Premium</h3>
-            <span className='text-4xl'>
-              100 <span className='text-sm'>R$/mes</span>
+            <span className='text-5xl font-bold'>
+              100 <span className='text-sm font-medium'>R$/mes</span>
             </span>
             <p className='text-sm text-terciary/80'>
               Pacote premium para sua empresa
@@ -208,6 +247,20 @@ export default function Home() {
             <span className='text-sm'>
               Suporte <span className='text-xl'>12/6 h</span>
             </span>
+            <ul className='text-sm text-terciary/80 list-none'>
+              <li className='flex justify-center items-center gap-2'>
+                <Check size={16} className='text-green-500' />
+                vantagem 1
+              </li>
+              <li className='flex justify-center items-center gap-2'>
+                <Check size={16} className='text-green-500' />
+                vantagem 2
+              </li>
+              <li className='flex justify-center items-center gap-2'>
+                <X size={16} className='text-red-500' />
+                vantagem 3
+              </li>
+            </ul>
             <Button text='Assinar' sizeButton='md' className='w-full' />
           </div>
         </Radio.Item>
@@ -220,8 +273,8 @@ export default function Home() {
         >
           <div className='w-full flex flex-col justify-evenly gap-4 py-6 px-4 text-center'>
             <h3 className='text-2xl text-left'>Profissional</h3>
-            <span className='text-4xl'>
-              150 <span className='text-sm'>R$/mes</span>
+            <span className='text-5xl font-bold'>
+              150 <span className='text-sm font-medium'>R$/mes</span>
             </span>
             <p className='text-sm text-terciary/80'>
               Pacote profissional completo pelo menor preço
@@ -229,10 +282,56 @@ export default function Home() {
             <span className='text-sm'>
               Suporte <span className='text-xl'>24/7 h</span>
             </span>
+            <ul className='text-sm text-terciary/80 list-none'>
+              <li className='flex justify-center items-center gap-2'>
+                <Check size={16} className='text-green-500' />
+                vantagem 1
+              </li>
+              <li className='flex justify-center items-center gap-2'>
+                <Check size={16} className='text-green-500' />
+                vantagem 2
+              </li>
+              <li className='flex justify-center items-center gap-2'>
+                <Check size={16} className='text-green-500' />
+                vantagem 3
+              </li>
+            </ul>
             <Button text='Assinar' sizeButton='md' className='w-full' />
           </div>
         </Radio.Item>
       </Radio.Root>
+      {/* Dropdown menu example */}
+      <Dropdown.Root>
+        <div className='border-b border-terciary/40'>
+          <h3>Jhon Doe</h3>
+          <span className='text-sm text-terciary/50'>email@contato.com</span>
+        </div>
+        <DropdownItem>
+          <Button
+            variantButton='ghost'
+            text='Instagram'
+            icon={ChevronRight}
+            className='w-full justify-start'
+          />
+        </DropdownItem>
+        <DropdownItem>
+          <Button
+            variantButton='ghost'
+            text='Tik Tok'
+            icon={ChevronRight}
+            className='w-full justify-start'
+          />
+        </DropdownItem>
+        <DropdownItem>
+          <Button
+            variantButton='ghost'
+            text='Youtube'
+            icon={ChevronRight}
+            className='w-full justify-start'
+          />
+        </DropdownItem>
+      </Dropdown.Root>
+      <div className='h-screen'></div>
     </div>
   )
 }
