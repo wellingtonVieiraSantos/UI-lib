@@ -1,57 +1,75 @@
 'use client'
 import {
+  createContext,
+  Dispatch,
   HTMLAttributes,
   ReactElement,
+  RefObject,
+  useContext,
   useEffect,
   useRef,
   useState
 } from 'react'
-import Button from '../Button'
-import { ChevronDown } from 'lucide-react'
+
 interface DropdownRootProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactElement[] | ReactElement
 }
 
+interface DropdownContextType {
+  isOpen: boolean
+  isAbove: boolean
+  isRight: boolean
+  setIsOpen: Dispatch<React.SetStateAction<boolean>>
+  dropdownRef: RefObject<HTMLUListElement | null>
+}
+
+export const dropdownContext = createContext<DropdownContextType | undefined>(
+  undefined
+)
+
 export default function DropdownRoot({ children }: DropdownRootProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [isAbove, setIsAbove] = useState(false)
-  const dropdowRef = useRef<HTMLUListElement | null>(null)
+  const [isRight, setIsRight] = useState(false)
+  const dropdownRef = useRef<HTMLUListElement | null>(null)
 
   useEffect(() => {
-    if (dropdowRef.current && isOpen) {
-      const dropdownRect = dropdowRef.current.getBoundingClientRect()
+    if (dropdownRef.current && isOpen) {
+      const dropdownRect = dropdownRef.current.getBoundingClientRect()
       const viewportHeight = window.innerHeight
+      const viewportWidth = window.innerWidth
       setIsAbove(dropdownRect.bottom > viewportHeight)
+      setIsRight(dropdownRect.right > viewportWidth)
     }
+    const closeDropdown = function (e: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        isOpen &&
+        !dropdownRef.current.contains(e.target as Node)
+      )
+        setIsOpen(!isOpen)
+    }
+    document.addEventListener('click', closeDropdown)
 
     return () => {
       setIsAbove(false)
+      setIsRight(false)
+      document.removeEventListener('click', closeDropdown)
     }
   }, [isOpen])
 
   return (
-    <div className='relative w-fit h-fit rounded'>
-      <Button
-        variantButton='border'
-        text='Dropdown Button'
-        icon={ChevronDown}
-        sizeButton='md'
-        iconPosition='right'
-        onClick={() => setIsOpen(!isOpen)}
-      />
-      <ul
-        ref={dropdowRef}
-        className={`${
-          isOpen ? 'flex' : 'hidden'
-        } w-full flex-col gap-2 p-2 border border-terciary/30 absolute left-0 bg-primary rounded
-        ${
-          isAbove
-            ? 'bottom-full mb-1 animate-fadeInDown'
-            : 'top-full mt-1 animate-fadeInUp'
-        }`}
-      >
-        {children}
-      </ul>
-    </div>
+    <dropdownContext.Provider
+      value={{ isOpen, setIsOpen, isAbove, isRight, dropdownRef }}
+    >
+      <div className='relative w-max h-fit rounded'>{children}</div>
+    </dropdownContext.Provider>
   )
+}
+
+export function useDropdownContext() {
+  const context = useContext(dropdownContext)
+  if (!context)
+    throw new Error('useDropdownContext must be used within a <Dropdown.Root>')
+  return context
 }

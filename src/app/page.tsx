@@ -11,7 +11,8 @@ import {
   User,
   X,
   Check,
-  ChevronRight
+  ChevronRight,
+  ChevronDown
 } from 'lucide-react'
 import Search from '@/components/ui/Search'
 import Badge from '@/components/ui/Badge'
@@ -19,6 +20,7 @@ import Modal from '@/components/ui/Modal'
 import Radio from '@/components/ui/Radio'
 import Dropdown from '@/components/ui/Dropdown'
 import DropdownItem from '@/components/ui/Dropdown/DropdownItem'
+import Select from '@/components/ui/Select'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
@@ -302,36 +304,61 @@ export default function Home() {
       </Radio.Root>
       {/* Dropdown menu example */}
       <Dropdown.Root>
-        <div className='border-b border-terciary/40'>
-          <h3>Jhon Doe</h3>
-          <span className='text-sm text-terciary/50'>email@contato.com</span>
-        </div>
-        <DropdownItem>
+        <Dropdown.Trigger>
           <Button
-            variantButton='ghost'
-            text='Instagram'
-            icon={ChevronRight}
-            className='w-full justify-start'
+            variantButton='border'
+            sizeButton='lg'
+            text='Button Dropdown'
+            icon={ChevronDown}
+            iconPosition='right'
           />
-        </DropdownItem>
-        <DropdownItem>
-          <Button
-            variantButton='ghost'
-            text='Tik Tok'
-            icon={ChevronRight}
-            className='w-full justify-start'
-          />
-        </DropdownItem>
-        <DropdownItem>
-          <Button
-            variantButton='ghost'
-            text='Youtube'
-            icon={ChevronRight}
-            className='w-full justify-start'
-          />
-        </DropdownItem>
+        </Dropdown.Trigger>
+        <Dropdown.Content>
+          <div className='border-b border-terciary/40'>
+            <h3>Jhon Doe</h3>
+            <span className='text-sm text-terciary/50'>email@contato.com</span>
+          </div>
+          <DropdownItem>
+            <Button
+              variantButton='ghost'
+              text='Instagram'
+              icon={ChevronRight}
+              className='w-full justify-start'
+            />
+          </DropdownItem>
+          <DropdownItem>
+            <Button
+              variantButton='ghost'
+              text='TikTok'
+              icon={ChevronRight}
+              className='w-full justify-start'
+            />
+          </DropdownItem>
+          <DropdownItem>
+            <Button
+              variantButton='ghost'
+              text='Youtube'
+              icon={ChevronRight}
+              className='w-full justify-start'
+            />
+          </DropdownItem>
+          <DropdownItem>
+            <Button
+              variantButton='ghost'
+              text='Twitter'
+              icon={ChevronRight}
+              className='w-full justify-start'
+            />
+          </DropdownItem>
+        </Dropdown.Content>
       </Dropdown.Root>
       <div className='h-screen'></div>
+      {/* Select input example */}
+      <Select.Root>
+        <Select.Item>Item 1</Select.Item>
+        <Select.Item>Item 2</Select.Item>
+        <Select.Item>Item 3</Select.Item>
+      </Select.Root>
     </div>
   )
 }

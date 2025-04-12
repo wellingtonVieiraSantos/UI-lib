@@ -30,7 +30,6 @@ export default function RadioRoot({
   className
 }: RadioRootProps) {
   const [valueDefault, setValueDefault] = useState(defaultValue)
-  console.log(valueDefault)
 
   return (
     <radioContext.Provider value={{ valueDefault, setValueDefault, groupName }}>
