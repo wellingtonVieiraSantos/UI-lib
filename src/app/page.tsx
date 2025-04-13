@@ -20,8 +20,9 @@ import Modal from '@/components/ui/Modal'
 import Radio from '@/components/ui/Radio'
 import Dropdown from '@/components/ui/Dropdown'
 import DropdownItem from '@/components/ui/Dropdown/DropdownItem'
-import Select from '@/components/ui/Select'
-import Accordion from '@/components/ui/Accordion'
+/* import Select from '@/components/ui/Select'
+ */ import Accordion from '@/components/ui/Accordion'
+import Tab from '@/components/ui/Tab/'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
@@ -354,11 +355,11 @@ export default function Home() {
         </Dropdown.Content>
       </Dropdown.Root>
       {/* Select input example */}
-      <Select.Root>
+      {/*  <Select.Root>
         <Select.Item>Item 1</Select.Item>
         <Select.Item>Item 2</Select.Item>
         <Select.Item>Item 3</Select.Item>
-      </Select.Root>
+      </Select.Root> */}
       {/* Accordion component example */}
       <Accordion.Root className=''>
         <Accordion.Item value='item-1'>
@@ -430,6 +431,50 @@ export default function Home() {
           </Accordion.Content>
         </Accordion.Item>
       </Accordion.Root>
+      {/*  Tab component example */}
+      <Tab.Root defaultValue='item-1'>
+        <Tab.Nav>
+          <Tab.Header id='item-1'>
+            <Button
+              variantButton='ghost'
+              sizeButton='md'
+              text='Item 1'
+              className='w-full'
+            />
+          </Tab.Header>
+          <Tab.Header id='item-2'>
+            <Button
+              variantButton='ghost'
+              sizeButton='md'
+              text='Item 2'
+              className='w-full'
+            />
+          </Tab.Header>
+          <Tab.Header id='item-3'>
+            <Button
+              variantButton='ghost'
+              sizeButton='md'
+              text='Item 3'
+              className='w-full'
+            />
+          </Tab.Header>
+        </Tab.Nav>
+        <Tab.Content id='item-1'>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur
+            sed officiis, accusantium tempora vero placeat ipsam. Id, esse atque
+            inventore, aperiam impedit dolores vero sit commodi accusamus nam
+            nisi itaque!
+          </p>
+        </Tab.Content>
+        <Tab.Content id='item-2'>
+          <p>Content 2</p>
+        </Tab.Content>
+        <Tab.Content id='item-3'>
+          <p>Content 3</p>
+        </Tab.Content>
+      </Tab.Root>
+      <div className='h-screen'></div>
     </div>
   )
 }

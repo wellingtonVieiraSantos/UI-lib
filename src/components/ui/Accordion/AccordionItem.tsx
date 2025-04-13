@@ -1,5 +1,6 @@
 import { cloneElement, HTMLAttributes, ReactElement } from 'react'
 import { useAccordionContext } from './AccordionRoot'
+import { twMerge } from 'tailwind-merge'
 
 interface AccordionItemProps extends HTMLAttributes<HTMLDivElement> {
   value: string
@@ -15,12 +16,22 @@ export default function AccordionItem({ value, children }: AccordionItemProps) {
   const { itemOpen } = useAccordionContext()
   const isOpen = value === itemOpen
 
-  const enhancedChildren = children.map(child =>
-    cloneElement(child as ReactElement<childProps>, { isOpen, value })
+  const enhancedChildren = children.map((child, index) =>
+    cloneElement(child as ReactElement<childProps>, {
+      isOpen,
+      value,
+      key: index
+    })
   )
 
   return (
-    <li className='h-full flex flex-col py-2 px-3 first:border-none border-t border-terciary/30 cursor-pointer'>
+    <li
+      className={twMerge(
+        `h-full flex flex-col py-2 px-3 border-terciary/30 cursor-pointer ${
+          isOpen && 'border border-button-secondary '
+        }`
+      )}
+    >
       {enhancedChildren}
     </li>
   )

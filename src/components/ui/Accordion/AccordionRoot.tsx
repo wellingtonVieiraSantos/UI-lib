@@ -17,7 +17,7 @@ interface AccordionContextType {
   setItemOpen: Dispatch<React.SetStateAction<string | undefined>>
 }
 
-export const accordionContext = createContext<AccordionContextType | undefined>(
+export const AccordionContext = createContext<AccordionContextType | undefined>(
   undefined
 )
 
@@ -29,20 +29,20 @@ export default function AccordionRoot({
   const [itemOpen, setItemOpen] = useState(defaultValue)
 
   return (
-    <accordionContext.Provider value={{ itemOpen, setItemOpen }}>
+    <AccordionContext.Provider value={{ itemOpen, setItemOpen }}>
       <div
         className={twMerge(
           `w-full max-w-90 h-fit border border-terciary/30 rounded ${className}`
         )}
       >
-        <ul>{children}</ul>
+        <ul className='divide-y'>{children}</ul>
       </div>
-    </accordionContext.Provider>
+    </AccordionContext.Provider>
   )
 }
 
 export function useAccordionContext() {
-  const context = useContext(accordionContext)
+  const context = useContext(AccordionContext)
   if (!context)
     throw new Error(
       'useAccordionContext must be used within a <Accordion.Root>'
