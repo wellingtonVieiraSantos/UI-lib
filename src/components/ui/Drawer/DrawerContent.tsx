@@ -13,7 +13,7 @@ export default function DrawerContent({ children }: DrawerContentProps) {
   return (
     <div
       className={twMerge(
-        `w-full h-full bg-primary/20 z-9999 fixed bottom-0 right-0 backdrop-blur ${
+        `w-screen h-screen bg-primary/20 z-9999 fixed bottom-0 right-0 backdrop-blur ${
           isOpen ? 'block' : 'hidden'
         }`
       )}

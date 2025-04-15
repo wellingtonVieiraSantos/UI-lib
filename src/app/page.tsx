@@ -39,7 +39,9 @@ export default function Home() {
   }
 
   return (
-    <div className={`w-dvw min-h-dvh p-2 bg-primary grid gap-4 relative`}>
+    <div
+      className={`w-full min-h-full overflow-hidden py-2 bg-primary grid gap-4 relative`}
+    >
       <h1 className='p-4 w-40 rounded text-2xl'>UI Lib</h1>
       <div className={`w-full max-w-100 border border-zinc-700 p-4`}>
         <span
@@ -477,14 +479,14 @@ export default function Home() {
         </Tab.Content>
       </Tab.Root>
       {/* Drawer component example */}
-      <Drawer.Root isRight>
+      <Drawer.Root>
         <Drawer.Trigger>
           <Button icon={Plus} text='Abrir Drawer' sizeButton='lg' />
         </Drawer.Trigger>
         <Drawer.Content>
           <div className='grid gap-8'>
-            <h2 className='pt-10'>Title</h2>
-            <p>
+            <h2 className='pt-10 text-xl'>Title</h2>
+            <p className='text-sm text-terciary/80'>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, aut
               sapiente.
             </p>
@@ -508,7 +510,7 @@ export default function Home() {
           </div>
         </Drawer.Content>
       </Drawer.Root>
-      <div className='h-screen'></div>
+      <div className='h-screen w-fit'></div>
     </div>
   )
 }

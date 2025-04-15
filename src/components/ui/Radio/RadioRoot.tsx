@@ -33,7 +33,7 @@ export default function RadioRoot({
 
   return (
     <radioContext.Provider value={{ valueDefault, setValueDefault, groupName }}>
-      <div className={`${className}`}>{children}</div>
+      <div className={`w-fit ${className}`}>{children}</div>
     </radioContext.Provider>
   )
 }
