@@ -25,7 +25,7 @@ export default function ModalContent({
 
   return (
     isOpen && (
-      <div className='w-full h-full bg-primary/20 z-9999 absolute bottom-0 right-0 backdrop-blur grid place-content-center'>
+      <div className='w-screen h-screen bg-primary/20 z-9999 fixed bottom-0 top-0 right-0 backdrop-blur grid place-content-center'>
         <div
           ref={modalRef}
           className='w-fit max-w-[600px] bg-primary border border-terciary/20 rounded px-8 py-4 grid gap-4 animate-fadeIn relative mx-1'

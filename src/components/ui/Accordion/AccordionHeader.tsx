@@ -1,4 +1,4 @@
-import { Minus, Plus } from 'lucide-react'
+import { ChevronDown, ChevronUp } from 'lucide-react'
 import { HTMLAttributes, ReactElement } from 'react'
 import { useAccordionContext } from './AccordionRoot'
 
@@ -20,7 +20,7 @@ export default function AccordionHeader({
       onClick={() => setItemOpen(isOpen ? '' : value)}
     >
       {children}
-      {isOpen ? <Minus size={16} /> : <Plus size={16} />}
+      {isOpen ? <ChevronUp size={24} /> : <ChevronDown size={24} />}
     </div>
   )
 }

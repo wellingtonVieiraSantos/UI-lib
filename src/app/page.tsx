@@ -12,7 +12,8 @@ import {
   X,
   Check,
   ChevronRight,
-  ChevronDown
+  ChevronDown,
+  ArrowLeft
 } from 'lucide-react'
 import Search from '@/components/ui/Search'
 import Badge from '@/components/ui/Badge'
@@ -23,6 +24,7 @@ import DropdownItem from '@/components/ui/Dropdown/DropdownItem'
 /* import Select from '@/components/ui/Select'
  */ import Accordion from '@/components/ui/Accordion'
 import Tab from '@/components/ui/Tab/'
+import Drawer from '@/components/ui/Drawer'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
@@ -37,7 +39,7 @@ export default function Home() {
   }
 
   return (
-    <div className='w-dvw min-h-dvh p-2 bg-primary grid gap-4 relative'>
+    <div className={`w-dvw min-h-dvh p-2 bg-primary grid gap-4 relative`}>
       <h1 className='p-4 w-40 rounded text-2xl'>UI Lib</h1>
       <div className={`w-full max-w-100 border border-zinc-700 p-4`}>
         <span
@@ -94,7 +96,7 @@ export default function Home() {
       {/* Modal Component example */}
       <Modal.Root>
         <Modal.Trigger openModal={handleOpen}>
-          <Button text='Open Modal' />
+          <Button text='Open Modal' sizeButton='lg' />
         </Modal.Trigger>
         <Modal.Content isOpen={isOpen} onClose={handleClose}>
           <Modal.Header>
@@ -474,6 +476,38 @@ export default function Home() {
           <p>Content 3</p>
         </Tab.Content>
       </Tab.Root>
+      {/* Drawer component example */}
+      <Drawer.Root isRight>
+        <Drawer.Trigger>
+          <Button icon={Plus} text='Abrir Drawer' sizeButton='lg' />
+        </Drawer.Trigger>
+        <Drawer.Content>
+          <div className='grid gap-8'>
+            <h2 className='pt-10'>Title</h2>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, aut
+              sapiente.
+            </p>
+            <div className='w-full h-80 border border-dashed border-terciary grid place-items-center'>
+              product
+            </div>
+            <div className='flex gap-2 justify-end'>
+              <Button
+                text='Back'
+                icon={ArrowLeft}
+                variantButton='border'
+                sizeButton='md'
+              />
+              <Button
+                text='Confirm'
+                icon={Check}
+                sizeButton='md'
+                iconPosition='right'
+              />
+            </div>
+          </div>
+        </Drawer.Content>
+      </Drawer.Root>
       <div className='h-screen'></div>
     </div>
   )
