@@ -40,7 +40,7 @@ export default function Home() {
 
   return (
     <div
-      className={`w-full min-h-full overflow-hidden py-2 bg-primary grid gap-4 relative`}
+      className={`w-full min-h-full overflow-hidden py-2 bg-primary grid gap-4 px-2 relative`}
     >
       <h1 className='p-4 w-40 rounded text-2xl'>UI Lib</h1>
       <div className={`w-full max-w-100 border border-zinc-700 p-4`}>

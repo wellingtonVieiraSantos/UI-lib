@@ -20,7 +20,7 @@ export default function DrawerContent({ children }: DrawerContentProps) {
     >
       <div
         ref={drawerRef}
-        className={`fixed flex flex-col w-max max-w-3/4 min-w-1/4 h-screen bg-secondary px-4 py-12 text-wrap ${
+        className={`fixed flex flex-col w-max max-w-10/12 min-w-1/4 h-screen bg-secondary px-4 py-4 text-wrap ${
           isRight
             ? 'right-0 rounded-l-xl animate-fadeInRight'
             : 'left-0 rounded-r-xl animate-fadeInLeft'
@@ -32,7 +32,7 @@ export default function DrawerContent({ children }: DrawerContentProps) {
           variantButton='ghost'
           sizeButton='md'
           onlyIcon
-          className={`absolute top-1 ${isRight ? 'right-1' : 'left-1'}`}
+          className={`absolute top-1 ${isRight ? 'right-3' : 'left-3'}`}
           onClick={() => setIsOpen(false)}
         />
         {children}

@@ -6,6 +6,7 @@ import {
   useContext,
   useState
 } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 interface RadioRootProps extends HTMLAttributes<HTMLDivElement> {
   defaultValue?: string
@@ -33,7 +34,7 @@ export default function RadioRoot({
 
   return (
     <radioContext.Provider value={{ valueDefault, setValueDefault, groupName }}>
-      <div className={`w-fit ${className}`}>{children}</div>
+      <div className={twMerge(`w-fit ${className}`)}>{children}</div>
     </radioContext.Provider>
   )
 }
