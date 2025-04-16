@@ -27,7 +27,7 @@ export default function RadioItem({
         value={value}
         className={twMerge(
           `${isHidden && 'hidden'} peer appearance-none w-5 h-5 rounded-full
-          text-button-secondary border-2 focus:ring-button-secondary focus:ring-2 bg-secondary border-terciary checked:bg-button-secondary
+          text-button-secondary border-2 focus:ring-button-secondary focus:ring-2 border-secondary dark:border-terciary checked:bg-button-secondary
           `
         )}
         checked={value == valueDefault}
@@ -37,7 +37,7 @@ export default function RadioItem({
         <label
           htmlFor={id}
           className={twMerge(
-            `relative border border-terciary/30 rounded flex peer-checked:border-terciary peer-not-checked:scale-95 transition duration-300 ${className}`
+            `relative border border-secondary/30 dark:border-terciary/30 rounded flex peer-checked:border-secondary dark:peer-checked:border-terciary peer-not-checked:scale-95 transition duration-300 ${className}`
           )}
         >
           <Check

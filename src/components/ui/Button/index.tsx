@@ -34,8 +34,9 @@ const variantClasses: Record<variantButton, string> = {
   default:
     'bg-button-secondary text-terciary hover:bg-button-secondary/70 transition-color duration-300',
   border:
-    'border border-terciary/30 hover:border-terciary transition-color duration-300',
-  ghost: 'hover:bg-terciary/20 transition duration-300'
+    'border border-secondary/30 dark:border-terciary/30 hover:border-secondary dark:hover:border-terciary transition-color duration-300',
+  ghost:
+    'hover:bg-secondary/10 dark:hover:bg-terciary/20 transition duration-300'
 }
 
 export default function Button({
@@ -54,7 +55,7 @@ export default function Button({
       className={twMerge(
         `w-fit relative flex ${
           iconPosition === 'right' && 'flex-row-reverse'
-        } items-center justify-center text-terciary rounded cursor-pointer ${
+        } items-center justify-center rounded cursor-pointer ${
           sizeClasses[sizeButton]
         } ${variantClasses[variantButton]} ${
           onlyIcon && WIDTH_ONLY_ICON[sizeButton]

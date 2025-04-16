@@ -29,7 +29,7 @@ export default function Input({
         id={name}
         placeholder={holder}
         className={twMerge(
-          `px-10 py-2 border rounded border-terciary/50 bg-primary outline-none no-spinner ${className}`
+          `px-10 py-2 border rounded border-secondary/50 dark:border-terciary/50  outline-none no-spinner ${className}`
         )}
         {...props}
       />

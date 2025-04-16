@@ -32,10 +32,12 @@ export default function AccordionRoot({
     <AccordionContext.Provider value={{ itemOpen, setItemOpen }}>
       <div
         className={twMerge(
-          `w-full max-w-90 h-fit border border-terciary/30 rounded ${className}`
+          `w-full max-w-90 h-fit border border-secondary/30 dark:border-terciary/30 rounded ${className}`
         )}
       >
-        <ul className='divide-y'>{children}</ul>
+        <ul className='divide-y divide-secondary/30 dark:divide-terciary/30'>
+          {children}
+        </ul>
       </div>
     </AccordionContext.Provider>
   )

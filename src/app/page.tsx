@@ -40,10 +40,10 @@ export default function Home() {
 
   return (
     <div
-      className={`w-full min-h-full overflow-hidden py-2 bg-primary grid gap-4 px-2 relative`}
+      className={`w-full min-h-full overflow-hidden py-2 grid gap-4 px-2 relative`}
     >
       <h1 className='p-4 w-40 rounded text-2xl'>UI Lib</h1>
-      <div className={`w-full max-w-100 border border-zinc-700 p-4`}>
+      <div className={`w-full max-w-100 border border-secondary/30 p-4`}>
         <span
           className={`leading-relaxed  ${showDescribe ? '' : 'line-clamp-1'}`}
         >
@@ -86,7 +86,7 @@ export default function Home() {
       {/* Search Components example */}
       <Search />
       {/* Badge Components example */}
-      <span className='relative w-fit h-fit p-2 border border-terciary'>
+      <span className='relative w-fit h-fit p-2 border border-secondary dark:border-terciary'>
         Teste
         <Badge text={count.toString()} isNotification />
       </span>
@@ -147,23 +147,23 @@ export default function Home() {
       <Radio.Root
         defaultValue='masculino'
         groupName='sexo'
-        className='border border-terciary/30 w-[400px] py-2 px-4 gap-2 flex flex-col rounded'
+        className='border border-secondary/30 dark:border-terciary/30 w-[400px] py-2 px-4 gap-2 flex flex-col rounded'
       >
         <h2>Qual seu sexo?</h2>
-        <div className='w-full flex gap-4 p-2 items-center justify-between border border-terciary/30 rounded  sexo-label-radio'>
+        <div className='w-full flex gap-4 p-2 items-center justify-between border border-secondary/30 dark:border-terciary/30 rounded  sexo-label-radio'>
           <label htmlFor='m' className='block w-full'>
             <div className='flex flex-col'>
               Masculino
-              <span className='text-[12px] text-terciary/50'>Homem</span>
+              <span className='text-[12px]'>Homem</span>
             </div>
           </label>
           <Radio.Item id='m' value='masculino' />
         </div>
-        <div className='w-full flex gap-4 p-2 items-center justify-between border border-terciary/30 rounded  sexo-label-radio'>
+        <div className='w-full flex gap-4 p-2 items-center justify-between border border-secondary/30 dark:border-terciary/30 rounded  sexo-label-radio'>
           <label htmlFor='f' className='block w-full'>
             <div className='flex flex-col'>
               Feminino
-              <span className='text-[12px] text-terciary/50'>Mulher</span>
+              <span className='text-[12px]'>Mulher</span>
             </div>
           </label>
           <Radio.Item id='f' value='feminino' />
@@ -183,11 +183,9 @@ export default function Home() {
             <span className='text-5xl font-bold'>
               19.90 <span className='text-sm font-medium'>R$/mes</span>
             </span>
-            <p className='text-sm text-terciary/80'>
-              Pacote basico para projetos pequenos
-            </p>
+            <p className='text-sm'>Pacote basico para projetos pequenos</p>
             <span className='text-sm'>Sem Suporte</span>
-            <ul className='text-sm text-terciary/80'>
+            <ul className='text-sm'>
               <li className='flex justify-center items-center gap-2'>
                 <X size={16} className='text-red-500' />
                 vantagem 1
@@ -216,11 +214,11 @@ export default function Home() {
             <span className='text-5xl font-bold'>
               69.99 <span className='text-sm font-medium'>R$/mes</span>
             </span>
-            <p className='text-sm text-terciary/80'>Pacote custo benefício</p>
+            <p className='text-sm'>Pacote custo benefício</p>
             <span className='text-sm'>
               Suporte <span className='text-xl'>8/5 h</span>
             </span>
-            <ul className='text-sm text-terciary/80 list-none'>
+            <ul className='text-sm list-none'>
               <li className='flex justify-center items-center gap-2'>
                 <Check size={16} className='text-green-500' />
                 vantagem 1
@@ -249,13 +247,11 @@ export default function Home() {
             <span className='text-5xl font-bold'>
               100 <span className='text-sm font-medium'>R$/mes</span>
             </span>
-            <p className='text-sm text-terciary/80'>
-              Pacote premium para sua empresa
-            </p>
+            <p className='text-sm '>Pacote premium para sua empresa</p>
             <span className='text-sm'>
               Suporte <span className='text-xl'>12/6 h</span>
             </span>
-            <ul className='text-sm text-terciary/80 list-none'>
+            <ul className='text-sm list-none'>
               <li className='flex justify-center items-center gap-2'>
                 <Check size={16} className='text-green-500' />
                 vantagem 1
@@ -284,13 +280,13 @@ export default function Home() {
             <span className='text-5xl font-bold'>
               150 <span className='text-sm font-medium'>R$/mes</span>
             </span>
-            <p className='text-sm text-terciary/80'>
+            <p className='text-sm '>
               Pacote profissional completo pelo menor preço
             </p>
             <span className='text-sm'>
               Suporte <span className='text-xl'>24/7 h</span>
             </span>
-            <ul className='text-sm text-terciary/80 list-none'>
+            <ul className='text-sm list-none'>
               <li className='flex justify-center items-center gap-2'>
                 <Check size={16} className='text-green-500' />
                 vantagem 1
@@ -320,9 +316,11 @@ export default function Home() {
           />
         </Dropdown.Trigger>
         <Dropdown.Content>
-          <div className='border-b border-terciary/40'>
+          <div className='border-b border-secondary/40 dark:border-terciary/40'>
             <h3>Jhon Doe</h3>
-            <span className='text-sm text-terciary/50'>email@contato.com</span>
+            <span className='text-sm text-secondary/50 dark:text-terciary/50'>
+              email@contato.com
+            </span>
           </div>
           <DropdownItem>
             <Button
@@ -421,7 +419,7 @@ export default function Home() {
           </Accordion.Header>
           <Accordion.Content>
             <div className='p-2'>
-              <span className='text-sm text-terciary/50'>Description</span>
+              <span className='text-sm'>Description</span>
               <span className='block'>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Laboriosam odio sunt eaque cum quas asperiores quidem.
@@ -486,11 +484,11 @@ export default function Home() {
         <Drawer.Content>
           <div className='grid gap-8'>
             <h2 className='pt-10 text-xl'>Title</h2>
-            <p className='text-sm text-terciary/80'>
+            <p className='text-sm'>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, aut
               sapiente.
             </p>
-            <div className='w-full h-80 border border-dashed border-terciary grid place-items-center'>
+            <div className='w-full h-80 border border-dashed dark:border-terciary grid place-items-center'>
               product
             </div>
             <div className='flex gap-2 justify-end'>

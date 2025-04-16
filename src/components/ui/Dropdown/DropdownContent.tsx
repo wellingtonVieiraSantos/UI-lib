@@ -12,7 +12,7 @@ export default function DropdownContent({ children }: DropdownContentProps) {
       ref={dropdownRef}
       className={`${
         isOpen ? 'flex' : 'hidden'
-      } flex-col z-9999 w-max min-w-full gap-2 p-2 border border-terciary/30 absolute  bg-primary rounded
+      } flex-col z-9999 w-full gap-2 p-2 border border-secondary/30 dark:border-terciary/30 bg-terciary dark:bg-secondary absolute rounded
         ${
           isAbove
             ? 'bottom-full mb-1 animate-fadeInDown'

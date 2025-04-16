@@ -26,7 +26,7 @@ export default function TabRoot({ defaultValue, children }: TabProps) {
 
   return (
     <TabContext.Provider value={{ selectedTab, setSelectedTab }}>
-      <div className='w-fit h-fit max-w-90 border border-terciary/30 rounded'>
+      <div className='w-fit h-fit max-w-90 border border-secondary/30 dark:border-terciary/30 rounded'>
         {children}
       </div>
     </TabContext.Provider>

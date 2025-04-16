@@ -27,7 +27,7 @@ export default function AccordionItem({ value, children }: AccordionItemProps) {
   return (
     <li
       className={twMerge(
-        `h-full flex flex-col py-2 px-3 border-terciary/30 cursor-pointer ${
+        `h-full flex flex-col py-2 px-3 cursor-pointer ${
           isOpen && 'border border-button-secondary '
         }`
       )}

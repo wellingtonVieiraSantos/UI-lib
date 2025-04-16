@@ -20,7 +20,7 @@ export default function DrawerContent({ children }: DrawerContentProps) {
     >
       <div
         ref={drawerRef}
-        className={`fixed flex flex-col w-max max-w-10/12 min-w-1/4 h-screen bg-secondary px-4 py-4 text-wrap ${
+        className={`fixed flex flex-col w-max max-w-10/12 min-w-1/4 h-screen bg-terciary dark:bg-secondary px-4 py-4 text-wrap ${
           isRight
             ? 'right-0 rounded-l-xl animate-fadeInRight'
             : 'left-0 rounded-r-xl animate-fadeInLeft'

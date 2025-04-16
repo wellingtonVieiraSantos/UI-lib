@@ -6,18 +6,22 @@
 }
 
 @theme {
+  /* colors */
   --color-primary: oklch(0.2 0.0079 285.67);
   --color-secondary: oklch(0.27 0.0063 258.36);
   --color-terciary: oklch(0.99 0.0146 98.28);
   --color-button: oklch(0.91 0.15455 194.7689);
   --color-button-secondary: oklch(0.59 0.2143 289.47);
+  /* fonts */
   --font-poppins: var(--font-poppins);
   --font-montserrat: var(--font-montserrat);
+  /* animates */
   --animate-fadeIn: fadeIn 0.2s ease-in-out;
   --animate-fadeInDown: fadeInDown 0.3s ease-in-out;
   --animate-fadeInUp: fadeInUp 0.3s ease-in-out;
   --animate-fadeInLeft: fadeInLeft 0.3s ease-in-out;
   --animate-fadeInRight: fadeInRight 0.3s ease-in-out;
+
   @keyframes fadeIn {
     from {
       opacity: 0;
