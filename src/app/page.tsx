@@ -13,7 +13,8 @@ import {
   Check,
   ChevronRight,
   ChevronDown,
-  ArrowLeft
+  ArrowLeft,
+  Share2
 } from 'lucide-react'
 import Search from '@/components/ui/Search'
 import Badge from '@/components/ui/Badge'
@@ -25,6 +26,7 @@ import DropdownItem from '@/components/ui/Dropdown/DropdownItem'
  */ import Accordion from '@/components/ui/Accordion'
 import Tab from '@/components/ui/Tab/'
 import Drawer from '@/components/ui/Drawer'
+import Switch from '@/components/ui/Switch'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
@@ -43,7 +45,9 @@ export default function Home() {
       className={`w-full min-h-full overflow-hidden py-2 grid gap-4 px-2 relative`}
     >
       <h1 className='p-4 w-40 rounded text-2xl'>UI Lib</h1>
-      <div className={`w-full max-w-100 border border-secondary/30 p-4`}>
+      <div
+        className={`w-full max-w-100 border border-secondary/30 dark:border-terciary/30 p-4`}
+      >
         <span
           className={`leading-relaxed  ${showDescribe ? '' : 'line-clamp-1'}`}
         >
@@ -310,9 +314,9 @@ export default function Home() {
           <Button
             variantButton='border'
             sizeButton='lg'
-            text='Button Dropdown'
-            icon={ChevronDown}
+            icon={Share2}
             iconPosition='right'
+            onlyIcon
           />
         </Dropdown.Trigger>
         <Dropdown.Content>
@@ -508,6 +512,10 @@ export default function Home() {
           </div>
         </Drawer.Content>
       </Drawer.Root>
+      <div className='flex gap-5 items-center'>
+        <p>Ativar Vantagens premium</p>
+        <Switch />
+      </div>
       <div className='h-screen w-fit'></div>
     </div>
   )
