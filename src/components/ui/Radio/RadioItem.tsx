@@ -26,7 +26,7 @@ export default function RadioItem({
         id={id}
         value={value}
         className={twMerge(
-          `${isHidden && 'hidden'} peer appearance-none w-5 h-5 rounded-full
+          `${isHidden && 'hidden'} peer appearance-none size-5 rounded-full
           text-button-secondary border-2 focus:ring-button-secondary focus:ring-2 border-secondary dark:border-terciary checked:bg-button-secondary
           `
         )}

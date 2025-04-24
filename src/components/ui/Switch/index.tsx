@@ -1,12 +1,18 @@
-import { HTMLAttributes, useState } from 'react'
+import { HTMLAttributes, useEffect, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 interface SwitchProps extends HTMLAttributes<HTMLDivElement> {
   disabled?: boolean
 }
 
-export default function Switch({ disabled = false }: SwitchProps) {
-  const [isOpen, setIsOpen] = useState(false)
+export default function Switch({
+  defaultChecked,
+  disabled = false
+}: SwitchProps) {
+  const [isOpen, setIsOpen] = useState(defaultChecked)
+  useEffect(() => {
+    if (disabled) setIsOpen(false)
+  }, [disabled])
   return (
     <div
       className={`relative w-14 h-7 rounded-full border transition-colors duration-300 ${

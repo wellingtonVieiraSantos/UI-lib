@@ -14,7 +14,8 @@ import {
   ChevronRight,
   ChevronDown,
   ArrowLeft,
-  Share2
+  Share2,
+  ChevronLeft
 } from 'lucide-react'
 import Search from '@/components/ui/Search'
 import Badge from '@/components/ui/Badge'
@@ -27,6 +28,12 @@ import DropdownItem from '@/components/ui/Dropdown/DropdownItem'
 import Tab from '@/components/ui/Tab/'
 import Drawer from '@/components/ui/Drawer'
 import Switch from '@/components/ui/Switch'
+import Toast from '@/components/ui/Toast'
+import Skeleton from '@/components/ui/Skeleton'
+import Checkbox from '@/components/ui/Checkbox'
+import Textarea from '@/components/ui/Textarea'
+import Card from '@/components/ui/Card'
+import CardActions from '@/components/ui/Card/CardActions'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
@@ -514,8 +521,52 @@ export default function Home() {
       </Drawer.Root>
       <div className='flex gap-5 items-center'>
         <p>Ativar Vantagens premium</p>
-        <Switch />
+        <Switch defaultChecked />
       </div>
+      <Toast.Root>
+        <Toast.Trigger>
+          <Button text='Toast' variantButton='border' />
+        </Toast.Trigger>
+        <Toast.Content>
+          <Toast.Title>
+            <h1>Title</h1>
+          </Toast.Title>
+          <Toast.Message>
+            <p>message for toast.</p>
+          </Toast.Message>
+        </Toast.Content>
+      </Toast.Root>
+      {/* Skeleton component example */}
+      <div className='flex items-center gap-2 border border-secondary/30 dark:border-terciary/30 w-fit p-2 rounded '>
+        <Skeleton className='w-14 h-14 rounded-full' />
+        <div className='grid gap-1'>
+          <Skeleton className='w-70 h-5' />
+          <Skeleton className='w-40 h-5' />
+        </div>
+      </div>
+      {/* Checkbox component example */}
+      <Checkbox id='check-1' checked />
+      {/* Textarea component example */}
+      <Textarea placeholder='Escreva a menssagem' rows={4} />
+      {/* Card component example */}
+      <Card.Root>
+        <Card.Header>
+          <h2>Teste Card</h2>
+        </Card.Header>
+        <Card.Content>
+          <span className='text-sm text-terciary/70'>Teste description</span>
+          <p className='text-justify'>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut
+            corrupti quaerat sequi veritatis minima qui suscipit, sint itaque
+            perferendis animi officia sit est harum nobis eligendi explicabo
+            saepe modi! Doloribus.
+          </p>
+        </Card.Content>
+        <CardActions>
+          <Button variantButton='border' text='Prev' icon={ChevronLeft} />
+          <Button text='Next' icon={ChevronRight} iconPosition='right' />
+        </CardActions>
+      </Card.Root>
       <div className='h-screen w-fit'></div>
     </div>
   )
