@@ -14,8 +14,7 @@ import {
   ChevronRight,
   ChevronDown,
   ArrowLeft,
-  Share2,
-  ChevronLeft
+  Share2
 } from 'lucide-react'
 import Search from '@/components/ui/Search'
 import Badge from '@/components/ui/Badge'
@@ -23,8 +22,7 @@ import Modal from '@/components/ui/Modal'
 import Radio from '@/components/ui/Radio'
 import Dropdown from '@/components/ui/Dropdown'
 import DropdownItem from '@/components/ui/Dropdown/DropdownItem'
-/* import Select from '@/components/ui/Select'
- */ import Accordion from '@/components/ui/Accordion'
+import Accordion from '@/components/ui/Accordion'
 import Tab from '@/components/ui/Tab/'
 import Drawer from '@/components/ui/Drawer'
 import Switch from '@/components/ui/Switch'
@@ -32,8 +30,6 @@ import Toast from '@/components/ui/Toast'
 import Skeleton from '@/components/ui/Skeleton'
 import Checkbox from '@/components/ui/Checkbox'
 import Textarea from '@/components/ui/Textarea'
-import Card from '@/components/ui/Card'
-import CardActions from '@/components/ui/Card/CardActions'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
@@ -548,25 +544,6 @@ export default function Home() {
       <Checkbox id='check-1' checked />
       {/* Textarea component example */}
       <Textarea placeholder='Escreva a menssagem' rows={4} />
-      {/* Card component example */}
-      <Card.Root>
-        <Card.Header>
-          <h2>Teste Card</h2>
-        </Card.Header>
-        <Card.Content>
-          <span className='text-sm text-terciary/70'>Teste description</span>
-          <p className='text-justify'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut
-            corrupti quaerat sequi veritatis minima qui suscipit, sint itaque
-            perferendis animi officia sit est harum nobis eligendi explicabo
-            saepe modi! Doloribus.
-          </p>
-        </Card.Content>
-        <CardActions>
-          <Button variantButton='border' text='Prev' icon={ChevronLeft} />
-          <Button text='Next' icon={ChevronRight} iconPosition='right' />
-        </CardActions>
-      </Card.Root>
       <div className='h-screen w-fit'></div>
     </div>
   )
