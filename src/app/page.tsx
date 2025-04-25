@@ -15,7 +15,8 @@ import {
   ChevronDown,
   ArrowLeft,
   Share2,
-  SearchIcon
+  SearchIcon,
+  SendHorizonal
 } from 'lucide-react'
 import Badge from '@/components/ui/Badge'
 import Modal from '@/components/ui/Modal'
@@ -579,7 +580,12 @@ export default function Home() {
 
       {/* Textarea component example */}
       <Textarea placeholder='Escreva a menssagem' rows={4} />
-      <Input name='email' handleDelete={handleDelete} ref={inputRef} />
+      <Input
+        name='email'
+        handleDelete={handleDelete}
+        ref={inputRef}
+        icon={SendHorizonal}
+      />
       <div className='h-screen w-fit'></div>
     </div>
   )

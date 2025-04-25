@@ -36,7 +36,7 @@ export default function Input({
         ref={ref}
         className={twMerge(
           `${
-            Icon ? 'px-10' : 'px-2'
+            Icon ? 'px-10' : 'pl-2 pr-8'
           } appearance-none py-2 border rounded border-secondary/50 dark:border-terciary/30  
           outline-none no-spinner peer focus-within:ring-1 focus-within:ring-secondary/80 dark:focus-within:ring-terciary/80
            ${className}`
@@ -53,7 +53,7 @@ export default function Input({
       {Icon && (
         <Icon
           size={24}
-          className={`absolute bottom-3 ${
+          className={`absolute bottom-2 ${
             iconPosition === 'left' ? 'left-2' : 'right-2'
           }`}
         />
