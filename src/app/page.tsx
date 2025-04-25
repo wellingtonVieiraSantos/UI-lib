@@ -2,7 +2,7 @@
 import Button from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import {
   Plus,
   Minus,
@@ -14,9 +14,9 @@ import {
   ChevronRight,
   ChevronDown,
   ArrowLeft,
-  Share2
+  Share2,
+  SearchIcon
 } from 'lucide-react'
-import Search from '@/components/ui/Search'
 import Badge from '@/components/ui/Badge'
 import Modal from '@/components/ui/Modal'
 import Radio from '@/components/ui/Radio'
@@ -41,6 +41,14 @@ export default function Home() {
   }
   const handleClose = () => {
     setIsOpen(false)
+  }
+
+  const inputRef = useRef<HTMLInputElement | null>(null)
+  const handleDelete = () => {
+    console.log(inputRef.current)
+
+    if (!inputRef.current) return
+    inputRef.current.value = ''
   }
 
   return (
@@ -90,8 +98,12 @@ export default function Home() {
         icon={User}
         labelText='Nome'
       />
-      {/* Search Components example */}
-      <Search />
+      <Input
+        name='busca'
+        holder='Pesquisar...'
+        type='search'
+        icon={SearchIcon}
+      />
       {/* Badge Components example */}
       <span className='relative w-fit h-fit p-2 border border-secondary dark:border-terciary'>
         Teste
@@ -541,9 +553,33 @@ export default function Home() {
         </div>
       </div>
       {/* Checkbox component example */}
-      <Checkbox id='check-1' checked />
+      <div className='grid gap-4 border border-terciary/30 max-w-90 py-4 rounded'>
+        <label
+          htmlFor='check-1'
+          className='flex gap-4 justify-center items-center'
+        >
+          <Checkbox id='check-1' defaultChecked />
+          <span>Checkbox 1</span>
+        </label>
+        <label
+          htmlFor='check-2'
+          className='flex gap-4 justify-center items-center'
+        >
+          <Checkbox id='check-2' />
+          <span>Checkbox 2</span>
+        </label>
+        <label
+          htmlFor='check-3'
+          className='flex gap-4 justify-center items-center'
+        >
+          <Checkbox id='check-3' defaultChecked />
+          <span>Checkbox 3</span>
+        </label>
+      </div>
+
       {/* Textarea component example */}
       <Textarea placeholder='Escreva a menssagem' rows={4} />
+      <Input name='email' handleDelete={handleDelete} ref={inputRef} />
       <div className='h-screen w-fit'></div>
     </div>
   )
