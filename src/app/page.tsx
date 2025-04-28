@@ -580,32 +580,34 @@ export default function Home() {
       {/* ProgressBar component example */}
       <div className='max-w-90 p-2 pb-10 text-sm grid gap-2 border border-terciary/30'>
         <p className='text-terciary/70'>In progress...</p>
-        <ProgressBar id='progress' />
+        <ProgressBar id='progress' textProgress='Buscando dados...' />
       </div>
       {/* Toggle Component example */}
-      <div className='border border-terciary/30 w-full max-w-90 p-2 grid grid-flow-col place-content-center gap-4'>
-        <h2>Toggle Buttons </h2>
-        <Checkbox
-          id='html'
-          isToggle
-          className='py-2 px-4 border border-terciary/30 peer-checked:bg-button-secondary'
-        >
-          <span>HTML</span>
-        </Checkbox>
-        <Checkbox
-          id='css'
-          isToggle
-          className='py-2 px-4 border border-terciary/30 peer-checked:bg-button-secondary'
-        >
-          <span>CSS</span>
-        </Checkbox>
-        <Checkbox
-          id='js'
-          isToggle
-          className='py-2 px-4 border border-terciary/30 peer-checked:bg-button-secondary'
-        >
-          <span>JS</span>
-        </Checkbox>
+      <div className='border border-terciary/30 w-full max-w-90 p-2 flex gap-4'>
+        <h2 className='grid place-content-center flex-1'>Toggle Buttons </h2>
+        <div className='grid gap-2 flex-1'>
+          <Checkbox
+            id='html'
+            isToggle
+            className='py-2 px-4 border border-terciary/30 peer-checked:bg-button-secondary'
+          >
+            <span>HTML</span>
+          </Checkbox>
+          <Checkbox
+            id='css'
+            isToggle
+            className='py-2 px-4 border border-terciary/30 peer-checked:bg-button-secondary'
+          >
+            <span>CSS</span>
+          </Checkbox>
+          <Checkbox
+            id='js'
+            isToggle
+            className='py-2 px-4 border border-terciary/30 peer-checked:bg-button-secondary'
+          >
+            <span>JS</span>
+          </Checkbox>
+        </div>
       </div>
       <div className='h-screen w-fit'></div>
     </div>

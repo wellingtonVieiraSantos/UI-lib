@@ -7,7 +7,7 @@ interface CheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   ref?: React.Ref<HTMLInputElement>
   defaultChecked?: boolean
   isToggle?: boolean
-  children?: ReactElement
+  children?: ReactElement[] | ReactElement
 }
 
 export default function Checkbox({
@@ -20,7 +20,6 @@ export default function Checkbox({
   ...props
 }: CheckboxProps) {
   const [isChecked, setIsChecked] = useState(defaultChecked)
-  console.log(isChecked)
 
   return (
     <div className={`relative w-fit cursor-pointer flex items-center gap-4 `}>
@@ -38,7 +37,7 @@ export default function Checkbox({
       <label
         htmlFor={id}
         className={twMerge(
-          `grid place-content-center w-fit transition duration-300 rounded cursor-pointer ${className}`
+          `grid place-content-center w-fit transition duration-300 rounded cursor-pointer select-none ${className}`
         )}
       >
         {children}

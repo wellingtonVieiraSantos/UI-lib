@@ -4,20 +4,27 @@ import { twMerge } from 'tailwind-merge'
 interface ProgressBarProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string
   ref?: React.Ref<HTMLInputElement>
+  textProgress: string
 }
 
-export default function ProgressBar({ id, ref }: ProgressBarProps) {
+export default function ProgressBar({
+  id,
+  ref,
+  textProgress,
+  ...props
+}: ProgressBarProps) {
   const [value, setValue] = useState(0)
-  const [error, setError] = useState<Error | null>(null)
+  const [error] = useState<Error | null>(null)
 
   useEffect(() => {
     /* error mock */
-    if (value > 70) {
+    /* if (value > 70) {
       const error2 = new Error('error')
       setError(error2)
       return
-    }
+    } */
     /* success mock */
+    /* fake time loader, duration: 1min */
     const progressInterval = setInterval(() => {
       setValue(prev => {
         if (prev >= 100) {
@@ -26,12 +33,27 @@ export default function ProgressBar({ id, ref }: ProgressBarProps) {
         }
         return prev + 1
       })
-    }, 50)
+    }, 75)
     return () => clearInterval(progressInterval)
   }, [value])
 
   return (
-    <div className='w-full max-w-90 p-4'>
+    <div className='w-full max-w-90 p-4 grid gap-2'>
+      <span
+        className={` ${
+          error
+            ? 'text-red-500'
+            : value === 100
+            ? 'text-green-500'
+            : 'text-terciary/90'
+        }`}
+      >
+        {error
+          ? 'Ocorreu um erro...'
+          : value === 100
+          ? 'Sucesso'
+          : textProgress}
+      </span>
       <div className='relative w-full h-3 bg-terciary/40 rounded-full'>
         <div
           className={`absolute inset-0 bg-button-secondary rounded-full ${
@@ -58,11 +80,8 @@ export default function ProgressBar({ id, ref }: ProgressBarProps) {
         value={value}
         ref={ref}
         onChange={e => setValue(e.target.valueAsNumber)}
+        {...props}
       />
-      {value === 100 && (
-        <p className='pt-2 text-green-400 text-base'>Sucesso</p>
-      )}
-      {error && <p className='pt-2 text-red-400 text-base'>Ocorreu um erro.</p>}
     </div>
   )
 }
