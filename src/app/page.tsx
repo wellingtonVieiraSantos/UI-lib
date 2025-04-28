@@ -16,7 +16,7 @@ import {
   ArrowLeft,
   Share2,
   SearchIcon,
-  SendHorizonal
+  Mail
 } from 'lucide-react'
 import Badge from '@/components/ui/Badge'
 import Modal from '@/components/ui/Modal'
@@ -31,6 +31,7 @@ import Toast from '@/components/ui/Toast'
 import Skeleton from '@/components/ui/Skeleton'
 import Checkbox from '@/components/ui/Checkbox'
 import Textarea from '@/components/ui/Textarea'
+import ProgressBar from '@/components/ui/ProgressBar'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
@@ -129,7 +130,7 @@ export default function Home() {
               variantButton='ghost'
               icon={X}
               onlyIcon
-              sizeButton='lg'
+              sizeButton='md'
               onClick={handleClose}
               className='absolute top-1 right-1'
             />
@@ -497,7 +498,7 @@ export default function Home() {
         </Tab.Content>
       </Tab.Root>
       {/* Drawer component example */}
-      <Drawer.Root>
+      <Drawer.Root isRight>
         <Drawer.Trigger>
           <Button icon={Plus} text='Abrir Drawer' sizeButton='lg' />
         </Drawer.Trigger>
@@ -554,28 +555,16 @@ export default function Home() {
         </div>
       </div>
       {/* Checkbox component example */}
-      <div className='grid gap-4 border border-terciary/30 max-w-90 py-4 rounded'>
-        <label
-          htmlFor='check-1'
-          className='flex gap-4 justify-center items-center'
-        >
-          <Checkbox id='check-1' defaultChecked />
+      <div className='grid place-content-center gap-4 border border-terciary/30 max-w-90 py-4 rounded'>
+        <Checkbox id='check-1' defaultChecked>
           <span>Checkbox 1</span>
-        </label>
-        <label
-          htmlFor='check-2'
-          className='flex gap-4 justify-center items-center'
-        >
-          <Checkbox id='check-2' />
+        </Checkbox>
+        <Checkbox id='check-2'>
           <span>Checkbox 2</span>
-        </label>
-        <label
-          htmlFor='check-3'
-          className='flex gap-4 justify-center items-center'
-        >
-          <Checkbox id='check-3' defaultChecked />
+        </Checkbox>
+        <Checkbox id='check-3' defaultChecked>
           <span>Checkbox 3</span>
-        </label>
+        </Checkbox>
       </div>
 
       {/* Textarea component example */}
@@ -584,8 +573,40 @@ export default function Home() {
         name='email'
         handleDelete={handleDelete}
         ref={inputRef}
-        icon={SendHorizonal}
+        icon={Mail}
+        labelText='Email'
+        holder='exemplo@email.com'
       />
+      {/* ProgressBar component example */}
+      <div className='max-w-90 p-2 pb-10 text-sm grid gap-2 border border-terciary/30'>
+        <p className='text-terciary/70'>In progress...</p>
+        <ProgressBar id='progress' />
+      </div>
+      {/* Toggle Component example */}
+      <div className='border border-terciary/30 w-full max-w-90 p-2 grid grid-flow-col place-content-center gap-4'>
+        <h2>Toggle Buttons </h2>
+        <Checkbox
+          id='html'
+          isToggle
+          className='py-2 px-4 border border-terciary/30 peer-checked:bg-button-secondary'
+        >
+          <span>HTML</span>
+        </Checkbox>
+        <Checkbox
+          id='css'
+          isToggle
+          className='py-2 px-4 border border-terciary/30 peer-checked:bg-button-secondary'
+        >
+          <span>CSS</span>
+        </Checkbox>
+        <Checkbox
+          id='js'
+          isToggle
+          className='py-2 px-4 border border-terciary/30 peer-checked:bg-button-secondary'
+        >
+          <span>JS</span>
+        </Checkbox>
+      </div>
       <div className='h-screen w-fit'></div>
     </div>
   )

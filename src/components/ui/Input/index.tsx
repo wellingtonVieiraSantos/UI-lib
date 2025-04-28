@@ -6,7 +6,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   labelText?: string
   name: string
   type?: 'text' | 'number' | 'password' | 'email' | 'search'
-  holder?: string /* mudar para valores especificos de holders */
+  holder?: string
   icon?: ElementType
   iconPosition?: 'left' | 'right'
   handleDelete?: () => void
