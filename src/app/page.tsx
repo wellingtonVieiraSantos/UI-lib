@@ -32,6 +32,8 @@ import Skeleton from '@/components/ui/Skeleton'
 import Checkbox from '@/components/ui/Checkbox'
 import Textarea from '@/components/ui/Textarea'
 import ProgressBar from '@/components/ui/ProgressBar'
+import Select from '@/components/ui/Select'
+import Divider from '@/components/ui/Divider'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
@@ -456,7 +458,7 @@ export default function Home() {
       </Accordion.Root>
       {/*  Tab component example */}
       <Tab.Root defaultValue='item-1'>
-        <Tab.Nav>
+        <Tab.Nav className='p-2'>
           <Tab.Header id='item-1'>
             <Button
               variantButton='ghost'
@@ -608,6 +610,19 @@ export default function Home() {
             <span>JS</span>
           </Checkbox>
         </div>
+      </div>
+      {/* Select Component Example */}
+      <Select.Root>
+        <Select.Item>Texto</Select.Item>
+      </Select.Root>
+      {/* Divider Componente Example */}
+      <div className='size-90 flex border border-terciary/30 p-2'>
+        <Divider className='flex-1' direction='vertical'>
+          <span>Texto</span>
+        </Divider>
+        <Divider className='flex-1'>
+          <span>Texto</span>
+        </Divider>
       </div>
       <div className='h-screen w-fit'></div>
     </div>

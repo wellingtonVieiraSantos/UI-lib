@@ -5,7 +5,7 @@ interface TabNavProps extends HTMLAttributes<HTMLDivElement> {
 }
 export default function TabNav({ children }: TabNavProps) {
   return (
-    <div className='flex border-b border-secondary/30 dark:border-terciary/30'>
+    <div className='flex items-center text-center border-b border-secondary/30 dark:border-terciary/30'>
       {children}
     </div>
   )

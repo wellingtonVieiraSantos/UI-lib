@@ -2,7 +2,7 @@ import { ChevronsUpDown } from 'lucide-react'
 import { HTMLAttributes, ReactElement } from 'react'
 
 interface SelectRootProps extends HTMLAttributes<HTMLDivElement> {
-  children: ReactElement[]
+  children: ReactElement[] | ReactElement
 }
 export default function SelectRoot({ children }: SelectRootProps) {
   return (
@@ -11,7 +11,7 @@ export default function SelectRoot({ children }: SelectRootProps) {
       <div className='relative'>
         <select
           id='id'
-          className='w-full h-full py-2 pl-2 pr-8 bg-primary border border-terciary/30 rounded appearance-none'
+          className='py-2 pl-2 pr-8 border border-terciary/30 rounded appearance-none'
         >
           <option selected className='hover:bg-button-secondary'>
             Chose one option

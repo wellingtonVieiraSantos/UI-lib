@@ -26,7 +26,7 @@ export default function Input({
   ...props
 }: InputProps) {
   return (
-    <label htmlFor={name} className='w-fit grid gap-2 relative'>
+    <label htmlFor={name} className='grid gap-2 relative'>
       {labelText && <span>{labelText}</span>}
       <input
         type={type}

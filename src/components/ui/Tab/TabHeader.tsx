@@ -1,17 +1,22 @@
 import { HTMLAttributes, ReactElement } from 'react'
 import { useTabContext } from './TabRoot'
+import { twMerge } from 'tailwind-merge'
 
 interface TabHeaderProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactElement[] | ReactElement
   id: string
 }
 
-export default function TabHeader({ id, children }: TabHeaderProps) {
+export default function TabHeader({ id, children, className }: TabHeaderProps) {
   const { selectedTab, setSelectedTab } = useTabContext()
   const isActive = selectedTab === id
   return (
     <div
-      className={`flex-1 ${isActive && 'border-b-3 border-button-secondary'}`}
+      className={twMerge(
+        `flex-1 p-2 cursor-pointer ${
+          isActive && 'border-b-3 border-button-secondary'
+        } ${className}`
+      )}
       onClick={() => setSelectedTab(id)}
     >
       {children}
