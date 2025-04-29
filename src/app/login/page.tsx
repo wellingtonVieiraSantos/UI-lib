@@ -19,10 +19,10 @@ export default function Login() {
       <Tab.Root defaultValue='teste_1'>
         <Tab.Nav>
           <Tab.Header id='teste_1' className='p-4'>
-            <h2>Login</h2>
+            <span>Login</span>
           </Tab.Header>
           <Tab.Header id='teste_2' className='p-4'>
-            <h2>Register</h2>
+            <span>Register</span>
           </Tab.Header>
         </Tab.Nav>
         <Tab.Content id='teste_1'>
@@ -33,14 +33,12 @@ export default function Login() {
               </Divider>
               <div className='flex gap-1'>
                 <Button
-                  sizeButton='md'
                   text='Github'
                   variantButton='border'
                   icon={Github}
                   className='flex-1'
                 />
                 <Button
-                  sizeButton='md'
                   text='Facebook'
                   variantButton='border'
                   icon={Facebook}
@@ -70,8 +68,8 @@ export default function Login() {
               <Checkbox id='termos' className=''>
                 <span>Lembrar senha</span>
               </Checkbox>
-              <a href='#' className='hover:underline hover:underline-offset-2 '>
-                Esqueceu da senha?
+              <a href='#'>
+                <Button variantButton='link' text='Esqueceu a senha?' />
               </a>
             </div>
             <Button
@@ -79,8 +77,7 @@ export default function Login() {
               text='Login'
               iconPosition='right'
               icon={ChevronRight}
-              sizeButton='md'
-              className='w-full mt-4'
+              className='w-full mt-2'
             />
           </form>
         </Tab.Content>
@@ -127,7 +124,6 @@ export default function Login() {
               text='Registrar'
               iconPosition='right'
               icon={ChevronRight}
-              sizeButton='md'
               className='w-full mt-4'
             />
           </form>

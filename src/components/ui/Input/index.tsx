@@ -27,7 +27,7 @@ export default function Input({
 }: InputProps) {
   return (
     <label htmlFor={name} className='grid gap-2 relative'>
-      {labelText && <span>{labelText}</span>}
+      {labelText && <span className='text-terciary/80'>{labelText}</span>}
       <input
         type={type}
         name={name}
@@ -37,14 +37,14 @@ export default function Input({
         className={twMerge(
           `${
             Icon ? 'px-10' : 'pl-2 pr-8'
-          } appearance-none py-2 border rounded border-secondary/50 dark:border-terciary/30  
+          } appearance-none py-2 border rounded border-secondary/50 dark:border-terciary/30 placeholder:text-sm
           outline-none no-spinner peer focus-within:ring-1 focus-within:ring-secondary/80 dark:focus-within:ring-terciary/80
            ${className}`
         )}
         {...props}
       />
       <X
-        size={18}
+        size={16}
         className={`absolute bottom-3 hidden peer-focus:block cursor-pointer ${
           iconPosition === 'left' ? 'right-2' : 'left-2'
         }`}
@@ -52,8 +52,8 @@ export default function Input({
       />
       {Icon && (
         <Icon
-          size={24}
-          className={`absolute bottom-2 ${
+          size={20}
+          className={`absolute bottom-3 ${
             iconPosition === 'left' ? 'left-2' : 'right-2'
           }`}
         />

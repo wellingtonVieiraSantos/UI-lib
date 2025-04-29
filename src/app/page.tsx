@@ -624,6 +624,7 @@ export default function Home() {
           <span>Texto</span>
         </Divider>
       </div>
+      <Button text='go to destination' icon={LinkIcon} variantButton='link' />
       <div className='h-screen w-fit'></div>
     </div>
   )
