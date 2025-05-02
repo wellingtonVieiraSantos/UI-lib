@@ -101,12 +101,14 @@ export default function Home() {
         type='password'
         icon={User}
         labelText='Nome'
+        className='max-w-sm'
       />
       <Input
         name='busca'
         holder='Pesquisar...'
         type='search'
         icon={SearchIcon}
+        className='max-w-sm'
       />
       {/* Badge Components example */}
       <span className='relative w-fit h-fit p-2 border border-secondary dark:border-terciary'>
@@ -578,6 +580,7 @@ export default function Home() {
         icon={Mail}
         labelText='Email'
         holder='exemplo@email.com'
+        className='max-w-sm'
       />
       {/* ProgressBar component example */}
       <div className='max-w-90 p-2 pb-10 text-sm grid gap-2 border border-terciary/30'>
@@ -625,7 +628,7 @@ export default function Home() {
         </Divider>
       </div>
       <Button text='go to destination' icon={LinkIcon} variantButton='link' />
-      <div className='h-screen w-fit'></div>
+      <div className='h-screen w-md'></div>
     </div>
   )
 }

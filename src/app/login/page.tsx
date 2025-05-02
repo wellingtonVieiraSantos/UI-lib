@@ -55,7 +55,6 @@ export default function Login() {
               placeholder='example@email.com'
               labelText='E-mail'
               icon={Mail}
-              className='w-full'
             />
             <Input
               name='password'
@@ -77,7 +76,7 @@ export default function Login() {
               text='Login'
               iconPosition='right'
               icon={ChevronRight}
-              className='w-full mt-2'
+              className='w-full'
             />
           </form>
         </Tab.Content>
@@ -124,7 +123,7 @@ export default function Login() {
               text='Registrar'
               iconPosition='right'
               icon={ChevronRight}
-              className='w-full mt-4'
+              className='w-full'
             />
           </form>
         </Tab.Content>

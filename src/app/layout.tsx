@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Poppins, Montserrat } from 'next/font/google'
 import '@/styles/globals.css'
+import Header from '@/components/Nav'
 
 const poppins = Poppins({
   variable: '--font-poppins',
@@ -27,8 +28,9 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body
-        className={`w-full h-dvh ${poppins.variable} ${montserrat.variable} antialiased`}
+        className={`w-full h-dvh md:mt-15 ${poppins.variable} ${montserrat.variable} antialiased`}
       >
+        <Header />
         {children}
       </body>
     </html>
