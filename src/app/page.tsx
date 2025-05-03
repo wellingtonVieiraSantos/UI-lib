@@ -32,7 +32,6 @@ import Skeleton from '@/components/ui/Skeleton'
 import Checkbox from '@/components/ui/Checkbox'
 import Textarea from '@/components/ui/Textarea'
 import ProgressBar from '@/components/ui/ProgressBar'
-import Select from '@/components/ui/Select'
 import Divider from '@/components/ui/Divider'
 
 export default function Home() {
@@ -537,6 +536,7 @@ export default function Home() {
         <p>Ativar Vantagens premium</p>
         <Switch defaultChecked />
       </div>
+      {/* Toast Component example */}
       <Toast.Root>
         <Toast.Trigger>
           <Button text='Toast' variantButton='border' />
@@ -614,10 +614,7 @@ export default function Home() {
           </Checkbox>
         </div>
       </div>
-      {/* Select Component Example */}
-      <Select.Root>
-        <Select.Item>Texto</Select.Item>
-      </Select.Root>
+
       {/* Divider Componente Example */}
       <div className='size-90 flex border border-terciary/30 p-2'>
         <Divider className='flex-1' direction='vertical'>

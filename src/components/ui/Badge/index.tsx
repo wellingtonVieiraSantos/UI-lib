@@ -40,7 +40,11 @@ export default function Badge({
   const DefaultIcon = variant !== 'default' ? variantIcon[variant] : null
 
   return isNotification ? (
-    <div className='w-fit h-6 absolute -top-3 -right-3 text-sm flex justify-center items-center text-terciary bg-button-secondary px-2 rounded-full'>
+    <div
+      className={twMerge(
+        `w-fit size-5 absolute -top-1 -right-3 text-sm flex justify-center items-center text-terciary bg-button-secondary rounded-full ${className}`
+      )}
+    >
       <span>{text}</span>
     </div>
   ) : (

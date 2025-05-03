@@ -1,13 +1,28 @@
 'use client'
-import { Home, Search, Settings, User } from 'lucide-react'
+import {
+  Home,
+  Settings,
+  User,
+  MessageCircleMore,
+  Heart,
+  Bell
+} from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Button from '../ui/Button'
+import Badge from '../ui/Badge'
 
 const navLinks = [
   { path: '/', textLink: 'Home', iconLink: Home },
-  { path: '/login', textLink: 'Profile', iconLink: User },
-  { path: '/drawer', textLink: 'Settings', iconLink: Settings }
+  {
+    path: '/dropdown',
+    textLink: 'Messages',
+    iconLink: MessageCircleMore,
+    notification: 2
+  },
+  { path: '/radio', textLink: 'Likes', iconLink: Heart },
+  { path: '/drawer', textLink: 'Settings', iconLink: Settings },
+  { path: '/login', textLink: 'Profile', iconLink: User }
 ]
 
 export default function Header() {
@@ -33,28 +48,27 @@ export default function Header() {
               </li>
             ))}
           </ul>
-          <div className='flex flex-1 justify-end items-center gap-2'>
+          <div className='flex flex-1 justify-end items-center gap-4'>
+            <Button variantButton='ghost' icon={Bell} onlyIcon sizeButton='md'>
+              <Badge text='2' isNotification className='right-0 top-0' />
+            </Button>
             <Button
               variantButton='border'
-              icon={Search}
-              onlyIcon
-              sizeButton='md'
-            />
-            <Button
-              variantButton='ghost'
               icon={User}
               onlyIcon
               sizeButton='lg'
+              className='rounded-full'
             />
           </div>
         </nav>
       </div>
       {/* Mobile navbar bottom */}
       <div
-        className={`md:hidden w-dvw h-18 fixed bottom-0 bg-primary rounded-t-2xl text-[12px] z-10 shadow-after`}
+        className={`md:hidden w-dvw h-18 fixed bottom-0 rounded-t-3xl bg-primary text-[12px] 
+        z-10 shadow-[1px_-14px_0_0_theme(--color-terciary)] dark:shadow-[0px_-14px_0_0_theme(--color-secondary)]`}
       >
         <nav className='h-full'>
-          <ul className='h-full flex justify-around items-center text-terciary/30'>
+          <ul className='h-full flex items-center text-terciary'>
             {navLinks.map((link, index) => (
               <li
                 key={index}
@@ -66,12 +80,25 @@ export default function Header() {
                   href={link.path}
                   className='grid place-items-center gap-1'
                 >
-                  <link.iconLink
-                    size={26}
-                    className={`${
-                      pathName === link.path && '-translate-y-[18px]'
-                    } transition-all duration-200 z-10`}
-                  />
+                  <span className='relative inline-block z-10'>
+                    <link.iconLink
+                      size={26}
+                      className={`${
+                        pathName === link.path
+                          ? '-translate-y-[18px]'
+                          : 'translate-y-2'
+                      } transition-all duration-200`}
+                    />
+                    {link.notification && (
+                      <Badge
+                        text={link.notification.toString()}
+                        isNotification
+                        className={`${
+                          link.path === pathName ? 'opacity-0' : 'opacity-100'
+                        } transition duration-200`}
+                      />
+                    )}
+                  </span>
                   <span
                     className={` ${
                       pathName === link.path

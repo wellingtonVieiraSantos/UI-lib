@@ -10,10 +10,10 @@ export default function RadioExample() {
       <Radio.Root
         defaultValue='masculino'
         groupName='sexo'
-        className='border border-terciary/30 w-[400px] py-2 px-4 gap-2 flex flex-col rounded'
+        className='border border-terciary/30 w-full max-w-[400px] py-2 px-4 gap-2 flex flex-col rounded'
       >
         <h2>Qual seu sexo?</h2>
-        <div className='w-full flex gap-4 p-2 items-center justify-between border border-terciary/30 rounded  sexo-label-radio'>
+        <div className='w-full flex gap-4 p-2 items-center justify-between border border-terciary/30 rounded'>
           <label htmlFor='m' className='block w-full'>
             <div className='flex flex-col'>
               Masculino
@@ -22,7 +22,7 @@ export default function RadioExample() {
           </label>
           <Radio.Item id='m' value='masculino' />
         </div>
-        <div className='w-full flex gap-4 p-2 items-center justify-between border border-terciary/30 rounded  sexo-label-radio'>
+        <div className='w-full flex gap-4 p-2 items-center justify-between border border-terciary/30 rounded'>
           <label htmlFor='f' className='block w-full'>
             <div className='flex flex-col'>
               Feminino
@@ -33,13 +33,16 @@ export default function RadioExample() {
         </div>
       </Radio.Root>
       {/* radio Component card exemple */}
-      <Radio.Root groupName='planos' className='flex gap-2'>
+      <Radio.Root
+        groupName='planos'
+        className='grid grid-flow-row md:grid-flow-col gap-2'
+      >
         <Radio.Item
           id='basico'
           value='basico'
           isHidden
           cardLabelCustom
-          className='w-[300px] h-[400px]'
+          className='flex-1 h-100'
         >
           <div className='w-full flex flex-col justify-evenly gap-4 py-6 px-4 text-center'>
             <h3 className='text-2xl text-left'>Básico</h3>
@@ -72,7 +75,7 @@ export default function RadioExample() {
           value='normal'
           isHidden
           cardLabelCustom
-          className='w-[300px] h-[400px]'
+          className='flex-1 h-100'
         >
           <div className='w-full flex flex-col justify-evenly gap-4 py-6 px-4 text-center'>
             <h3 className='text-2xl text-left'>Normal</h3>
@@ -105,7 +108,7 @@ export default function RadioExample() {
           value='premium'
           isHidden
           cardLabelCustom
-          className='w-[300px] h-[400px]'
+          className='flex-1 h-100'
         >
           <div className='w-full flex flex-col justify-evenly gap-4 py-6 px-4 text-center'>
             <h3 className='text-2xl text-left'>Premium</h3>
@@ -140,7 +143,7 @@ export default function RadioExample() {
           value='extraPremium'
           isHidden
           cardLabelCustom
-          className='w-[300px] h-[400px]'
+          className='flex-1 h-100'
         >
           <div className='w-full flex flex-col justify-evenly gap-4 py-6 px-4 text-center'>
             <h3 className='text-2xl text-left'>Profissional</h3>
