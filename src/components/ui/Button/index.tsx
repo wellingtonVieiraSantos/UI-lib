@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, ElementType, ReactElement } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-type sizeButton = 'sm' | 'md' | 'lg'
+type sizeButton = 'sm' | 'md' | 'lg' | 'icon'
 type variantButton = 'default' | 'border' | 'ghost' | 'link'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -9,26 +9,21 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variantButton?: variantButton
   iconPosition?: 'left' | 'right'
   icon?: ElementType
-  text?: string
-  onlyIcon?: boolean
-  children?: ReactElement
+  children?: ReactElement[] | ReactElement | string
 }
 
 const SIZE_ICON_BUTTON: Record<sizeButton, number> = {
   sm: 16,
   md: 20,
-  lg: 24
-}
-const WIDTH_ONLY_ICON: Record<sizeButton, string> = {
-  sm: 'w-8',
-  md: 'w-11',
-  lg: 'w-13'
+  lg: 24,
+  icon: 16
 }
 
 const sizeClasses: Record<sizeButton, string> = {
-  sm: 'h-8 px-4 text-sm gap-1',
+  sm: 'h-8 px-3 text-sm gap-1',
   md: 'h-11 px-6 gap-2',
-  lg: 'h-13 px-8 gap-2'
+  lg: 'h-13 px-9 gap-2',
+  icon: 'size-8'
 }
 const variantClasses: Record<variantButton, string> = {
   default:
@@ -43,10 +38,8 @@ const variantClasses: Record<variantButton, string> = {
 export default function Button({
   sizeButton = 'sm',
   variantButton = 'default',
-  text,
   iconPosition = 'left',
   icon: Icon,
-  onlyIcon = false,
   className,
   children,
   ...props
@@ -58,14 +51,11 @@ export default function Button({
           iconPosition === 'right' && 'flex-row-reverse'
         } items-center justify-center rounded cursor-pointer ${
           sizeClasses[sizeButton]
-        } ${variantClasses[variantButton]} ${
-          onlyIcon && WIDTH_ONLY_ICON[sizeButton]
-        } ${onlyIcon && 'px-0 grid place-content-center-safe'} ${className}`
+        } ${variantClasses[variantButton]} ${className}`
       )}
       {...props}
     >
       {Icon && <Icon size={SIZE_ICON_BUTTON[sizeButton]} />}
-      {!onlyIcon && text}
       {children}
     </button>
   )

@@ -16,7 +16,8 @@ import {
   ArrowLeft,
   Share2,
   SearchIcon,
-  Mail
+  Mail,
+  FileJson
 } from 'lucide-react'
 import Badge from '@/components/ui/Badge'
 import Modal from '@/components/ui/Modal'
@@ -33,6 +34,8 @@ import Checkbox from '@/components/ui/Checkbox'
 import Textarea from '@/components/ui/Textarea'
 import ProgressBar from '@/components/ui/ProgressBar'
 import Divider from '@/components/ui/Divider'
+import Toggle from '@/components/ui/Toggle'
+import { ToggleGroup, ToggleGroupItem } from '@/components/ui/ToogleGroup'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
@@ -73,26 +76,25 @@ export default function Home() {
       </div>
       {/* Button Components example */}
       <Button
-        text={showDescribe ? 'Ver menos' : 'Ver mais'}
         sizeButton='md'
         variantButton='border'
         icon={showDescribe ? Minus : Plus}
         onClick={() => setShowDescribe(!showDescribe)}
-      />
+      >
+        <span>{showDescribe ? 'Ver menos' : 'Ver mais'}</span>
+      </Button>
       <Button
-        text='show more'
         iconPosition='right'
         sizeButton='lg'
         icon={ArrowUpRight}
         onClick={() => setCount(prev => prev + 10)}
-      />
-      <Button
-        text='link for inscription'
-        sizeButton='sm'
-        variantButton='ghost'
-        icon={LinkIcon}
-      />
-      <Button onlyIcon icon={X} sizeButton='md' />
+      >
+        <span>show more</span>
+      </Button>
+      <Button sizeButton='sm' variantButton='ghost' icon={LinkIcon}>
+        <span>link for inscription</span>
+      </Button>
+      <Button icon={X} sizeButton='icon' />
       {/* Input Components example */}
       <Input
         name='nome'
@@ -122,7 +124,9 @@ export default function Home() {
       {/* Modal Component example */}
       <Modal.Root>
         <Modal.Trigger openModal={handleOpen}>
-          <Button text='Open Modal' sizeButton='lg' />
+          <Button sizeButton='lg'>
+            <span>Open Modal</span>
+          </Button>
         </Modal.Trigger>
         <Modal.Content isOpen={isOpen} onClose={handleClose}>
           <Modal.Header>
@@ -132,8 +136,7 @@ export default function Home() {
             <Button
               variantButton='ghost'
               icon={X}
-              onlyIcon
-              sizeButton='md'
+              sizeButton='icon'
               onClick={handleClose}
               className='absolute top-1 right-1'
             />
@@ -154,15 +157,18 @@ export default function Home() {
           <Modal.Footer>
             <Modal.Action>
               <Button
-                text='Fechar'
                 onClick={handleClose}
                 sizeButton='md'
                 icon={X}
                 variantButton='border'
-              />
+              >
+                <span>Fechar</span>
+              </Button>
             </Modal.Action>
             <Modal.Action>
-              <Button text='Enviar' onClick={handleClose} sizeButton='md' />
+              <Button onClick={handleClose} sizeButton='md'>
+                <span>Enviar</span>
+              </Button>
             </Modal.Action>
           </Modal.Footer>
         </Modal.Content>
@@ -223,7 +229,9 @@ export default function Home() {
                 vantagem 3
               </li>
             </ul>
-            <Button text='Assinar' sizeButton='md' className='w-full' />
+            <Button sizeButton='md' className='w-full'>
+              <span>Assinar</span>
+            </Button>
           </div>
         </Radio.Item>
         <Radio.Item
@@ -256,7 +264,9 @@ export default function Home() {
                 vantagem 3
               </li>
             </ul>
-            <Button text='Assinar' sizeButton='md' className='w-full' />
+            <Button sizeButton='md' className='w-full'>
+              <span>Assinar</span>
+            </Button>
           </div>
         </Radio.Item>
         <Radio.Item
@@ -289,7 +299,9 @@ export default function Home() {
                 vantagem 3
               </li>
             </ul>
-            <Button text='Assinar' sizeButton='md' className='w-full' />
+            <Button sizeButton='md' className='w-full'>
+              <span>Assinar</span>
+            </Button>
           </div>
         </Radio.Item>
         <Radio.Item
@@ -324,7 +336,9 @@ export default function Home() {
                 vantagem 3
               </li>
             </ul>
-            <Button text='Assinar' sizeButton='md' className='w-full' />
+            <Button sizeButton='md' className='w-full'>
+              <span>Assinar</span>
+            </Button>
           </div>
         </Radio.Item>
       </Radio.Root>
@@ -333,10 +347,9 @@ export default function Home() {
         <Dropdown.Trigger>
           <Button
             variantButton='border'
-            sizeButton='lg'
+            sizeButton='icon'
             icon={Share2}
-            iconPosition='right'
-            onlyIcon
+            className='size-13'
           />
         </Dropdown.Trigger>
         <Dropdown.Content>
@@ -349,34 +362,38 @@ export default function Home() {
           <DropdownItem>
             <Button
               variantButton='ghost'
-              text='Instagram'
               icon={ChevronRight}
               className='w-full justify-start'
-            />
+            >
+              <span>Instagram</span>
+            </Button>
           </DropdownItem>
           <DropdownItem>
             <Button
               variantButton='ghost'
-              text='TikTok'
               icon={ChevronRight}
               className='w-full justify-start'
-            />
+            >
+              <span>TikTok</span>
+            </Button>
           </DropdownItem>
           <DropdownItem>
             <Button
               variantButton='ghost'
-              text='Youtube'
               icon={ChevronRight}
               className='w-full justify-start'
-            />
+            >
+              <span>Youtube</span>
+            </Button>
           </DropdownItem>
           <DropdownItem>
             <Button
               variantButton='ghost'
-              text='Twitter'
               icon={ChevronRight}
               className='w-full justify-start'
-            />
+            >
+              <span>Twitter</span>
+            </Button>
           </DropdownItem>
         </Dropdown.Content>
       </Dropdown.Root>
@@ -411,28 +428,31 @@ export default function Home() {
                 <Button
                   variantButton='ghost'
                   sizeButton='md'
-                  text='Button 1'
                   icon={ChevronDown}
                   className='w-full justify-start'
-                />
+                >
+                  <span>Button 1</span>
+                </Button>
               </li>
               <li>
                 <Button
                   variantButton='ghost'
                   sizeButton='md'
-                  text='Button 2'
                   icon={ChevronDown}
                   className='w-full justify-start'
-                />
+                >
+                  <span>Button 2</span>
+                </Button>
               </li>
               <li>
                 <Button
                   variantButton='ghost'
                   sizeButton='md'
-                  text='Button 3'
                   icon={ChevronDown}
                   className='w-full justify-start'
-                />
+                >
+                  <span>Button 3</span>
+                </Button>
               </li>
             </ul>
           </Accordion.Content>
@@ -461,28 +481,19 @@ export default function Home() {
       <Tab.Root defaultValue='item-1'>
         <Tab.Nav className='p-2'>
           <Tab.Header id='item-1'>
-            <Button
-              variantButton='ghost'
-              sizeButton='md'
-              text='Item 1'
-              className='w-full'
-            />
+            <Button variantButton='ghost' sizeButton='md' className='w-full'>
+              <span>Item 1</span>
+            </Button>
           </Tab.Header>
           <Tab.Header id='item-2'>
-            <Button
-              variantButton='ghost'
-              sizeButton='md'
-              text='Item 2'
-              className='w-full'
-            />
+            <Button variantButton='ghost' sizeButton='md' className='w-full'>
+              <span>Item 2</span>
+            </Button>
           </Tab.Header>
           <Tab.Header id='item-3'>
-            <Button
-              variantButton='ghost'
-              sizeButton='md'
-              text='Item 3'
-              className='w-full'
-            />
+            <Button variantButton='ghost' sizeButton='md' className='w-full'>
+              <span>Item 3</span>
+            </Button>
           </Tab.Header>
         </Tab.Nav>
         <Tab.Content id='item-1'>
@@ -503,7 +514,9 @@ export default function Home() {
       {/* Drawer component example */}
       <Drawer.Root isRight>
         <Drawer.Trigger>
-          <Button icon={Plus} text='Abrir Drawer' sizeButton='lg' />
+          <Button icon={Plus} sizeButton='lg'>
+            <span>Abrir Drawer</span>
+          </Button>
         </Drawer.Trigger>
         <Drawer.Content>
           <div className='grid gap-8'>
@@ -516,22 +529,17 @@ export default function Home() {
               product
             </div>
             <div className='flex gap-2 justify-end'>
-              <Button
-                text='Back'
-                icon={ArrowLeft}
-                variantButton='border'
-                sizeButton='md'
-              />
-              <Button
-                text='Confirm'
-                icon={Check}
-                sizeButton='md'
-                iconPosition='right'
-              />
+              <Button icon={ArrowLeft} variantButton='border' sizeButton='md'>
+                <span>Back</span>
+              </Button>
+              <Button icon={Check} sizeButton='md' iconPosition='right'>
+                <span>Confirm</span>
+              </Button>
             </div>
           </div>
         </Drawer.Content>
       </Drawer.Root>
+      {/* Switch Component example */}
       <div className='flex gap-5 items-center'>
         <p>Ativar Vantagens premium</p>
         <Switch defaultChecked />
@@ -539,7 +547,9 @@ export default function Home() {
       {/* Toast Component example */}
       <Toast.Root>
         <Toast.Trigger>
-          <Button text='Toast' variantButton='border' />
+          <Button variantButton='border'>
+            <span>Toast</span>
+          </Button>
         </Toast.Trigger>
         <Toast.Content>
           <Toast.Title>
@@ -612,6 +622,10 @@ export default function Home() {
           >
             <span>JS</span>
           </Checkbox>
+          <Toggle>
+            <FileJson />
+            <span>JavaScript</span>
+          </Toggle>
         </div>
       </div>
 
@@ -624,7 +638,28 @@ export default function Home() {
           <span>Texto</span>
         </Divider>
       </div>
-      <Button text='go to destination' icon={LinkIcon} variantButton='link' />
+      <Button icon={LinkIcon} variantButton='link'>
+        <span>go to destination</span>
+      </Button>
+      <div className='flex gap-2'>
+        <Button icon={X} variantButton='border' sizeButton='icon' />
+        <Button icon={X} variantButton='ghost' sizeButton='icon' />
+        <Button icon={X} sizeButton='icon' />
+      </div>
+      <ToggleGroup type='multiple' disabled>
+        <ToggleGroupItem value='1' disabled>
+          html
+        </ToggleGroupItem>
+        <ToggleGroupItem value='2'>css</ToggleGroupItem>
+        <ToggleGroupItem value='3'>javascript</ToggleGroupItem>
+      </ToggleGroup>
+      <ToggleGroup type='single'>
+        <ToggleGroupItem value='4'>html</ToggleGroupItem>
+        <ToggleGroupItem value='5' disabled>
+          css
+        </ToggleGroupItem>
+        <ToggleGroupItem value='6'>javascript</ToggleGroupItem>
+      </ToggleGroup>
       <div className='h-screen w-md'></div>
     </div>
   )

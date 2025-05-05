@@ -49,14 +49,13 @@ export default function Header() {
             ))}
           </ul>
           <div className='flex flex-1 justify-end items-center gap-4'>
-            <Button variantButton='ghost' icon={Bell} onlyIcon sizeButton='md'>
-              <Badge text='2' isNotification className='right-0 top-0' />
+            <Button variantButton='ghost' icon={Bell} sizeButton='icon'>
+              <Badge text='2' isNotification className='-right-1 -top-1' />
             </Button>
             <Button
               variantButton='border'
               icon={User}
-              onlyIcon
-              sizeButton='lg'
+              sizeButton='icon'
               className='rounded-full'
             />
           </div>

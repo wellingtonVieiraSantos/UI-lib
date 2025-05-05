@@ -33,17 +33,19 @@ export default function Login() {
               </Divider>
               <div className='flex gap-1'>
                 <Button
-                  text='Github'
                   variantButton='border'
                   icon={Github}
-                  className='flex-1'
-                />
+                  className='flex-1 gap-2'
+                >
+                  <span>Github</span>
+                </Button>
                 <Button
-                  text='Facebook'
                   variantButton='border'
                   icon={Facebook}
-                  className='flex-1'
-                />
+                  className='flex-1 gap-2'
+                >
+                  <span>Facebook</span>
+                </Button>
               </div>
               <Divider>
                 <p>ou continue com e-mail</p>
@@ -68,16 +70,19 @@ export default function Login() {
                 <span>Lembrar senha</span>
               </Checkbox>
               <a href='#'>
-                <Button variantButton='link' text='Esqueceu a senha?' />
+                <Button variantButton='link'>
+                  <span>Esqueceu a senha?</span>
+                </Button>
               </a>
             </div>
             <Button
               type='submit'
-              text='Login'
               iconPosition='right'
               icon={ChevronRight}
               className='w-full'
-            />
+            >
+              <span>Login</span>
+            </Button>
           </form>
         </Tab.Content>
         <Tab.Content id='teste_2'>
@@ -120,11 +125,12 @@ export default function Login() {
             </div>
             <Button
               type='submit'
-              text='Registrar'
               iconPosition='right'
               icon={ChevronRight}
               className='w-full'
-            />
+            >
+              <span>Registrar</span>
+            </Button>
           </form>
         </Tab.Content>
       </Tab.Root>

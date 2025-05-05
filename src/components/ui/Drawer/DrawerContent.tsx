@@ -30,9 +30,8 @@ export default function DrawerContent({ children }: DrawerContentProps) {
         <Button
           icon={X}
           variantButton='ghost'
-          sizeButton='md'
-          onlyIcon
-          className={`absolute top-1 ${isRight ? 'right-3' : 'left-3'}`}
+          sizeButton='icon'
+          className={`absolute top-1 ${isRight ? 'right-3' : 'left-3'} size-10`}
           onClick={() => setIsOpen(false)}
         />
         {children}
