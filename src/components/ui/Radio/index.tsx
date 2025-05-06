@@ -27,13 +27,13 @@ const RadioItem = forwardRef<
       ref={ref}
       {...props}
       className={twMerge(
-        `size-4 border-2 rounded-full disabled:cursor-not-allowed disabled:border-terciary/40
-         disabled:bg-terciary/20 focus-visible:ring focus-visible:ring-terciary cursor-pointer`,
+        `size-4 border-2 rounded-full disabled:cursor-not-allowed disabled:border-terciary/40 disabled:text-terciary/40
+         disabled:bg-terciary/20 focus-visible:ring focus-visible:ring-terciary cursor-pointer hover:ring`,
         className
       )}
     >
       <RadioRadix.Indicator className='flex items-center justify-center'>
-        <Circle className='size-3 fill-button-secondary text-button-secondary disabled:fill-terciary/30' />
+        <Circle className='size-3 fill-button-secondary text-button-secondary' />
       </RadioRadix.Indicator>
     </RadioRadix.Item>
   )

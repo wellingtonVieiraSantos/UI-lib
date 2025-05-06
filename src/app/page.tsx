@@ -24,7 +24,6 @@ import Modal from '@/components/ui/Modal'
 import Dropdown from '@/components/ui/Dropdown'
 import DropdownItem from '@/components/ui/Dropdown/DropdownItem'
 import Accordion from '@/components/ui/Accordion'
-import Tab from '@/components/ui/Tab/'
 import Drawer from '@/components/ui/Drawer'
 import Switch from '@/components/ui/Switch'
 import Toast from '@/components/ui/Toast'
@@ -36,6 +35,7 @@ import Divider from '@/components/ui/Divider'
 import Toggle from '@/components/ui/Toggle'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/ToogleGroup'
 import { RadioRoot, RadioItem } from '@/components/ui/Radio'
+import { TabContent, TabList, Tabs, TabTrigger } from '@/components/ui/Tab'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
@@ -336,39 +336,30 @@ export default function Home() {
         </Accordion.Item>
       </Accordion.Root>
       {/*  Tab component example */}
-      <Tab.Root defaultValue='item-1'>
-        <Tab.Nav className='p-2'>
-          <Tab.Header id='item-1'>
-            <Button variantButton='ghost' sizeButton='md' className='w-full'>
-              <span>Item 1</span>
-            </Button>
-          </Tab.Header>
-          <Tab.Header id='item-2'>
-            <Button variantButton='ghost' sizeButton='md' className='w-full'>
-              <span>Item 2</span>
-            </Button>
-          </Tab.Header>
-          <Tab.Header id='item-3'>
-            <Button variantButton='ghost' sizeButton='md' className='w-full'>
-              <span>Item 3</span>
-            </Button>
-          </Tab.Header>
-        </Tab.Nav>
-        <Tab.Content id='item-1'>
+      <Tabs
+        defaultValue='item-1'
+        className='max-w-sm border border-terciary/30 rounded data-[orientation=vertical]:flex'
+      >
+        <TabList>
+          <TabTrigger value='item-1'>Item 1</TabTrigger>
+          <TabTrigger value='item-2'>Item 2</TabTrigger>
+          <TabTrigger value='item-3'>Item 3</TabTrigger>
+        </TabList>
+        <TabContent value='item-1'>
           <p>
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur
             sed officiis, accusantium tempora vero placeat ipsam. Id, esse atque
             inventore, aperiam impedit dolores vero sit commodi accusamus nam
             nisi itaque!
           </p>
-        </Tab.Content>
-        <Tab.Content id='item-2'>
+        </TabContent>
+        <TabContent value='item-2'>
           <p>Content 2</p>
-        </Tab.Content>
-        <Tab.Content id='item-3'>
+        </TabContent>
+        <TabContent value='item-3'>
           <p>Content 3</p>
-        </Tab.Content>
-      </Tab.Root>
+        </TabContent>
+      </Tabs>
       {/* Drawer component example */}
       <Drawer.Root isRight>
         <Drawer.Trigger>
