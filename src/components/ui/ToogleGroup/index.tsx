@@ -10,7 +10,7 @@ const ToggleGroup = forwardRef<
     <ToggleGroupRadix.Root
       {...props}
       ref={ref}
-      className={twMerge(`inline-flex gap-2 ${className}`)}
+      className={twMerge(`inline-flex gap-2`, className)}
     >
       {children}
     </ToggleGroupRadix.Root>
@@ -27,9 +27,12 @@ const ToggleGroupItem = forwardRef<
     <ToggleGroupRadix.Item
       ref={ref}
       {...props}
-      className={twMerge(`inline-flex items-center justify-center gap-2 rounded h-9 w-fit px-2 
+      className={twMerge(
+        `inline-flex items-center justify-center gap-2 rounded h-9 w-fit px-2 
         min-w-9 data-[state=on]:bg-button-secondary hover:bg-slate-100/30 
-        cursor-pointer transition duration-300 data-disabled:bg-terciary/30 data-disabled:text-terciary/60  ${className}`)}
+        cursor-pointer transition duration-300 data-disabled:bg-terciary/30 data-disabled:text-terciary/60`,
+        className
+      )}
     >
       {children}
     </ToggleGroupRadix.Item>
