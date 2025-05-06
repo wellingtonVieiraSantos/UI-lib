@@ -21,7 +21,6 @@ import {
 } from 'lucide-react'
 import Badge from '@/components/ui/Badge'
 import Modal from '@/components/ui/Modal'
-import Radio from '@/components/ui/Radio'
 import Dropdown from '@/components/ui/Dropdown'
 import DropdownItem from '@/components/ui/Dropdown/DropdownItem'
 import Accordion from '@/components/ui/Accordion'
@@ -36,6 +35,7 @@ import ProgressBar from '@/components/ui/ProgressBar'
 import Divider from '@/components/ui/Divider'
 import Toggle from '@/components/ui/Toggle'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/ToogleGroup'
+import { RadioRoot, RadioItem } from '@/components/ui/Radio'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
@@ -174,174 +174,32 @@ export default function Home() {
         </Modal.Content>
       </Modal.Root>
       {/* Radio Component example  */}
-      <Radio.Root
+      <RadioRoot
         defaultValue='masculino'
-        groupName='sexo'
-        className='border border-secondary/30 dark:border-terciary/30 w-[400px] py-2 px-4 gap-2 flex flex-col rounded'
+        className='max-w-md border border-terciary/30 rounded px-4 py-2'
       >
-        <h2>Qual seu sexo?</h2>
-        <div className='w-full flex gap-4 p-2 items-center justify-between border border-secondary/30 dark:border-terciary/30 rounded  sexo-label-radio'>
-          <label htmlFor='m' className='block w-full'>
-            <div className='flex flex-col'>
-              Masculino
-              <span className='text-[12px]'>Homem</span>
-            </div>
-          </label>
-          <Radio.Item id='m' value='masculino' />
-        </div>
-        <div className='w-full flex gap-4 p-2 items-center justify-between border border-secondary/30 dark:border-terciary/30 rounded  sexo-label-radio'>
-          <label htmlFor='f' className='block w-full'>
-            <div className='flex flex-col'>
-              Feminino
-              <span className='text-[12px]'>Mulher</span>
-            </div>
-          </label>
-          <Radio.Item id='f' value='feminino' />
-        </div>
-      </Radio.Root>
-      {/* radio Component card exemple */}
-      <Radio.Root groupName='planos' className='flex gap-2'>
-        <Radio.Item
-          id='basico'
-          value='basico'
-          isHidden
-          cardLabelCustom
-          className='w-[300px] h-[400px]'
+        <h2 className='py-2'>Qual seu sexo?</h2>
+        <label
+          htmlFor='masculino'
+          className='flex flex-row-reverse items-center justify-between gap-2 border border-terciary/30 p-2 rounded cursor-pointer'
         >
-          <div className='w-full flex flex-col justify-evenly gap-4 py-6 px-4 text-center'>
-            <h3 className='text-2xl text-left'>Básico</h3>
-            <span className='text-5xl font-bold'>
-              19.90 <span className='text-sm font-medium'>R$/mes</span>
-            </span>
-            <p className='text-sm'>Pacote basico para projetos pequenos</p>
-            <span className='text-sm'>Sem Suporte</span>
-            <ul className='text-sm'>
-              <li className='flex justify-center items-center gap-2'>
-                <X size={16} className='text-red-500' />
-                vantagem 1
-              </li>
-              <li className='flex justify-center items-center gap-2'>
-                <X size={16} className='text-red-500' />
-                vantagem 2
-              </li>
-              <li className='flex justify-center items-center gap-2'>
-                <X size={16} className='text-red-500' />
-                vantagem 3
-              </li>
-            </ul>
-            <Button sizeButton='md' className='w-full'>
-              <span>Assinar</span>
-            </Button>
+          <RadioItem value='masculino' id='masculino' />
+          <div className='flex flex-col'>
+            Masculino
+            <span className='text-[12px] text-terciary/50'>Homem</span>
           </div>
-        </Radio.Item>
-        <Radio.Item
-          id='normal'
-          value='normal'
-          isHidden
-          cardLabelCustom
-          className='w-[300px] h-[400px]'
+        </label>
+        <label
+          htmlFor='feminino'
+          className='flex flex-row-reverse items-center justify-between gap-2 border border-terciary/30 p-2 rounded cursor-pointer'
         >
-          <div className='w-full flex flex-col justify-evenly gap-4 py-6 px-4 text-center'>
-            <h3 className='text-2xl text-left'>Normal</h3>
-            <span className='text-5xl font-bold'>
-              69.99 <span className='text-sm font-medium'>R$/mes</span>
-            </span>
-            <p className='text-sm'>Pacote custo benefício</p>
-            <span className='text-sm'>
-              Suporte <span className='text-xl'>8/5 h</span>
-            </span>
-            <ul className='text-sm list-none'>
-              <li className='flex justify-center items-center gap-2'>
-                <Check size={16} className='text-green-500' />
-                vantagem 1
-              </li>
-              <li className='flex justify-center items-center gap-2'>
-                <X size={16} className='text-red-500' />
-                vantagem 2
-              </li>
-              <li className='flex justify-center items-center gap-2'>
-                <X size={16} className='text-red-500' />
-                vantagem 3
-              </li>
-            </ul>
-            <Button sizeButton='md' className='w-full'>
-              <span>Assinar</span>
-            </Button>
+          <RadioItem value='feminino' id='feminino' />
+          <div className='flex flex-col'>
+            Feminino{' '}
+            <span className='text-[12px] text-terciary/50'>Mulher</span>
           </div>
-        </Radio.Item>
-        <Radio.Item
-          id='premium'
-          value='premium'
-          isHidden
-          cardLabelCustom
-          className='w-[300px] h-[400px]'
-        >
-          <div className='w-full flex flex-col justify-evenly gap-4 py-6 px-4 text-center'>
-            <h3 className='text-2xl text-left'>Premium</h3>
-            <span className='text-5xl font-bold'>
-              100 <span className='text-sm font-medium'>R$/mes</span>
-            </span>
-            <p className='text-sm '>Pacote premium para sua empresa</p>
-            <span className='text-sm'>
-              Suporte <span className='text-xl'>12/6 h</span>
-            </span>
-            <ul className='text-sm list-none'>
-              <li className='flex justify-center items-center gap-2'>
-                <Check size={16} className='text-green-500' />
-                vantagem 1
-              </li>
-              <li className='flex justify-center items-center gap-2'>
-                <Check size={16} className='text-green-500' />
-                vantagem 2
-              </li>
-              <li className='flex justify-center items-center gap-2'>
-                <X size={16} className='text-red-500' />
-                vantagem 3
-              </li>
-            </ul>
-            <Button sizeButton='md' className='w-full'>
-              <span>Assinar</span>
-            </Button>
-          </div>
-        </Radio.Item>
-        <Radio.Item
-          id='extra-premium'
-          value='extraPremium'
-          isHidden
-          cardLabelCustom
-          className='w-[300px] h-[400px]'
-        >
-          <div className='w-full flex flex-col justify-evenly gap-4 py-6 px-4 text-center'>
-            <h3 className='text-2xl text-left'>Profissional</h3>
-            <span className='text-5xl font-bold'>
-              150 <span className='text-sm font-medium'>R$/mes</span>
-            </span>
-            <p className='text-sm '>
-              Pacote profissional completo pelo menor preço
-            </p>
-            <span className='text-sm'>
-              Suporte <span className='text-xl'>24/7 h</span>
-            </span>
-            <ul className='text-sm list-none'>
-              <li className='flex justify-center items-center gap-2'>
-                <Check size={16} className='text-green-500' />
-                vantagem 1
-              </li>
-              <li className='flex justify-center items-center gap-2'>
-                <Check size={16} className='text-green-500' />
-                vantagem 2
-              </li>
-              <li className='flex justify-center items-center gap-2'>
-                <Check size={16} className='text-green-500' />
-                vantagem 3
-              </li>
-            </ul>
-            <Button sizeButton='md' className='w-full'>
-              <span>Assinar</span>
-            </Button>
-          </div>
-        </Radio.Item>
-      </Radio.Root>
+        </label>
+      </RadioRoot>
       {/* Dropdown menu example */}
       <Dropdown.Root>
         <Dropdown.Trigger>
@@ -647,9 +505,7 @@ export default function Home() {
         <Button icon={X} sizeButton='icon' />
       </div>
       <ToggleGroup type='multiple' disabled>
-        <ToggleGroupItem value='1' disabled>
-          html
-        </ToggleGroupItem>
+        <ToggleGroupItem value='1'>html</ToggleGroupItem>
         <ToggleGroupItem value='2'>css</ToggleGroupItem>
         <ToggleGroupItem value='3'>javascript</ToggleGroupItem>
       </ToggleGroup>
