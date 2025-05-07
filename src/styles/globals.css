@@ -16,7 +16,8 @@
   --font-poppins: var(--font-poppins);
   --font-montserrat: var(--font-montserrat);
   /* animates */
-  --animate-fadeIn: fadeIn 0.2s ease-in-out;
+  --animate-fadeIn: fadeIn 0.3s ease-in-out;
+  --animate-fadeOut: fadeOut 0.3s ease-in-out;
   --animate-fadeInDown: fadeInDown 0.3s ease-in-out;
   --animate-fadeInUp: fadeInUp 0.3s ease-in-out;
   --animate-fadeInLeft: fadeInLeft 0.3s ease-in-out;
@@ -31,6 +32,16 @@
     to {
       opacity: 1;
       scale: 1;
+    }
+  }
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+      scale: 1;
+    }
+    to {
+      opacity: 0;
+      scale: 0;
     }
   }
   @keyframes SkeletonShimmer {

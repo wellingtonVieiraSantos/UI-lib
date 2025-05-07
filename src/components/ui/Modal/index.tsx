@@ -1,0 +1,106 @@
+import * as DialogRadix from '@radix-ui/react-dialog'
+import { forwardRef } from 'react'
+import { twMerge } from 'tailwind-merge'
+import Button from '../Button'
+import { X } from 'lucide-react'
+
+const Modal = DialogRadix.Root
+const ModalTrigger = DialogRadix.Trigger
+const ModalPortal = DialogRadix.Portal
+const ModalTitle = DialogRadix.Title
+const ModalDescription = DialogRadix.Description
+const ModalClose = DialogRadix.Close
+
+const ModalOverlay = forwardRef<
+  React.ComponentRef<typeof DialogRadix.Overlay>,
+  React.ComponentPropsWithoutRef<typeof DialogRadix.Overlay>
+>(({ className, ...props }, ref) => {
+  return (
+    <DialogRadix.Overlay
+      ref={ref}
+      {...props}
+      className={twMerge(
+        `bg-primary/20 fixed inset-0 backdrop-blur grid place-content-center`,
+        className
+      )}
+    />
+  )
+})
+
+ModalOverlay.displayName = DialogRadix.Overlay.displayName
+
+const ModalContent = forwardRef<
+  React.ComponentRef<typeof DialogRadix.Content>,
+  React.ComponentPropsWithoutRef<typeof DialogRadix.Content>
+>(({ children, className, ...props }, ref) => {
+  return (
+    <ModalPortal>
+      <ModalOverlay />
+      <DialogRadix.Content
+        ref={ref}
+        {...props}
+        className={twMerge(
+          `fixed inset-1/2 -translate-1/2 w-full max-w-lg min-h-fit bg-primary p-6 rounded
+          grid gap-4 data-[state=open]:animate-fadeIn data-[state=closed]:animate-fadeOut`,
+          className
+        )}
+      >
+        {children}
+        <ModalClose>
+          <Button
+            variantButton='ghost'
+            icon={X}
+            sizeButton='icon'
+            className='absolute top-1 right-1'
+          />
+        </ModalClose>
+      </DialogRadix.Content>
+    </ModalPortal>
+  )
+})
+
+ModalContent.displayName = DialogRadix.Content.displayName
+
+const ModalHeader = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => {
+  return (
+    <div
+      {...props}
+      className={twMerge(`grid text-center space-y-2 sm:text-left`, className)}
+    />
+  )
+}
+
+ModalHeader.displayName = 'ModalHeader'
+
+const ModalActions = ({
+  className,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement>) => {
+  return (
+    <div
+      {...props}
+      className={twMerge(
+        `flex flex-col sm:flex-row gap-2 sm:justify-end items-center`,
+        className
+      )}
+    />
+  )
+}
+
+ModalActions.displayName = 'ModalActions'
+
+export {
+  Modal,
+  ModalTrigger,
+  ModalPortal,
+  ModalOverlay,
+  ModalContent,
+  ModalTitle,
+  ModalDescription,
+  ModalHeader,
+  ModalActions,
+  ModalClose
+}

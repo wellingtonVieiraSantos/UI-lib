@@ -4,4 +4,5 @@ UI Concluidos com radix
 -Radio
 -Button
 -Tab
-- Switch
+-Switch
+-Modal

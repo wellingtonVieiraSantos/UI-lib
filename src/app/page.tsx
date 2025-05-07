@@ -17,10 +17,10 @@ import {
   Share2,
   SearchIcon,
   Mail,
-  FileJson
+  FileJson,
+  Send
 } from 'lucide-react'
 import Badge from '@/components/ui/Badge'
-import Modal from '@/components/ui/Modal'
 import Dropdown from '@/components/ui/Dropdown'
 import DropdownItem from '@/components/ui/Dropdown/DropdownItem'
 import Accordion from '@/components/ui/Accordion'
@@ -36,18 +36,19 @@ import Toggle from '@/components/ui/Toggle'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/ToogleGroup'
 import { RadioRoot, RadioItem } from '@/components/ui/Radio'
 import { TabContent, TabList, Tabs, TabTrigger } from '@/components/ui/Tab'
+import {
+  Modal,
+  ModalTrigger,
+  ModalContent,
+  ModalTitle,
+  ModalDescription,
+  ModalActions,
+  ModalHeader
+} from '@/components/ui/Modal'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
   const [count, setCount] = useState(0)
-  const [isOpen, setIsOpen] = useState(false)
-
-  const handleOpen = () => {
-    setIsOpen(true)
-  }
-  const handleClose = () => {
-    setIsOpen(false)
-  }
 
   const inputRef = useRef<HTMLInputElement | null>(null)
   const handleDelete = () => {
@@ -122,31 +123,24 @@ export default function Home() {
       <Badge text='Ocorreu um erro' variant='error' />
       <Badge text='Aguardando resposta' variant='warning' />
       {/* Modal Component example */}
-      <Modal.Root>
-        <Modal.Trigger openModal={handleOpen}>
+      <Modal>
+        <ModalTrigger>
           <Button sizeButton='lg'>
             <span>Open Modal</span>
           </Button>
-        </Modal.Trigger>
-        <Modal.Content isOpen={isOpen} onClose={handleClose}>
-          <Modal.Header>
-            <Modal.Title>
-              <h2>Titulo</h2>
-            </Modal.Title>
-            <Button
-              variantButton='ghost'
-              icon={X}
-              sizeButton='icon'
-              onClick={handleClose}
-              className='absolute top-1 right-1'
-            />
-          </Modal.Header>
-          <Modal.Description>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero
-              mollitia autem ratione numquam doloribus. Quibusdam.
-            </p>
-          </Modal.Description>
+        </ModalTrigger>
+        <ModalContent>
+          <ModalHeader>
+            <ModalTitle>
+              <h2 className='text-xl'>Titulo</h2>
+            </ModalTitle>
+            <ModalDescription>
+              <p className='text-terciary/80 text-sm text-justify'>
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero
+                mollitia autem ratione numquam doloribus. Quibusdam.
+              </p>
+            </ModalDescription>
+          </ModalHeader>
           <div>
             <Input
               name='name'
@@ -154,25 +148,13 @@ export default function Home() {
               placeholder='Envie uma mensagem'
             />
           </div>
-          <Modal.Footer>
-            <Modal.Action>
-              <Button
-                onClick={handleClose}
-                sizeButton='md'
-                icon={X}
-                variantButton='border'
-              >
-                <span>Fechar</span>
-              </Button>
-            </Modal.Action>
-            <Modal.Action>
-              <Button onClick={handleClose} sizeButton='md'>
-                <span>Enviar</span>
-              </Button>
-            </Modal.Action>
-          </Modal.Footer>
-        </Modal.Content>
-      </Modal.Root>
+          <ModalActions>
+            <Button sizeButton='md' icon={Send} className='w-full sm:w-fit'>
+              <span>Enviar Menssagem</span>
+            </Button>
+          </ModalActions>
+        </ModalContent>
+      </Modal>
       {/* Radio Component example  */}
       <RadioRoot
         defaultValue='masculino'
