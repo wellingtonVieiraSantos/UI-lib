@@ -3,3 +3,5 @@ UI Concluidos com radix
 -ToggleGroup
 -Radio
 -Button
+-Tab
+- Switch

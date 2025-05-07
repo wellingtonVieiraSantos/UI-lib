@@ -27,7 +27,7 @@ const RadioItem = forwardRef<
       ref={ref}
       {...props}
       className={twMerge(
-        `size-4 border-2 rounded-full disabled:cursor-not-allowed disabled:border-terciary/40 disabled:text-terciary/40
+        `size-4 border-2 rounded-full disabled:cursor-not-allowed disabled:border-terciary/40 disabled:text-terciary/20
          disabled:bg-terciary/20 focus-visible:ring focus-visible:ring-terciary cursor-pointer hover:ring`,
         className
       )}

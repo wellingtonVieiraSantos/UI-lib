@@ -25,7 +25,7 @@ import Dropdown from '@/components/ui/Dropdown'
 import DropdownItem from '@/components/ui/Dropdown/DropdownItem'
 import Accordion from '@/components/ui/Accordion'
 import Drawer from '@/components/ui/Drawer'
-import Switch from '@/components/ui/Switch'
+import { Switch } from '@/components/ui/Switch'
 import Toast from '@/components/ui/Toast'
 import Skeleton from '@/components/ui/Skeleton'
 import Checkbox from '@/components/ui/Checkbox'
@@ -183,7 +183,7 @@ export default function Home() {
           htmlFor='masculino'
           className='flex flex-row-reverse items-center justify-between gap-2 border border-terciary/30 p-2 rounded cursor-pointer'
         >
-          <RadioItem value='masculino' id='masculino' />
+          <RadioItem value='masculino' id='masculino' disabled />
           <div className='flex flex-col'>
             Masculino
             <span className='text-[12px] text-terciary/50'>Homem</span>
@@ -343,7 +343,9 @@ export default function Home() {
         <TabList>
           <TabTrigger value='item-1'>Item 1</TabTrigger>
           <TabTrigger value='item-2'>Item 2</TabTrigger>
-          <TabTrigger value='item-3'>Item 3</TabTrigger>
+          <TabTrigger value='item-3' disabled>
+            Item 3
+          </TabTrigger>
         </TabList>
         <TabContent value='item-1'>
           <p>
@@ -391,7 +393,8 @@ export default function Home() {
       {/* Switch Component example */}
       <div className='flex gap-5 items-center'>
         <p>Ativar Vantagens premium</p>
-        <Switch defaultChecked />
+        <Switch />
+        <Switch disabled />
       </div>
       {/* Toast Component example */}
       <Toast.Root>
@@ -471,7 +474,7 @@ export default function Home() {
           >
             <span>JS</span>
           </Checkbox>
-          <Toggle>
+          <Toggle disabled>
             <FileJson />
             <span>JavaScript</span>
           </Toggle>

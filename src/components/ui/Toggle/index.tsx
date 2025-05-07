@@ -13,7 +13,7 @@ const Toggle = forwardRef<
       className={twMerge(
         `inline-flex items-center justify-center gap-2 rounded h-9 w-fit px-2 
         min-w-9 data-[state=on]:bg-button-secondary hover:bg-terciary/30 
-        cursor-pointer transition duration-300`,
+        cursor-pointer transition duration-300 disabled:cursor-not-allowed disabled:bg-terciary/20 disabled:text-terciary/60`,
         className
       )}
     >

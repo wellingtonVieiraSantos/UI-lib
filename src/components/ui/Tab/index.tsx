@@ -33,7 +33,7 @@ const TabTrigger = forwardRef<
       className={twMerge(
         `data-[orientation=horizontal]:flex-1 h-11 px-3 text-nowrap data-[state=active]:border-b-2
          data-[state=active]:border-b-button-secondary data-[state=active]:text-terciary
-         transition duration-300 cursor-pointer hover:bg-terciary/30`,
+         transition duration-300 cursor-pointer hover:bg-terciary/30 disabled:bg-terciary/20 disabled:cursor-not-allowed`,
         className
       )}
     />

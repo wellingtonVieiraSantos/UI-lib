@@ -1,36 +1,32 @@
-import { HTMLAttributes, useEffect, useState } from 'react'
+import { forwardRef } from 'react'
+import * as SwitchRadix from '@radix-ui/react-switch'
 import { twMerge } from 'tailwind-merge'
 
-interface SwitchProps extends HTMLAttributes<HTMLDivElement> {
-  disabled?: boolean
-}
-
-export default function Switch({
-  defaultChecked,
-  disabled = false
-}: SwitchProps) {
-  const [isOpen, setIsOpen] = useState(defaultChecked)
-  useEffect(() => {
-    if (disabled) setIsOpen(false)
-  }, [disabled])
+const Switch = forwardRef<
+  React.ComponentRef<typeof SwitchRadix.Root>,
+  React.ComponentPropsWithoutRef<typeof SwitchRadix.Root>
+>(({ className, ...props }, ref) => {
   return (
-    <div
-      className={`relative w-14 h-7 rounded-full border transition-colors duration-300 ${
-        isOpen && 'bg-button-secondary'
-      } border-secondary/40 dark:border-terciary/40 cursor-pointer ${
-        disabled && 'bg-secondary/30 dark:bg-terciary/20 '
-      }`}
-      onClick={() => !disabled && setIsOpen(!isOpen)}
+    <SwitchRadix.Root
+      ref={ref}
+      {...props}
+      className={twMerge(
+        `relative w-14 h-7 bg-secondary data-[state=checked]:bg-button-secondary rounded-full
+         border border-terciary/30 transition-colors duration-300 cursor-pointer
+         disabled:bg-terciary/30 disabled:cursor-not-allowed`,
+        className
+      )}
     >
-      <div
-        className={twMerge(
-          `absolute grid place-content-center top-1/2 -translate-y-1/2 transform transition-transform duration-300 ${
-            disabled ? 'bg-secondary/60' : 'bg-secondary dark:bg-terciary'
-          } ${
-            isOpen ? 'translate-x-8 bg-terciary' : 'translate-x-1'
-          } w-5 aspect-square border border-terciary/60 rounded-full `
-        )}
-      ></div>
-    </div>
+      <SwitchRadix.Thumb
+        className='absolute size-5 grid place-content-center translate-x-1
+       bg-terciary/80 data-[state=checked]:translate-x-[30px] data-[state=checked]:bg-terciary
+        top-1/2 -translate-y-1/2 transform transition duration-300 rounded-full
+        data-[disabled]:bg-terciary/60'
+      />
+    </SwitchRadix.Root>
   )
-}
+})
+
+Switch.displayName = SwitchRadix.Root.displayName
+
+export { Switch }
