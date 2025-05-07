@@ -20,7 +20,7 @@ import {
   FileJson,
   Send
 } from 'lucide-react'
-import Badge from '@/components/ui/Badge'
+import { Badge } from '@/components/ui/Badge'
 import Dropdown from '@/components/ui/Dropdown'
 import DropdownItem from '@/components/ui/Dropdown/DropdownItem'
 import Accordion from '@/components/ui/Accordion'
@@ -115,13 +115,16 @@ export default function Home() {
       {/* Badge Components example */}
       <span className='relative w-fit h-fit p-2 border border-secondary dark:border-terciary'>
         Teste
-        <Badge text={count.toString()} isNotification />
+        <Badge isNotification>{count.toString()}</Badge>
       </span>
-      <Badge text='Bagde Default' variant='default' />
-      <Badge text='Informação' variant='info' />
-      <Badge text='Sucesso' variant='success' />
-      <Badge text='Ocorreu um erro' variant='error' />
-      <Badge text='Aguardando resposta' variant='warning' />
+      <Badge>Badge Default</Badge>
+      <Badge variant='outline'>
+        <Mail size={16} /> Badge Default Border
+      </Badge>
+      <Badge variant='info'>Informação</Badge>
+      <Badge variant='success'>Sucesso</Badge>
+      <Badge variant='error'>Ocorreu um erro</Badge>
+      <Badge variant='warning'>Aguardando resposta</Badge>
       {/* Modal Component example */}
       <Modal>
         <ModalTrigger>

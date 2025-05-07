@@ -10,7 +10,7 @@ import {
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Button from '../ui/Button'
-import Badge from '../ui/Badge'
+import { Badge } from '../ui/Badge'
 
 const navLinks = [
   { path: '/', textLink: 'Home', iconLink: Home },
@@ -50,7 +50,9 @@ export default function Header() {
           </ul>
           <div className='flex flex-1 justify-end items-center gap-4'>
             <Button variantButton='ghost' icon={Bell} sizeButton='icon'>
-              <Badge text='2' isNotification className='-right-1 -top-1' />
+              <Badge isNotification className='-right-2 -top-2'>
+                2
+              </Badge>
             </Button>
             <Button
               variantButton='border'
@@ -90,12 +92,13 @@ export default function Header() {
                     />
                     {link.notification && (
                       <Badge
-                        text={link.notification.toString()}
                         isNotification
                         className={`${
                           link.path === pathName ? 'opacity-0' : 'opacity-100'
                         } transition duration-200`}
-                      />
+                      >
+                        {link.notification.toString()}
+                      </Badge>
                     )}
                   </span>
                   <span

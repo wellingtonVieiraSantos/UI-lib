@@ -1,66 +1,52 @@
-import { ElementType, HTMLAttributes } from 'react'
+import { HTMLAttributes } from 'react'
 import { twMerge } from 'tailwind-merge'
-import {
-  TriangleAlert,
-  CircleAlert,
-  Info,
-  CircleCheck,
-  LucideIcon
-} from 'lucide-react'
-type variant = 'info' | 'success' | 'warning' | 'error'
+
+type variantTypes = 'outline' | 'info' | 'success' | 'warning' | 'error'
 
 interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | variant
-  icon?: ElementType
+  variant?: 'default' | variantTypes
   isNotification?: boolean
-  text: string
 }
 
-const variantIcon: Record<variant, LucideIcon> = {
-  info: Info,
-  success: CircleCheck,
-  warning: TriangleAlert,
-  error: CircleAlert
+const variantClass: Record<variantTypes, string> = {
+  outline: 'bg-transparent border border-terciary/70',
+  info: 'bg-sky-800',
+  success: 'bg-emerald-800',
+  warning: 'bg-amber-700',
+  error: 'bg-red-800'
 }
 
-const variantClass: Record<variant, string> = {
-  info: 'border bg-transparent border-sky-500 text-sky-500',
-  success: 'border bg-transparent border-emerald-500 text-emerald-500',
-  warning: 'border bg-transparent border-amber-500 text-amber-500',
-  error: 'border bg-transparent border-red-500 text-red-500'
-}
-
-export default function Badge({
+const Badge = ({
   variant = 'default',
-  icon: CustomIcon,
   isNotification = false,
-  text,
+  children,
   className
-}: BadgeProps) {
-  const DefaultIcon = variant !== 'default' ? variantIcon[variant] : null
-
+}: BadgeProps) => {
   return isNotification ? (
     <div
       className={twMerge(
-        `w-fit size-5 absolute -top-1 -right-3 text-sm flex justify-center items-center text-terciary bg-button-secondary rounded-full ${className}`
+        `min-w-6 h-6 absolute px-1 -top-1 -right-3 text-sm flex justify-center 
+        items-center text-terciary bg-button-secondary rounded-full`,
+        className
       )}
     >
-      <span>{text}</span>
+      {children}
     </div>
   ) : (
     <div
       className={twMerge(
-        `w-fit h-fit flex justify-center items-center gap-1 bg-button-secondary px-2 rounded-full text-terciary ${
+        `h-6 max-w-fit flex justify-center items-center gap-1 bg-button-secondary 
+        px-2 rounded-md text-terciary pointer-events-none ${
           variant !== 'default' && variantClass[variant]
-        } ${className}`
+        }`,
+        className
       )}
     >
-      {CustomIcon ? (
-        <CustomIcon size={16} />
-      ) : (
-        DefaultIcon && <DefaultIcon size={17} />
-      )}
-      <span>{text}</span>
+      {children}
     </div>
   )
 }
+
+Badge.displayName = 'Badge'
+
+export { Badge }
