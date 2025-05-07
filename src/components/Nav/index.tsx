@@ -9,7 +9,7 @@ import {
 } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import Button from '../ui/Button'
+import { Button } from '../ui/Button'
 import { Badge } from '../ui/Badge'
 
 const navLinks = [
@@ -49,15 +49,15 @@ export default function Header() {
             ))}
           </ul>
           <div className='flex flex-1 justify-end items-center gap-4'>
-            <Button variantButton='ghost' icon={Bell} sizeButton='icon'>
+            <Button variant='ghost' icon={Bell} size='icon'>
               <Badge isNotification className='-right-2 -top-2'>
                 2
               </Badge>
             </Button>
             <Button
-              variantButton='border'
+              variant='border'
               icon={User}
-              sizeButton='icon'
+              size='icon'
               className='rounded-full'
             />
           </div>

@@ -1,5 +1,5 @@
 'use client'
-import Button from '@/components/ui/Button'
+import { Button } from '@/components/ui/Button'
 import Input from '@/components/ui/Input'
 
 import { useRef, useState } from 'react'
@@ -77,8 +77,8 @@ export default function Home() {
       </div>
       {/* Button Components example */}
       <Button
-        sizeButton='md'
-        variantButton='border'
+        size='md'
+        variant='border'
         icon={showDescribe ? Minus : Plus}
         onClick={() => setShowDescribe(!showDescribe)}
       >
@@ -86,16 +86,16 @@ export default function Home() {
       </Button>
       <Button
         iconPosition='right'
-        sizeButton='lg'
+        size='lg'
         icon={ArrowUpRight}
         onClick={() => setCount(prev => prev + 10)}
       >
         <span>show more</span>
       </Button>
-      <Button sizeButton='sm' variantButton='ghost' icon={LinkIcon}>
+      <Button size='sm' variant='ghost' icon={LinkIcon}>
         <span>link for inscription</span>
       </Button>
-      <Button icon={X} sizeButton='icon' />
+      <Button icon={X} size='icon' />
       {/* Input Components example */}
       <Input
         name='nome'
@@ -128,7 +128,7 @@ export default function Home() {
       {/* Modal Component example */}
       <Modal>
         <ModalTrigger>
-          <Button sizeButton='lg'>
+          <Button size='lg'>
             <span>Open Modal</span>
           </Button>
         </ModalTrigger>
@@ -152,7 +152,7 @@ export default function Home() {
             />
           </div>
           <ModalActions>
-            <Button sizeButton='md' icon={Send} className='w-full sm:w-fit'>
+            <Button size='md' icon={Send} className='w-full sm:w-fit'>
               <span>Enviar Menssagem</span>
             </Button>
           </ModalActions>
@@ -186,8 +186,8 @@ export default function Home() {
       <Dropdown.Root>
         <Dropdown.Trigger>
           <Button
-            variantButton='border'
-            sizeButton='icon'
+            variant='border'
+            size='icon'
             icon={Share2}
             className='size-13'
           />
@@ -201,7 +201,7 @@ export default function Home() {
           </div>
           <DropdownItem>
             <Button
-              variantButton='ghost'
+              variant='ghost'
               icon={ChevronRight}
               className='w-full justify-start'
             >
@@ -210,7 +210,7 @@ export default function Home() {
           </DropdownItem>
           <DropdownItem>
             <Button
-              variantButton='ghost'
+              variant='ghost'
               icon={ChevronRight}
               className='w-full justify-start'
             >
@@ -219,7 +219,7 @@ export default function Home() {
           </DropdownItem>
           <DropdownItem>
             <Button
-              variantButton='ghost'
+              variant='ghost'
               icon={ChevronRight}
               className='w-full justify-start'
             >
@@ -228,7 +228,7 @@ export default function Home() {
           </DropdownItem>
           <DropdownItem>
             <Button
-              variantButton='ghost'
+              variant='ghost'
               icon={ChevronRight}
               className='w-full justify-start'
             >
@@ -266,8 +266,8 @@ export default function Home() {
             <ul>
               <li>
                 <Button
-                  variantButton='ghost'
-                  sizeButton='md'
+                  variant='ghost'
+                  size='md'
                   icon={ChevronDown}
                   className='w-full justify-start'
                 >
@@ -276,8 +276,8 @@ export default function Home() {
               </li>
               <li>
                 <Button
-                  variantButton='ghost'
-                  sizeButton='md'
+                  variant='ghost'
+                  size='md'
                   icon={ChevronDown}
                   className='w-full justify-start'
                 >
@@ -286,8 +286,8 @@ export default function Home() {
               </li>
               <li>
                 <Button
-                  variantButton='ghost'
-                  sizeButton='md'
+                  variant='ghost'
+                  size='md'
                   icon={ChevronDown}
                   className='w-full justify-start'
                 >
@@ -347,7 +347,7 @@ export default function Home() {
       {/* Drawer component example */}
       <Drawer.Root isRight>
         <Drawer.Trigger>
-          <Button icon={Plus} sizeButton='lg'>
+          <Button icon={Plus} size='lg'>
             <span>Abrir Drawer</span>
           </Button>
         </Drawer.Trigger>
@@ -362,10 +362,10 @@ export default function Home() {
               product
             </div>
             <div className='flex gap-2 justify-end'>
-              <Button icon={ArrowLeft} variantButton='border' sizeButton='md'>
+              <Button icon={ArrowLeft} variant='border' size='md'>
                 <span>Back</span>
               </Button>
-              <Button icon={Check} sizeButton='md' iconPosition='right'>
+              <Button icon={Check} size='md' iconPosition='right'>
                 <span>Confirm</span>
               </Button>
             </div>
@@ -381,7 +381,7 @@ export default function Home() {
       {/* Toast Component example */}
       <Toast.Root>
         <Toast.Trigger>
-          <Button variantButton='border'>
+          <Button variant='border'>
             <span>Toast</span>
           </Button>
         </Toast.Trigger>
@@ -477,13 +477,13 @@ export default function Home() {
           <span>Texto</span>
         </Divider>
       </div>
-      <Button icon={LinkIcon} variantButton='link'>
+      <Button icon={LinkIcon} variant='link'>
         <span>go to destination</span>
       </Button>
       <div className='flex gap-2'>
-        <Button icon={X} variantButton='border' sizeButton='icon' />
-        <Button icon={X} variantButton='ghost' sizeButton='icon' />
-        <Button icon={X} sizeButton='icon' />
+        <Button icon={X} variant='border' size='icon' />
+        <Button icon={X} variant='ghost' size='icon' />
+        <Button icon={X} size='icon' />
       </div>
       <ToggleGroup type='multiple' disabled>
         <ToggleGroupItem value='1'>html</ToggleGroupItem>

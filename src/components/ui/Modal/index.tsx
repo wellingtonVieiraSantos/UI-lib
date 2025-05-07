@@ -1,7 +1,7 @@
 import * as DialogRadix from '@radix-ui/react-dialog'
 import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
-import Button from '../Button'
+import { Button } from '../Button'
 import { X } from 'lucide-react'
 
 const Modal = DialogRadix.Root
@@ -48,9 +48,9 @@ const ModalContent = forwardRef<
         {children}
         <ModalClose>
           <Button
-            variantButton='ghost'
+            variant='ghost'
             icon={X}
-            sizeButton='icon'
+            size='icon'
             className='absolute top-1 right-1'
           />
         </ModalClose>

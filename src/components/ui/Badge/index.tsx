@@ -26,7 +26,7 @@ const Badge = ({
     <div
       className={twMerge(
         `min-w-6 h-6 absolute px-1 -top-1 -right-3 text-sm flex justify-center 
-        items-center text-terciary bg-button-secondary rounded-full`,
+        items-center text-terciary bg-button-secondary rounded-full pointer-events-none`,
         className
       )}
     >

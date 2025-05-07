@@ -1,6 +1,6 @@
 import { HTMLAttributes, ReactElement } from 'react'
 import { twMerge } from 'tailwind-merge'
-import Button from '../Button'
+import { Button } from '../Button'
 import { X } from 'lucide-react'
 import { useDrawerContext } from './DrawerRoot'
 

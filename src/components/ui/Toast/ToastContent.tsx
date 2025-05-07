@@ -1,6 +1,6 @@
 import { AlertTriangle, X } from 'lucide-react'
 import { HTMLAttributes, ReactElement } from 'react'
-import Button from '../Button'
+import { Button } from '../Button'
 
 interface ToastContentProps extends HTMLAttributes<HTMLDivElement> {
   children: ReactElement[] | ReactElement
