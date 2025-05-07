@@ -13,7 +13,7 @@ const Switch = forwardRef<
       className={twMerge(
         `relative w-14 h-7 bg-secondary data-[state=checked]:bg-button-secondary rounded-full
          border border-terciary/30 transition-colors duration-300 cursor-pointer
-         disabled:bg-terciary/30 disabled:cursor-not-allowed`,
+         disabled:bg-terciary/30 disabled:cursor-not-allowed data-[state=checked]:border-none`,
         className
       )}
     >

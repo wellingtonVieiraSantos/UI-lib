@@ -28,7 +28,7 @@ import Drawer from '@/components/ui/Drawer'
 import { Switch } from '@/components/ui/Switch'
 import Toast from '@/components/ui/Toast'
 import Skeleton from '@/components/ui/Skeleton'
-import Checkbox from '@/components/ui/Checkbox'
+import { Checkbox } from '@/components/ui/Checkbox'
 import Textarea from '@/components/ui/Textarea'
 import ProgressBar from '@/components/ui/ProgressBar'
 import Divider from '@/components/ui/Divider'
@@ -161,29 +161,26 @@ export default function Home() {
       {/* Radio Component example  */}
       <RadioRoot
         defaultValue='masculino'
-        className='max-w-md border border-terciary/30 rounded px-4 py-2'
+        className='w-sm max-w-md border border-terciary/30 rounded px-4 py-2'
       >
         <h2 className='py-2'>Qual seu sexo?</h2>
-        <label
-          htmlFor='masculino'
-          className='flex flex-row-reverse items-center justify-between gap-2 border border-terciary/30 p-2 rounded cursor-pointer'
-        >
+        <div className='flex flex-row-reverse justify-between items-center gap-2 border border-terciary/30 p-2 rounded cursor-pointer'>
           <RadioItem value='masculino' id='masculino' disabled />
-          <div className='flex flex-col'>
+          <label
+            htmlFor='masculino'
+            className='flex flex-col peer-disabled:cursor-not-allowed'
+          >
             Masculino
             <span className='text-[12px] text-terciary/50'>Homem</span>
-          </div>
-        </label>
-        <label
-          htmlFor='feminino'
-          className='flex flex-row-reverse items-center justify-between gap-2 border border-terciary/30 p-2 rounded cursor-pointer'
-        >
+          </label>
+        </div>
+        <div className='flex flex-row-reverse justify-between items-center gap-2 border border-terciary/30 p-2 rounded cursor-pointer'>
           <RadioItem value='feminino' id='feminino' />
-          <div className='flex flex-col'>
+          <label htmlFor='feminino' className='flex flex-col'>
             Feminino{' '}
             <span className='text-[12px] text-terciary/50'>Mulher</span>
-          </div>
-        </label>
+          </label>
+        </div>
       </RadioRoot>
       {/* Dropdown menu example */}
       <Dropdown.Root>
@@ -407,15 +404,33 @@ export default function Home() {
       </div>
       {/* Checkbox component example */}
       <div className='grid place-content-center gap-4 border border-terciary/30 max-w-90 py-4 rounded'>
-        <Checkbox id='check-1' defaultChecked>
-          <span>Checkbox 1</span>
-        </Checkbox>
-        <Checkbox id='check-2'>
-          <span>Checkbox 2</span>
-        </Checkbox>
-        <Checkbox id='check-3' defaultChecked>
-          <span>Checkbox 3</span>
-        </Checkbox>
+        <div className='flex items-center gap-2'>
+          <Checkbox id='check-1' />
+          <label
+            htmlFor='check-1'
+            className='peer-disabled:cursor-not-allowed peer-disabled:text-terciary/50 cursor-pointer'
+          >
+            Checkbox 1
+          </label>
+        </div>
+        <div className='flex items-center gap-2'>
+          <Checkbox id='check-2' disabled />
+          <label
+            htmlFor='check-2'
+            className='peer-disabled:cursor-not-allowed peer-disabled:text-terciary/50 cursor-pointer'
+          >
+            Checkbox 2
+          </label>
+        </div>
+        <div className='flex items-center gap-2'>
+          <Checkbox id='check-3' defaultChecked />
+          <label
+            htmlFor='check-3'
+            className='peer-disabled:cursor-not-allowed peer-disabled:text-terciary/50 cursor-pointer'
+          >
+            Checkbox 3
+          </label>
+        </div>
       </div>
 
       {/* Textarea component example */}
@@ -438,30 +453,17 @@ export default function Home() {
       <div className='border border-terciary/30 w-full max-w-90 p-2 flex gap-4'>
         <h2 className='grid place-content-center flex-1'>Toggle Buttons </h2>
         <div className='grid gap-2 flex-1'>
-          <Checkbox
-            id='html'
-            isToggle
-            className='py-2 px-4 border border-terciary/30 peer-checked:bg-button-secondary'
-          >
-            <span>HTML</span>
-          </Checkbox>
-          <Checkbox
-            id='css'
-            isToggle
-            className='py-2 px-4 border border-terciary/30 peer-checked:bg-button-secondary'
-          >
-            <span>CSS</span>
-          </Checkbox>
-          <Checkbox
-            id='js'
-            isToggle
-            className='py-2 px-4 border border-terciary/30 peer-checked:bg-button-secondary'
-          >
-            <span>JS</span>
-          </Checkbox>
-          <Toggle disabled>
+          <Toggle disabled className='w-full'>
             <FileJson />
             <span>JavaScript</span>
+          </Toggle>
+          <Toggle className='w-full'>
+            <FileJson />
+            <span>CSS</span>
+          </Toggle>
+          <Toggle className='w-full'>
+            <FileJson />
+            <span>HTML</span>
           </Toggle>
         </div>
       </div>

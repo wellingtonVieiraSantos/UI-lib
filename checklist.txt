@@ -6,3 +6,5 @@ UI Concluidos com radix
 -Tab
 -Switch
 -Modal
+-Badge
+-Checkbox
