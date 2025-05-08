@@ -1,6 +1,6 @@
 'use client'
 import { Button } from '@/components/ui/Button'
-import Input from '@/components/ui/Input'
+import { Input } from '@/components/ui/Input'
 
 import { useRef, useState } from 'react'
 import {
@@ -18,7 +18,8 @@ import {
   SearchIcon,
   Mail,
   FileJson,
-  Send
+  Send,
+  Calculator
 } from 'lucide-react'
 import { Badge } from '@/components/ui/Badge'
 import Dropdown from '@/components/ui/Dropdown'
@@ -109,20 +110,18 @@ export default function Home() {
       </Button>
       <Button icon={X} size='icon' />
       {/* Input Components example */}
+      <Input id='nome' placeholder='escreva aqui' type='password' icon={User} />
       <Input
-        name='nome'
-        holder='escreva aqui'
-        type='password'
-        icon={User}
-        labelText='Nome'
-        className='max-w-sm'
+        id='nome'
+        placeholder='Quanto é 2 + 3'
+        type='number'
+        icon={Calculator}
       />
       <Input
-        name='busca'
-        holder='Pesquisar...'
+        id='busca'
+        placeholder='Pesquisar...'
         type='search'
         icon={SearchIcon}
-        className='max-w-sm'
       />
       {/* Badge Components example */}
       <span className='relative w-fit h-fit p-2 border border-secondary dark:border-terciary'>
@@ -157,11 +156,7 @@ export default function Home() {
             </ModalDescription>
           </ModalHeader>
           <div>
-            <Input
-              name='name'
-              labelText='Messagem'
-              placeholder='Envie uma mensagem'
-            />
+            <Input id='name' placeholder='Envie uma mensagem' />
           </div>
           <ModalActions>
             <Button size='md' icon={Send} className='w-full sm:w-fit'>
@@ -447,13 +442,11 @@ export default function Home() {
       {/* Textarea component example */}
       <Textarea placeholder='Escreva a menssagem' rows={4} />
       <Input
-        name='email'
+        id='email'
         handleDelete={handleDelete}
         ref={inputRef}
         icon={Mail}
-        labelText='Email'
-        holder='exemplo@email.com'
-        className='max-w-sm'
+        placeholder='exemplo@email.com'
       />
       {/* ProgressBar component example */}
       <div className='max-w-90 p-2 pb-10 text-sm grid gap-2 border border-terciary/30'>
@@ -478,7 +471,6 @@ export default function Home() {
           </Toggle>
         </div>
       </div>
-
       {/* Divider Componente Example */}
       <div className='size-90 flex border border-terciary/30 items-center'>
         <Divider className='w-1/2 flex-none' />

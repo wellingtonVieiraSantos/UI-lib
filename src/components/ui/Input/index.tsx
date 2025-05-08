@@ -1,63 +1,51 @@
 import { X } from 'lucide-react'
-import { ElementType, InputHTMLAttributes } from 'react'
+import { ElementType, forwardRef, InputHTMLAttributes } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  labelText?: string
-  name: string
+  id: string
   type?: 'text' | 'number' | 'password' | 'email' | 'search'
-  holder?: string
   icon?: ElementType
-  iconPosition?: 'left' | 'right'
   handleDelete?: () => void
-  ref?: React.Ref<HTMLInputElement>
 }
 
-export default function Input({
-  labelText,
-  name,
-  type = 'text',
-  holder,
-  icon: Icon,
-  iconPosition = 'left',
-  handleDelete,
-  className,
-  ref,
-  ...props
-}: InputProps) {
-  return (
-    <label htmlFor={name} className='grid gap-2 relative'>
-      {labelText && <span className='text-terciary/80'>{labelText}</span>}
-      <input
-        type={type}
-        name={name}
-        id={name}
-        placeholder={holder}
-        ref={ref}
-        className={twMerge(
-          `${
-            Icon ? 'px-10' : 'pl-2 pr-8'
-          } appearance-none py-2 border rounded border-secondary/50 dark:border-terciary/30 placeholder:text-sm
-          outline-none no-spinner peer focus-within:ring-1 focus-within:ring-secondary/80 dark:focus-within:ring-terciary/80
-           ${className}`
-        )}
-        {...props}
-      />
-      <X
-        size={16}
-        className={`absolute bottom-3 hidden peer-focus:block cursor-pointer ${
-          iconPosition === 'left' ? 'right-2' : 'left-2'
-        }`}
-        onMouseDown={handleDelete}
-      />
-      {Icon && (
-        <Icon
-          size={20}
-          className={`absolute bottom-3 ${
-            iconPosition === 'left' ? 'left-2' : 'right-2'
-          }`}
+const Input = forwardRef<HTMLInputElement, InputProps>(
+  (
+    { id, type = 'text', icon: Icon, handleDelete, className, ...props },
+    ref
+  ) => {
+    return (
+      <div className='relative w-full max-w-lg'>
+        <input
+          type={type}
+          name={id}
+          id={id}
+          ref={ref}
+          className={twMerge(
+            `${
+              Icon ? 'px-10' : 'pl-2 pr-8'
+            } w-full appearance-none py-2 border rounded border-secondary/50 dark:border-terciary/30 placeholder:text-sm
+          outline-none no-spinner peer focus-within:ring-1 focus-within:ring-secondary/80 dark:focus-within:ring-terciary/80`,
+            className
+          )}
+          {...props}
         />
-      )}
-    </label>
-  )
-}
+        <X
+          size={16}
+          className={`absolute bottom-3 hidden peer-focus:block cursor-pointer right-2`}
+          onMouseDown={handleDelete}
+        />
+        {Icon && (
+          <Icon
+            size={20}
+            className={`absolute bottom-3 left-2  pointer-events-none`}
+          />
+        )}
+      </div>
+    )
+  }
+)
+
+Input.displayName = 'input'
+
+export { Input }

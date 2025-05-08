@@ -2,7 +2,7 @@
 import { Button } from '@/components/ui/Button'
 import { Checkbox } from '@/components/ui/Checkbox'
 import { Divider } from '@/components/ui/Divider'
-import Input from '@/components/ui/Input'
+import { Input } from '@/components/ui/Input'
 import { Tabs, TabList, TabTrigger, TabContent } from '@/components/ui/Tab'
 import {
   ChevronRight,
