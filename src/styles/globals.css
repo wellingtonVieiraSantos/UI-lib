@@ -23,6 +23,26 @@
   --animate-fadeInLeft: fadeInLeft 0.3s ease-in-out;
   --animate-fadeInRight: fadeInRight 0.3s ease-in-out;
   --animate-skeletonShimmer: SkeletonShimmer 1.5s linear infinite;
+  --animate-slideDown: slideDown 0.3s ease-out;
+  --animate-slideUp: slideUp 0.3s ease-out;
+
+  @keyframes slideDown {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
 
   @keyframes fadeIn {
     from {

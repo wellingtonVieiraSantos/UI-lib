@@ -5,15 +5,13 @@ import { twMerge } from 'tailwind-merge'
 const ToggleGroup = forwardRef<
   React.ComponentRef<typeof ToggleGroupRadix.Root>,
   React.ComponentPropsWithoutRef<typeof ToggleGroupRadix.Root>
->(({ children, className, ...props }, ref) => {
+>(({ className, ...props }, ref) => {
   return (
     <ToggleGroupRadix.Root
       {...props}
       ref={ref}
       className={twMerge(`inline-flex gap-2`, className)}
-    >
-      {children}
-    </ToggleGroupRadix.Root>
+    />
   )
 })
 
@@ -22,7 +20,7 @@ ToggleGroup.displayName = ToggleGroupRadix.Root.displayName
 const ToggleGroupItem = forwardRef<
   React.ComponentRef<typeof ToggleGroupRadix.Item>,
   React.ComponentPropsWithoutRef<typeof ToggleGroupRadix.Item>
->(({ children, className, ...props }, ref) => {
+>(({ className, ...props }, ref) => {
   return (
     <ToggleGroupRadix.Item
       ref={ref}
@@ -33,9 +31,7 @@ const ToggleGroupItem = forwardRef<
         cursor-pointer transition duration-300 disabled:bg-terciary/20 disabled:text-terciary/60 disabled:cursor-not-allowed`,
         className
       )}
-    >
-      {children}
-    </ToggleGroupRadix.Item>
+    />
   )
 })
 

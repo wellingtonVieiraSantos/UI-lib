@@ -1,7 +1,6 @@
 import * as DialogRadix from '@radix-ui/react-dialog'
 import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
-import { Button } from '../Button'
 import { X } from 'lucide-react'
 
 const Modal = DialogRadix.Root
@@ -46,13 +45,8 @@ const ModalContent = forwardRef<
         )}
       >
         {children}
-        <ModalClose>
-          <Button
-            variant='ghost'
-            icon={X}
-            size='icon'
-            className='absolute top-1 right-1'
-          />
+        <ModalClose className='text-terciary/50 hover:text-terciary absolute top-2 right-2 cursor-pointer transition duration-300'>
+          <X className='size-5' />
         </ModalClose>
       </DialogRadix.Content>
     </ModalPortal>

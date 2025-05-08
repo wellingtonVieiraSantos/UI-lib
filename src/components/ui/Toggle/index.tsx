@@ -5,7 +5,7 @@ import { twMerge } from 'tailwind-merge'
 const Toggle = forwardRef<
   React.ComponentRef<typeof ToggleRadix.Root>,
   React.ComponentPropsWithoutRef<typeof ToggleRadix.Root>
->(({ children, className, ...props }, ref) => {
+>(({ className, ...props }, ref) => {
   return (
     <ToggleRadix.Root
       ref={ref}
@@ -16,12 +16,10 @@ const Toggle = forwardRef<
         cursor-pointer transition duration-300 disabled:cursor-not-allowed disabled:bg-terciary/20 disabled:text-terciary/60`,
         className
       )}
-    >
-      {children}
-    </ToggleRadix.Root>
+    />
   )
 })
 
 Toggle.displayName = ToggleRadix.Root.displayName
 
-export default Toggle
+export { Toggle }

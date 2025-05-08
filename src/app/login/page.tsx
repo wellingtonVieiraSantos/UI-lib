@@ -1,9 +1,9 @@
 'use client'
-import Button from '@/components/ui/Button'
-import Checkbox from '@/components/ui/Checkbox'
+import { Button } from '@/components/ui/Button'
+import { Checkbox } from '@/components/ui/Checkbox'
 import Divider from '@/components/ui/Divider'
 import Input from '@/components/ui/Input'
-import Tab from '@/components/ui/Tab'
+import { Tabs, TabList, TabTrigger, TabContent } from '@/components/ui/Tab'
 import {
   ChevronRight,
   KeyRound,
@@ -15,32 +15,31 @@ import {
 
 export default function Login() {
   return (
-    <main className='h-full grid place-content-center'>
-      <Tab.Root defaultValue='teste_1'>
-        <Tab.Nav>
-          <Tab.Header id='teste_1' className='p-4'>
+    <main className='size-full grid place-content-center'>
+      <Tabs
+        defaultValue='login'
+        className='w-full max-w-lg border border-terciary/30 rounded data-[orientation=vertical]:flex'
+      >
+        <TabList>
+          <TabTrigger value='login'>
             <span>Login</span>
-          </Tab.Header>
-          <Tab.Header id='teste_2' className='p-4'>
+          </TabTrigger>
+          <TabTrigger value='register'>
             <span>Register</span>
-          </Tab.Header>
-        </Tab.Nav>
-        <Tab.Content id='teste_1'>
+          </TabTrigger>
+        </TabList>
+        <TabContent value='login'>
           <form className='grid p-2 gap-2'>
             <div className='text-sm text-center text-terciary/70 py-2 grid gap-2'>
               <Divider>
                 <p>login com</p>
               </Divider>
               <div className='flex gap-1'>
-                <Button
-                  variantButton='border'
-                  icon={Github}
-                  className='flex-1 gap-2'
-                >
+                <Button variant='border' icon={Github} className='flex-1 gap-2'>
                   <span>Github</span>
                 </Button>
                 <Button
-                  variantButton='border'
+                  variant='border'
                   icon={Facebook}
                   className='flex-1 gap-2'
                 >
@@ -65,12 +64,15 @@ export default function Login() {
               labelText='Senha'
               icon={KeyRound}
             />
-            <div className='flex items-center justify-between text-sm py-2'>
-              <Checkbox id='termos' className=''>
-                <span>Lembrar senha</span>
-              </Checkbox>
+            <div className='flex items-center justify-between text-sm py-2 gap-2'>
+              <div className='flex gap-2'>
+                <Checkbox id='termos' className='' />
+                <label htmlFor='termos' className='cursor-pointer'>
+                  Lembrar senha
+                </label>
+              </div>
               <a href='#'>
-                <Button variantButton='link'>
+                <Button variant='link'>
                   <span>Esqueceu a senha?</span>
                 </Button>
               </a>
@@ -84,8 +86,8 @@ export default function Login() {
               <span>Login</span>
             </Button>
           </form>
-        </Tab.Content>
-        <Tab.Content id='teste_2'>
+        </TabContent>
+        <TabContent value='register'>
           <form className='grid p-2 gap-2'>
             <Input
               name='nome'
@@ -116,12 +118,11 @@ export default function Login() {
               labelText='Confirmar Senha'
               icon={KeyRound}
             />
-            <div className='py-2'>
-              <Checkbox id='termos'>
-                <span className='text-sm'>
-                  Aceito as Politicas de Privacidade
-                </span>
-              </Checkbox>
+            <div className='flex py-2 gap-2'>
+              <Checkbox id='termos' />
+              <label htmlFor='termos' className='text-sm cursor-pointer'>
+                Aceito as Politicas de Privacidade
+              </label>
             </div>
             <Button
               type='submit'
@@ -132,8 +133,8 @@ export default function Login() {
               <span>Registrar</span>
             </Button>
           </form>
-        </Tab.Content>
-      </Tab.Root>
+        </TabContent>
+      </Tabs>
     </main>
   )
 }

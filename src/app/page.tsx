@@ -23,7 +23,12 @@ import {
 import { Badge } from '@/components/ui/Badge'
 import Dropdown from '@/components/ui/Dropdown'
 import DropdownItem from '@/components/ui/Dropdown/DropdownItem'
-import Accordion from '@/components/ui/Accordion'
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent
+} from '@/components/ui/Accordion'
 import Drawer from '@/components/ui/Drawer'
 import { Switch } from '@/components/ui/Switch'
 import Toast from '@/components/ui/Toast'
@@ -32,7 +37,7 @@ import { Checkbox } from '@/components/ui/Checkbox'
 import Textarea from '@/components/ui/Textarea'
 import ProgressBar from '@/components/ui/ProgressBar'
 import Divider from '@/components/ui/Divider'
-import Toggle from '@/components/ui/Toggle'
+import { Toggle } from '@/components/ui/Toggle'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/ToogleGroup'
 import { RadioRoot, RadioItem } from '@/components/ui/Radio'
 import { TabContent, TabList, Tabs, TabTrigger } from '@/components/ui/Tab'
@@ -127,17 +132,17 @@ export default function Home() {
       <Badge variant='warning'>Aguardando resposta</Badge>
       {/* Modal Component example */}
       <Modal>
-        <ModalTrigger>
+        <ModalTrigger asChild>
           <Button size='lg'>
             <span>Open Modal</span>
           </Button>
         </ModalTrigger>
         <ModalContent>
           <ModalHeader>
-            <ModalTitle>
+            <ModalTitle asChild>
               <h2 className='text-xl'>Titulo</h2>
             </ModalTitle>
-            <ModalDescription>
+            <ModalDescription asChild>
               <p className='text-terciary/80 text-sm text-justify'>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero
                 mollitia autem ratione numquam doloribus. Quibusdam.
@@ -244,25 +249,28 @@ export default function Home() {
         <Select.Item>Item 3</Select.Item>
       </Select.Root> */}
       {/* Accordion component example */}
-      <Accordion.Root className=''>
-        <Accordion.Item value='item-1'>
-          <Accordion.Header>
+      <Accordion
+        type='multiple'
+        className='border max-w-md border-terciary/30 rounded divide-y-2 divide-terciary/30'
+      >
+        <AccordionItem value='item-1' disabled>
+          <AccordionTrigger>
             <span>Item 1</span>
-          </Accordion.Header>
-          <Accordion.Content>
+          </AccordionTrigger>
+          <AccordionContent>
             <span className='p-2'>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
               id saepe quisquam ex nemo repellendus hic, quibusdam itaque atque
               explicabo iste quasi vel dolore. Facilis sint obcaecati sit saepe
               aliquam?
             </span>
-          </Accordion.Content>
-        </Accordion.Item>
-        <Accordion.Item value='item-2'>
-          <Accordion.Header>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value='item-2'>
+          <AccordionTrigger>
             <span>Item 2</span>
-          </Accordion.Header>
-          <Accordion.Content>
+          </AccordionTrigger>
+          <AccordionContent>
             <ul>
               <li>
                 <Button
@@ -295,13 +303,13 @@ export default function Home() {
                 </Button>
               </li>
             </ul>
-          </Accordion.Content>
-        </Accordion.Item>
-        <Accordion.Item value='item-3'>
-          <Accordion.Header>
+          </AccordionContent>
+        </AccordionItem>
+        <AccordionItem value='item-3'>
+          <AccordionTrigger>
             <span>Item 3</span>
-          </Accordion.Header>
-          <Accordion.Content>
+          </AccordionTrigger>
+          <AccordionContent>
             <div className='p-2'>
               <span className='text-sm'>Description</span>
               <span className='block'>
@@ -314,9 +322,9 @@ export default function Home() {
                 <li>item 3</li>
               </ul>
             </div>
-          </Accordion.Content>
-        </Accordion.Item>
-      </Accordion.Root>
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
       {/*  Tab component example */}
       <Tabs
         defaultValue='item-1'

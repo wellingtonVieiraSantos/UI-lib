@@ -1,5 +1,5 @@
 'use client'
-import Button from '@/components/ui/Button'
+import { Button } from '@/components/ui/Button'
 import Dropdown from '@/components/ui/Dropdown'
 import { ChevronDown, ChevronRight } from 'lucide-react'
 
@@ -10,19 +10,20 @@ export default function DropdownExample() {
       <Dropdown.Root>
         <Dropdown.Trigger>
           <Button
-            variantButton='border'
-            sizeButton='lg'
-            text='Button Dropdown'
+            variant='border'
+            size='lg'
             icon={ChevronDown}
             iconPosition='right'
-          />
+          >
+            Button Dropdown
+          </Button>
         </Dropdown.Trigger>
         <Dropdown.Content>
           <div className='border-b border-terciary/40'>
             <h3>Jhon Doe</h3>
             <span className='text-sm text-terciary/50'>email@contato.com</span>
           </div>
-          <Dropdown.Item>
+          {/* <Dropdown.Item>
             <Button
               variantButton='ghost'
               text='Instagram'
@@ -53,7 +54,7 @@ export default function DropdownExample() {
               icon={ChevronRight}
               className='w-full justify-start'
             />
-          </Dropdown.Item>
+          </Dropdown.Item> */}
         </Dropdown.Content>
       </Dropdown.Root>
     </div>

@@ -8,3 +8,4 @@ UI Concluidos com radix
 -Modal
 -Badge
 -Checkbox
+-Accordion
