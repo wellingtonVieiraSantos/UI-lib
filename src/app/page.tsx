@@ -39,10 +39,9 @@ import {
   DrawerActions
 } from '@/components/ui/Drawer'
 import { Switch } from '@/components/ui/Switch'
-import Toast from '@/components/ui/Toast'
 import Skeleton from '@/components/ui/Skeleton'
 import { Checkbox } from '@/components/ui/Checkbox'
-import Textarea from '@/components/ui/Textarea'
+import { Textarea } from '@/components/ui/Textarea'
 import ProgressBar from '@/components/ui/ProgressBar'
 import { Divider } from '@/components/ui/Divider'
 import { Toggle } from '@/components/ui/Toggle'
@@ -406,22 +405,6 @@ export default function Home() {
         <Switch />
         <Switch disabled />
       </div>
-      {/* Toast Component example */}
-      {/* <Toast.Root>
-        <Toast.Trigger>
-          <Button variant='border'>
-            <span>Toast</span>
-          </Button>
-        </Toast.Trigger>
-        <Toast.Content>
-          <Toast.Title>
-            <h1>Title</h1>
-          </Toast.Title>
-          <Toast.Message>
-            <p>message for toast.</p>
-          </Toast.Message>
-        </Toast.Content>
-      </Toast.Root> */}
       {/* Skeleton component example */}
       <div className='flex items-center gap-2 border border-secondary/30 dark:border-terciary/30 w-fit p-2 rounded '>
         <Skeleton className='w-14 h-14 rounded-full' />

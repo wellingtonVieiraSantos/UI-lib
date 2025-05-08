@@ -10,3 +10,6 @@ UI Concluidos com radix
 -Checkbox
 -Accordion
 -Divider
+-Textarea
+-Skeleton
+-Drawer
