@@ -1,7 +1,7 @@
 'use client'
 import { Button } from '@/components/ui/Button'
 import { Checkbox } from '@/components/ui/Checkbox'
-import Divider from '@/components/ui/Divider'
+import { Divider } from '@/components/ui/Divider'
 import Input from '@/components/ui/Input'
 import { Tabs, TabList, TabTrigger, TabContent } from '@/components/ui/Tab'
 import {
@@ -31,9 +31,11 @@ export default function Login() {
         <TabContent value='login'>
           <form className='grid p-2 gap-2'>
             <div className='text-sm text-center text-terciary/70 py-2 grid gap-2'>
-              <Divider>
+              <div className='w-full flex items-center gap-2'>
+                <Divider />
                 <p>login com</p>
-              </Divider>
+                <Divider />
+              </div>
               <div className='flex gap-1'>
                 <Button variant='border' icon={Github} className='flex-1 gap-2'>
                   <span>Github</span>
@@ -46,9 +48,11 @@ export default function Login() {
                   <span>Facebook</span>
                 </Button>
               </div>
-              <Divider>
+              <div className='w-full flex items-center gap-2'>
+                <Divider />
                 <p>ou continue com e-mail</p>
-              </Divider>
+                <Divider />
+              </div>
             </div>
             <Input
               name='email'

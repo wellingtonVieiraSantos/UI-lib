@@ -36,7 +36,7 @@ import Skeleton from '@/components/ui/Skeleton'
 import { Checkbox } from '@/components/ui/Checkbox'
 import Textarea from '@/components/ui/Textarea'
 import ProgressBar from '@/components/ui/ProgressBar'
-import Divider from '@/components/ui/Divider'
+import { Divider } from '@/components/ui/Divider'
 import { Toggle } from '@/components/ui/Toggle'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/ToogleGroup'
 import { RadioRoot, RadioItem } from '@/components/ui/Radio'
@@ -477,13 +477,9 @@ export default function Home() {
       </div>
 
       {/* Divider Componente Example */}
-      <div className='size-90 flex border border-terciary/30 p-2'>
-        <Divider className='flex-1' direction='vertical'>
-          <span>Texto</span>
-        </Divider>
-        <Divider className='flex-1'>
-          <span>Texto</span>
-        </Divider>
+      <div className='size-90 flex border border-terciary/30 items-center'>
+        <Divider className='w-1/2' />
+        <Divider orientation='vertical' />
       </div>
       <Button icon={LinkIcon} variant='link'>
         <span>go to destination</span>

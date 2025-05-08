@@ -1,34 +1,32 @@
-import { HTMLAttributes, ReactElement } from 'react'
+import { forwardRef } from 'react'
+import * as SeparatorRadix from '@radix-ui/react-separator'
 import { twMerge } from 'tailwind-merge'
 
-interface DividerProps extends HTMLAttributes<HTMLDivElement> {
-  direction?: 'horizontal' | 'vertical'
-  children?: ReactElement
-}
-export default function Divider({
-  direction = 'horizontal',
-  children,
-  className
-}: DividerProps) {
-  return (
-    <div
-      className={twMerge(
-        `flex h-full ${direction === 'vertical' && 'flex-col'} items-center ${
-          children && 'gap-2'
-        } ${className}`
-      )}
-    >
-      <div
-        className={`flex-1 bg-terciary/30 ${
-          direction === 'vertical' ? 'w-[1px]' : 'h-[1px]'
-        }`}
+const Divider = forwardRef<
+  React.ComponentRef<typeof SeparatorRadix.Root>,
+  React.ComponentPropsWithoutRef<typeof SeparatorRadix.Root>
+>(
+  (
+    { orientation = 'horizontal', decorative = true, className, ...props },
+    ref
+  ) => {
+    return (
+      <SeparatorRadix.Root
+        ref={ref}
+        orientation={orientation}
+        decorative={decorative}
+        className={twMerge(
+          `shrink-0 ${
+            orientation === 'horizontal' ? ' h-[1px] flex-1' : 'w-[1px] h-full'
+          } bg-terciary/30`,
+          className
+        )}
+        {...props}
       />
-      {children}
-      <div
-        className={`flex-1 bg-terciary/30 ${
-          direction === 'vertical' ? 'w-[1px]' : 'h-[1px]'
-        }`}
-      />
-    </div>
-  )
-}
+    )
+  }
+)
+
+Divider.displayName = SeparatorRadix.Root.displayName
+
+export { Divider }
