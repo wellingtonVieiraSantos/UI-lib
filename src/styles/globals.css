@@ -18,15 +18,21 @@
   /* animates */
   --animate-fadeIn: fadeIn 0.3s ease-in-out;
   --animate-fadeOut: fadeOut 0.3s ease-in-out;
-  --animate-fadeInDown: fadeInDown 0.3s ease-in-out;
-  --animate-fadeInUp: fadeInUp 0.3s ease-in-out;
-  --animate-fadeInLeft: fadeInLeft 0.3s ease-in-out;
-  --animate-fadeInRight: fadeInRight 0.3s ease-in-out;
   --animate-skeletonShimmer: SkeletonShimmer 1.5s linear infinite;
-  --animate-slideDown: slideDown 0.3s ease-out;
-  --animate-slideUp: slideUp 0.3s ease-out;
+  /* accordion animates */
+  --animate-AccordionSlideDown: AccordionSlideDown 0.3s ease-out;
+  --animate-AccordionSlideUp: AccordionSlideUp 0.3s ease-out;
+  /* drawer variant animates */
+  --animate-DrawerBottomInitial: DrawerBottomInitial 0.3s ease-in-out;
+  --animate-DrawerBottomFinal: DrawerBottomFinal 0.3s ease-in-out;
 
-  @keyframes slideDown {
+  --animate-DrawerLeftInitial: DrawerLeftInitial 0.3s ease-in-out;
+  --animate-DrawerLeftFinal: DrawerLeftFinal 0.3s ease-in-out;
+
+  --animate-DrawerRightInitial: DrawerRightInitial 0.3s ease-in-out;
+  --animate-DrawerRightFinal: DrawerRightFinal 0.3s ease-in-out;
+
+  @keyframes AccordionSlideDown {
     from {
       height: 0;
     }
@@ -35,7 +41,7 @@
     }
   }
 
-  @keyframes slideUp {
+  @keyframes AccordionSlideUp {
     from {
       height: var(--radix-accordion-content-height);
     }
@@ -72,27 +78,30 @@
       transform: translateX(110%);
     }
   }
-  @keyframes fadeInDown {
+  @keyframes DrawerBottomInitial {
     from {
       opacity: 0;
-      transform: translateY(10px);
+      transform: translateY(100%);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
     }
   }
-  @keyframes fadeInUp {
+
+  @keyframes DrawerBottomFinal {
     from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
       opacity: 1;
       transform: translateY(0);
     }
+    to {
+      opacity: 0;
+      transform: translateY(100%);
+    }
   }
-  @keyframes fadeInLeft {
+
+  @keyframes DrawerLeftInitial {
     from {
       opacity: 0;
       transform: translateX(-100%);
@@ -102,7 +111,18 @@
       transform: translateX(0);
     }
   }
-  @keyframes fadeInRight {
+  @keyframes DrawerLeftFinal {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes DrawerRightInitial {
     from {
       opacity: 0;
       transform: translateX(100%);
@@ -110,6 +130,16 @@
     to {
       opacity: 1;
       transform: translateX(0);
+    }
+  }
+  @keyframes DrawerRightFinal {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(100%);
     }
   }
 }

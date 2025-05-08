@@ -29,7 +29,15 @@ import {
   AccordionTrigger,
   AccordionContent
 } from '@/components/ui/Accordion'
-import Drawer from '@/components/ui/Drawer'
+import {
+  Drawer,
+  DrawerTrigger,
+  DrawerContent,
+  DrawerTitle,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerActions
+} from '@/components/ui/Drawer'
 import { Switch } from '@/components/ui/Switch'
 import Toast from '@/components/ui/Toast'
 import Skeleton from '@/components/ui/Skeleton'
@@ -353,33 +361,45 @@ export default function Home() {
         </TabContent>
       </Tabs>
       {/* Drawer component example */}
-      <Drawer.Root isRight>
-        <Drawer.Trigger>
+      <Drawer>
+        <DrawerTrigger>
           <Button icon={Plus} size='lg'>
             <span>Abrir Drawer</span>
           </Button>
-        </Drawer.Trigger>
-        <Drawer.Content>
-          <div className='grid gap-8'>
-            <h2 className='pt-10 text-xl'>Title</h2>
-            <p className='text-sm'>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. At, aut
-              sapiente.
-            </p>
+        </DrawerTrigger>
+        <DrawerContent orientation='right'>
+          <div className='max-w-lg m-auto grid gap-8 mt-8'>
+            <DrawerHeader>
+              <DrawerTitle className='text-2xl'>Title</DrawerTitle>
+              <DrawerDescription className='text-sm text-terciary/70'>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. At,
+                aut sapiente.
+              </DrawerDescription>
+            </DrawerHeader>
             <div className='w-full h-80 border border-dashed dark:border-terciary grid place-items-center'>
               product
             </div>
-            <div className='flex gap-2 justify-end'>
-              <Button icon={ArrowLeft} variant='border' size='md'>
+            <DrawerActions>
+              <Button
+                icon={ArrowLeft}
+                variant='border'
+                size='md'
+                className='w-full sm:w-auto'
+              >
                 <span>Back</span>
               </Button>
-              <Button icon={Check} size='md' iconPosition='right'>
+              <Button
+                icon={Check}
+                size='md'
+                iconPosition='right'
+                className='w-full sm:w-auto'
+              >
                 <span>Confirm</span>
               </Button>
-            </div>
+            </DrawerActions>
           </div>
-        </Drawer.Content>
-      </Drawer.Root>
+        </DrawerContent>
+      </Drawer>
       {/* Switch Component example */}
       <div className='flex gap-5 items-center'>
         <p>Ativar Vantagens premium</p>
@@ -387,7 +407,7 @@ export default function Home() {
         <Switch disabled />
       </div>
       {/* Toast Component example */}
-      <Toast.Root>
+      {/* <Toast.Root>
         <Toast.Trigger>
           <Button variant='border'>
             <span>Toast</span>
@@ -401,7 +421,7 @@ export default function Home() {
             <p>message for toast.</p>
           </Toast.Message>
         </Toast.Content>
-      </Toast.Root>
+      </Toast.Root> */}
       {/* Skeleton component example */}
       <div className='flex items-center gap-2 border border-secondary/30 dark:border-terciary/30 w-fit p-2 rounded '>
         <Skeleton className='w-14 h-14 rounded-full' />
@@ -478,7 +498,7 @@ export default function Home() {
 
       {/* Divider Componente Example */}
       <div className='size-90 flex border border-terciary/30 items-center'>
-        <Divider className='w-1/2' />
+        <Divider className='w-1/2 flex-none' />
         <Divider orientation='vertical' />
       </div>
       <Button icon={LinkIcon} variant='link'>

@@ -39,7 +39,7 @@ const AccordionContent = forwardRef<
       ref={ref}
       {...props}
       className={twMerge(
-        `w-full overflow-hidden px-3 text-justify data-[state=open]:animate-slideDown data-[state=closed]:animate-slideUp`,
+        `w-full overflow-hidden px-3 text-justify data-[state=open]:animate-AccordionSlideDown data-[state=closed]:animate-AccordionSlideUp`,
         className
       )}
     />

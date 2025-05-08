@@ -19,7 +19,7 @@ const ModalOverlay = forwardRef<
       ref={ref}
       {...props}
       className={twMerge(
-        `bg-primary/20 fixed inset-0 backdrop-blur grid place-content-center`,
+        `bg-primary/20 fixed inset-0 backdrop-blur grid place-content-center z-20`,
         className
       )}
     />
@@ -39,7 +39,7 @@ const ModalContent = forwardRef<
         ref={ref}
         {...props}
         className={twMerge(
-          `fixed inset-1/2 -translate-1/2 w-full max-w-lg min-h-fit bg-primary p-6 rounded
+          `fixed z-20 inset-1/2 -translate-1/2 w-full max-w-lg min-h-fit bg-primary p-6 rounded
           grid gap-4 data-[state=open]:animate-fadeIn data-[state=closed]:animate-fadeOut`,
           className
         )}

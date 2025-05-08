@@ -9,3 +9,4 @@ UI Concluidos com radix
 -Badge
 -Checkbox
 -Accordion
+-Divider
