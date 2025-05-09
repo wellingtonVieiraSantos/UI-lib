@@ -64,6 +64,7 @@ import {
   TooltipProvider,
   TooltipTrigger
 } from '@/components/ui/Tooltip'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
@@ -474,14 +475,19 @@ export default function Home() {
         <p className='text-terciary/70'>In progress...</p>
         <ProgressBar value={value} />
       </div>
+      {/* Avatar component example */}
+      <Avatar>
+        <AvatarImage src={'/perfil.png'} alt='foto perfil' />
+        <AvatarFallback>WV</AvatarFallback>
+      </Avatar>
       {/* Tooltip Component example */}
-      <div className='m-auto'>
+      <div className='m-auto flex gap-4'>
         <TooltipProvider>
           <Tooltip delayDuration={0}>
             <TooltipTrigger>
               <Button variant='border'>Tooltip hover</Button>
             </TooltipTrigger>
-            <TooltipContent>
+            <TooltipContent side='left'>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste
               dignissimos explicabo aut, exercitationem deserunt incidunt
               praesentium nesciunt porro, odit delectus nemo dolorum doloremque
@@ -491,15 +497,13 @@ export default function Home() {
         </TooltipProvider>
         <TooltipProvider>
           <Tooltip delayDuration={0}>
-            <TooltipTrigger>
-              <Button variant='border'>Tooltip hover</Button>
+            <TooltipTrigger className=''>
+              <Avatar className='size-20'>
+                <AvatarImage src={'/rperfil.png'} alt='foto perfil' />
+                <AvatarFallback>WV</AvatarFallback>
+              </Avatar>
             </TooltipTrigger>
-            <TooltipContent side='right'>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste
-              dignissimos explicabo aut, exercitationem deserunt incidunt
-              praesentium nesciunt porro, odit delectus nemo dolorum doloremque
-              inventore voluptatibus ducimus tempore excepturi unde tenetur.
-            </TooltipContent>
+            <TooltipContent>Foto de perfil do Ton!</TooltipContent>
           </Tooltip>
         </TooltipProvider>
       </div>
