@@ -58,6 +58,12 @@ import {
   ModalActions,
   ModalHeader
 } from '@/components/ui/Modal'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger
+} from '@/components/ui/Tooltip'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
@@ -467,6 +473,35 @@ export default function Home() {
       <div className='max-w-lg py-2 px-6 text-sm grid gap-2 border border-terciary/30'>
         <p className='text-terciary/70'>In progress...</p>
         <ProgressBar value={value} />
+      </div>
+      {/* Tooltip Component example */}
+      <div className='m-auto'>
+        <TooltipProvider>
+          <Tooltip delayDuration={0}>
+            <TooltipTrigger>
+              <Button variant='border'>Tooltip hover</Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste
+              dignissimos explicabo aut, exercitationem deserunt incidunt
+              praesentium nesciunt porro, odit delectus nemo dolorum doloremque
+              inventore voluptatibus ducimus tempore excepturi unde tenetur.
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+        <TooltipProvider>
+          <Tooltip delayDuration={0}>
+            <TooltipTrigger>
+              <Button variant='border'>Tooltip hover</Button>
+            </TooltipTrigger>
+            <TooltipContent side='right'>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste
+              dignissimos explicabo aut, exercitationem deserunt incidunt
+              praesentium nesciunt porro, odit delectus nemo dolorum doloremque
+              inventore voluptatibus ducimus tempore excepturi unde tenetur.
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </div>
       {/* Toggle Component example */}
       <div className='border border-terciary/30 w-full max-w-90 p-2 flex gap-4'>
