@@ -2,7 +2,7 @@
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   Plus,
   Minus,
@@ -43,7 +43,7 @@ import { Switch } from '@/components/ui/Switch'
 import Skeleton from '@/components/ui/Skeleton'
 import { Checkbox } from '@/components/ui/Checkbox'
 import { Textarea } from '@/components/ui/Textarea'
-import ProgressBar from '@/components/ui/ProgressBar'
+import { ProgressBar } from '@/components/ui/ProgressBar'
 import { Divider } from '@/components/ui/Divider'
 import { Toggle } from '@/components/ui/Toggle'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/ToogleGroup'
@@ -62,6 +62,21 @@ import {
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
   const [count, setCount] = useState(0)
+  const [value, setValue] = useState(0)
+
+  useEffect(() => {
+    const progress = setInterval(() => {
+      setValue(prev => {
+        if (value >= 100) {
+          clearInterval(progress)
+          return 100
+        } else {
+          return prev + 1
+        }
+      })
+    }, 20)
+    return () => clearInterval(progress)
+  }, [value])
 
   const inputRef = useRef<HTMLInputElement | null>(null)
   const handleDelete = () => {
@@ -253,7 +268,7 @@ export default function Home() {
       {/* Accordion component example */}
       <Accordion
         type='multiple'
-        className='border max-w-md border-terciary/30 rounded divide-y-2 divide-terciary/30'
+        className='border max-w-md border-terciary/30 rounded divide-y-1 divide-terciary/30'
       >
         <AccordionItem value='item-1' disabled>
           <AccordionTrigger>
@@ -361,7 +376,7 @@ export default function Home() {
             <span>Abrir Drawer</span>
           </Button>
         </DrawerTrigger>
-        <DrawerContent orientation='right'>
+        <DrawerContent orientation='left'>
           <div className='max-w-lg m-auto grid gap-8 mt-8'>
             <DrawerHeader>
               <DrawerTitle className='text-2xl'>Title</DrawerTitle>
@@ -449,9 +464,9 @@ export default function Home() {
         placeholder='exemplo@email.com'
       />
       {/* ProgressBar component example */}
-      <div className='max-w-90 p-2 pb-10 text-sm grid gap-2 border border-terciary/30'>
+      <div className='max-w-lg py-2 px-6 text-sm grid gap-2 border border-terciary/30'>
         <p className='text-terciary/70'>In progress...</p>
-        <ProgressBar id='progress' textProgress='Buscando dados...' />
+        <ProgressBar value={value} />
       </div>
       {/* Toggle Component example */}
       <div className='border border-terciary/30 w-full max-w-90 p-2 flex gap-4'>
