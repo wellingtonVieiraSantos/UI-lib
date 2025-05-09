@@ -54,18 +54,18 @@ export default function Login() {
                 <Divider />
               </div>
             </div>
+            <label htmlFor='email'>Email</label>
             <Input
-              name='email'
+              id='email'
               type='email'
               placeholder='example@email.com'
-              labelText='E-mail'
               icon={Mail}
             />
+            <label htmlFor='password'>Senha</label>
             <Input
-              name='password'
+              id='password'
               type='password'
               placeholder='*********'
-              labelText='Senha'
               icon={KeyRound}
             />
             <div className='flex items-center justify-between text-sm py-2 gap-2'>
@@ -93,33 +93,33 @@ export default function Login() {
         </TabContent>
         <TabContent value='register'>
           <form className='grid p-2 gap-2'>
+            <label htmlFor='nome'>Nome</label>
             <Input
-              name='nome'
+              id='nome'
               placeholder='Escreva nome e sobrenome'
-              labelText='Nome'
               icon={User}
               className='w-full'
             />
+            <label htmlFor='email'>Email</label>
             <Input
-              name='email'
+              id='email'
               type='email'
               placeholder='example@email.com'
-              labelText='E-mail'
               icon={Mail}
               className='w-full'
             />
+            <label htmlFor='password'>Password</label>
             <Input
-              name='password'
+              id='password'
               type='password'
               placeholder='*********'
-              labelText='Senha'
               icon={KeyRound}
             />
+            <label htmlFor='confirmPassword'>Confirmar Password</label>
             <Input
-              name='password'
+              id='confirmPassword'
               type='password'
               placeholder='*********'
-              labelText='Confirmar Senha'
               icon={KeyRound}
             />
             <div className='flex py-2 gap-2'>

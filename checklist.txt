@@ -14,3 +14,7 @@ UI Concluidos com radix
 -Skeleton
 -Drawer
 -Input
+-ProgressBar
+-Tooltip
+-Avatar
+-Label

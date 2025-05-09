@@ -65,6 +65,7 @@ import {
   TooltipTrigger
 } from '@/components/ui/Tooltip'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar'
+import { Label } from '@/components/ui/Label'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
@@ -195,20 +196,17 @@ export default function Home() {
         <h2 className='py-2'>Qual seu sexo?</h2>
         <div className='flex flex-row-reverse justify-between items-center gap-2 border border-terciary/30 p-2 rounded cursor-pointer'>
           <RadioItem value='masculino' id='masculino' disabled />
-          <label
-            htmlFor='masculino'
-            className='flex flex-col peer-disabled:cursor-not-allowed'
-          >
+          <Label htmlFor='masculino'>
             Masculino
             <span className='text-[12px] text-terciary/50'>Homem</span>
-          </label>
+          </Label>
         </div>
         <div className='flex flex-row-reverse justify-between items-center gap-2 border border-terciary/30 p-2 rounded cursor-pointer'>
           <RadioItem value='feminino' id='feminino' />
-          <label htmlFor='feminino' className='flex flex-col'>
+          <Label htmlFor='feminino'>
             Feminino{' '}
             <span className='text-[12px] text-terciary/50'>Mulher</span>
-          </label>
+          </Label>
         </div>
       </RadioRoot>
       {/* Dropdown menu example */}
@@ -434,30 +432,25 @@ export default function Home() {
       <div className='grid place-content-center gap-4 border border-terciary/30 max-w-90 py-4 rounded'>
         <div className='flex items-center gap-2'>
           <Checkbox id='check-1' />
-          <label
-            htmlFor='check-1'
-            className='peer-disabled:cursor-not-allowed peer-disabled:text-terciary/50 cursor-pointer'
-          >
-            Checkbox 1
-          </label>
+          <Label htmlFor='check-1'>Checkbox 1</Label>
         </div>
         <div className='flex items-center gap-2'>
           <Checkbox id='check-2' disabled />
-          <label
+          <Label
             htmlFor='check-2'
             className='peer-disabled:cursor-not-allowed peer-disabled:text-terciary/50 cursor-pointer'
           >
             Checkbox 2
-          </label>
+          </Label>
         </div>
         <div className='flex items-center gap-2'>
           <Checkbox id='check-3' defaultChecked />
-          <label
+          <Label
             htmlFor='check-3'
             className='peer-disabled:cursor-not-allowed peer-disabled:text-terciary/50 cursor-pointer'
           >
             Checkbox 3
-          </label>
+          </Label>
         </div>
       </div>
 
