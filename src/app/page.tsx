@@ -66,11 +66,21 @@ import {
 } from '@/components/ui/Tooltip'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/Avatar'
 import { Label } from '@/components/ui/Label'
+import {
+  Pagination,
+  PaginationContent,
+  PaginationElipse,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrev
+} from '@/components/ui/Pagination'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
   const [count, setCount] = useState(0)
   const [value, setValue] = useState(0)
+  const [isActiveId, setIsActiveId] = useState(0)
 
   useEffect(() => {
     const progress = setInterval(() => {
@@ -376,7 +386,7 @@ export default function Home() {
       </Tabs>
       {/* Drawer component example */}
       <Drawer>
-        <DrawerTrigger>
+        <DrawerTrigger asChild>
           <Button icon={Plus} size='lg'>
             <span>Abrir Drawer</span>
           </Button>
@@ -477,7 +487,7 @@ export default function Home() {
       <div className='m-auto flex gap-4'>
         <TooltipProvider>
           <Tooltip delayDuration={0}>
-            <TooltipTrigger>
+            <TooltipTrigger asChild>
               <Button variant='border'>Tooltip hover</Button>
             </TooltipTrigger>
             <TooltipContent side='left'>
@@ -543,6 +553,31 @@ export default function Home() {
         </ToggleGroupItem>
         <ToggleGroupItem value='6'>javascript</ToggleGroupItem>
       </ToggleGroup>
+      {/* Pagination component exemple */}
+      <Pagination className='border max-w-lg p-2 border-terciary/20 m-auto rounded-xl'>
+        <PaginationContent>
+          <PaginationItem>
+            <PaginationPrev href={''} />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href={'#'}>1</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href={'#'}>2</PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href={'#'} isActive>
+              3
+            </PaginationLink>
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationElipse />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationNext href={'#'} />
+          </PaginationItem>
+        </PaginationContent>
+      </Pagination>
       <div className='h-screen w-md'></div>
     </div>
   )

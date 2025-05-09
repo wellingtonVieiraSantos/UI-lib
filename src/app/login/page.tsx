@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/Button'
 import { Checkbox } from '@/components/ui/Checkbox'
 import { Divider } from '@/components/ui/Divider'
 import { Input } from '@/components/ui/Input'
+import { Label } from '@/components/ui/Label'
 import { Tabs, TabList, TabTrigger, TabContent } from '@/components/ui/Tab'
 import {
   ChevronRight,
@@ -54,14 +55,14 @@ export default function Login() {
                 <Divider />
               </div>
             </div>
-            <label htmlFor='email'>Email</label>
+            <Label htmlFor='email'>Email</Label>
             <Input
               id='email'
               type='email'
               placeholder='example@email.com'
               icon={Mail}
             />
-            <label htmlFor='password'>Senha</label>
+            <Label htmlFor='password'>Senha</Label>
             <Input
               id='password'
               type='password'
@@ -71,9 +72,9 @@ export default function Login() {
             <div className='flex items-center justify-between text-sm py-2 gap-2'>
               <div className='flex gap-2'>
                 <Checkbox id='termos' className='' />
-                <label htmlFor='termos' className='cursor-pointer'>
+                <Label htmlFor='termos' className='cursor-pointer'>
                   Lembrar senha
-                </label>
+                </Label>
               </div>
               <a href='#'>
                 <Button variant='link'>
@@ -93,14 +94,14 @@ export default function Login() {
         </TabContent>
         <TabContent value='register'>
           <form className='grid p-2 gap-2'>
-            <label htmlFor='nome'>Nome</label>
+            <Label htmlFor='nome'>Nome</Label>
             <Input
               id='nome'
               placeholder='Escreva nome e sobrenome'
               icon={User}
               className='w-full'
             />
-            <label htmlFor='email'>Email</label>
+            <Label htmlFor='email'>Email</Label>
             <Input
               id='email'
               type='email'
@@ -108,14 +109,14 @@ export default function Login() {
               icon={Mail}
               className='w-full'
             />
-            <label htmlFor='password'>Password</label>
+            <Label htmlFor='password'>Password</Label>
             <Input
               id='password'
               type='password'
               placeholder='*********'
               icon={KeyRound}
             />
-            <label htmlFor='confirmPassword'>Confirmar Password</label>
+            <Label htmlFor='confirmPassword'>Confirmar Password</Label>
             <Input
               id='confirmPassword'
               type='password'
@@ -124,9 +125,9 @@ export default function Login() {
             />
             <div className='flex py-2 gap-2'>
               <Checkbox id='termos' />
-              <label htmlFor='termos' className='text-sm cursor-pointer'>
+              <Label htmlFor='termos' className='text-sm cursor-pointer'>
                 Aceito as Politicas de Privacidade
-              </label>
+              </Label>
             </div>
             <Button
               type='submit'
