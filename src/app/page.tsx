@@ -22,8 +22,7 @@ import {
   Calculator
 } from 'lucide-react'
 import { Badge } from '@/components/ui/Badge'
-import Dropdown from '@/components/ui/Dropdown'
-import DropdownItem from '@/components/ui/Dropdown/DropdownItem'
+
 import {
   Accordion,
   AccordionItem,
@@ -75,12 +74,25 @@ import {
   PaginationNext,
   PaginationPrev
 } from '@/components/ui/Pagination'
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownContent,
+  DropdownItem,
+  DropdownLabel,
+  DropdownSeparator,
+  DropdownCheckboxItem,
+  DropdownRadioGroup,
+  DropdownRadioItem,
+  DropdownSub,
+  DropdownSubContent,
+  DropdownSubTrigger
+} from '@/components/ui/Dropdown'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
   const [count, setCount] = useState(0)
   const [value, setValue] = useState(0)
-  const [isActiveId, setIsActiveId] = useState(0)
 
   useEffect(() => {
     const progress = setInterval(() => {
@@ -220,22 +232,23 @@ export default function Home() {
         </div>
       </RadioRoot>
       {/* Dropdown menu example */}
-      <Dropdown.Root>
-        <Dropdown.Trigger>
+      <Dropdown>
+        <DropdownTrigger asChild>
           <Button
             variant='border'
             size='icon'
             icon={Share2}
             className='size-13'
           />
-        </Dropdown.Trigger>
-        <Dropdown.Content>
-          <div className='border-b border-secondary/40 dark:border-terciary/40'>
+        </DropdownTrigger>
+        <DropdownContent sideOffset={4}>
+          <DropdownLabel className='p-2 text-sm'>
             <h3>Jhon Doe</h3>
             <span className='text-sm text-secondary/50 dark:text-terciary/50'>
               email@contato.com
             </span>
-          </div>
+          </DropdownLabel>
+          <DropdownSeparator />
           <DropdownItem>
             <Button
               variant='ghost'
@@ -272,8 +285,70 @@ export default function Home() {
               <span>Twitter</span>
             </Button>
           </DropdownItem>
-        </Dropdown.Content>
-      </Dropdown.Root>
+          <DropdownLabel className='p-2 text-sm'>Sub Menu</DropdownLabel>
+          <DropdownSeparator />
+          <DropdownSub>
+            <DropdownSubTrigger asChild>
+              <Button
+                variant='ghost'
+                icon={ChevronRight}
+                iconPosition='right'
+                className='w-full justify-between'
+              >
+                <span>More Links</span>
+              </Button>
+            </DropdownSubTrigger>
+            <DropdownSubContent>
+              <DropdownLabel className='text-sm p-2'>
+                Sub Menu Options
+              </DropdownLabel>
+              <DropdownSeparator />
+              <DropdownItem>
+                <Button
+                  variant='ghost'
+                  icon={ChevronRight}
+                  className='w-full justify-start'
+                >
+                  <span>Discord</span>
+                </Button>
+              </DropdownItem>
+              <DropdownItem>
+                <Button
+                  variant='ghost'
+                  icon={ChevronRight}
+                  className='w-full justify-start'
+                >
+                  <span>Github</span>
+                </Button>
+              </DropdownItem>
+              <DropdownItem>
+                <Button
+                  variant='ghost'
+                  icon={ChevronRight}
+                  className='w-full justify-start'
+                >
+                  <span>Twitch</span>
+                </Button>
+              </DropdownItem>
+              <DropdownItem>
+                <Button variant='ghost' className='w-full justify-start'>
+                  <span>More...</span>
+                </Button>
+              </DropdownItem>
+            </DropdownSubContent>
+          </DropdownSub>
+          <DropdownLabel className='p-2 text-sm'>Checkbox Item</DropdownLabel>
+          <DropdownSeparator />
+          <DropdownCheckboxItem checked>Teste</DropdownCheckboxItem>
+          <DropdownLabel className='p-2 text-sm'>Radio Group</DropdownLabel>
+          <DropdownSeparator />
+          <DropdownRadioGroup value='3'>
+            <DropdownRadioItem value='1'>Item 1</DropdownRadioItem>
+            <DropdownRadioItem value='2'>Item 2</DropdownRadioItem>
+            <DropdownRadioItem value='3'>Item 3</DropdownRadioItem>
+          </DropdownRadioGroup>
+        </DropdownContent>
+      </Dropdown>
       {/* Select input example */}
       {/*  <Select.Root>
         <Select.Item>Item 1</Select.Item>
@@ -475,7 +550,9 @@ export default function Home() {
       />
       {/* ProgressBar component example */}
       <div className='max-w-lg py-2 px-6 text-sm grid gap-2 border border-terciary/30'>
-        <p className='text-terciary/70'>In progress...</p>
+        <p className='text-terciary/70'>
+          {value < 100 ? 'Loading...' : 'Completed!'}
+        </p>
         <ProgressBar value={value} />
       </div>
       {/* Avatar component example */}
@@ -554,24 +631,27 @@ export default function Home() {
         <ToggleGroupItem value='6'>javascript</ToggleGroupItem>
       </ToggleGroup>
       {/* Pagination component exemple */}
-      <Pagination className='border max-w-lg p-2 border-terciary/20 m-auto rounded-xl'>
+      <Pagination className='place-content-start'>
         <PaginationContent>
           <PaginationItem>
-            <PaginationPrev href={''} />
+            <PaginationPrev href={''} disabled />
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink href={'#'}>1</PaginationLink>
+            <PaginationLink href={'#'} isActive>
+              1
+            </PaginationLink>
           </PaginationItem>
           <PaginationItem>
             <PaginationLink href={'#'}>2</PaginationLink>
           </PaginationItem>
           <PaginationItem>
-            <PaginationLink href={'#'} isActive>
-              3
-            </PaginationLink>
+            <PaginationLink href={'#'}>3</PaginationLink>
           </PaginationItem>
           <PaginationItem>
             <PaginationElipse />
+          </PaginationItem>
+          <PaginationItem>
+            <PaginationLink href={'#'}>10</PaginationLink>
           </PaginationItem>
           <PaginationItem>
             <PaginationNext href={'#'} />

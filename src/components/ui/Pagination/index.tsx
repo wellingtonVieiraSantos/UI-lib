@@ -4,7 +4,12 @@ import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 const Pagination = ({ className, ...props }: React.ComponentProps<'div'>) => {
-  return <div className={twMerge(``, className)} {...props} />
+  return (
+    <div
+      className={twMerge(`grid place-content-center`, className)}
+      {...props}
+    />
+  )
 }
 
 Pagination.displayName = 'Pagination'
@@ -16,7 +21,7 @@ const PaginationContent = forwardRef<
   return (
     <ul
       className={twMerge(
-        `flex flex-row justify-center items-center gap-2`,
+        `flex flex-row justify-center items-center gap-2 border p-2 border-terciary/20 rounded-xl`,
         className
       )}
       ref={ref}
@@ -46,10 +51,12 @@ PaginationItem.displayName = 'PaginationItem'
 
 interface PaginationLinkProps extends React.ComponentProps<typeof Link> {
   isActive?: boolean
+  disabled?: boolean
 }
 
 const PaginationLink = ({
   isActive,
+  disabled,
   className,
   ...props
 }: PaginationLinkProps) => {
@@ -58,7 +65,8 @@ const PaginationLink = ({
       aria-current={isActive ? 'page' : undefined}
       className={twMerge(
         `h-full flex-1 grid place-items-center rounded border-terciary/30 transition duration-300 hover:bg-terciary/30`,
-        isActive && 'border',
+        isActive && 'bg-button-secondary hover:bg-button-secondary/70',
+        disabled && 'pointer-events-none bg-terciary/10 text-terciary/30',
         className
       )}
       {...props}
@@ -74,8 +82,8 @@ const PaginationNext = ({
 }: React.ComponentProps<typeof PaginationLink>) => {
   return (
     <PaginationLink {...props}>
-      <div className={twMerge(`flex px-4`, className)}>
-        <span>Next</span>
+      <div className={twMerge(`flex`, className)}>
+        <span className='sr-only'>Next</span>
         <ChevronRight />
       </div>
     </PaginationLink>
@@ -90,9 +98,9 @@ const PaginationPrev = ({
 }: React.ComponentProps<typeof PaginationLink>) => {
   return (
     <PaginationLink {...props}>
-      <div className={twMerge(`flex px-4`, className)}>
+      <div className={twMerge(`flex`, className)}>
         <ChevronLeft />
-        <span>Prev</span>
+        <span className='sr-only'>Previous</span>
       </div>
     </PaginationLink>
   )
