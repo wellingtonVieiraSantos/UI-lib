@@ -14,7 +14,16 @@ import {
   DropdownSubContent,
   DropdownSubTrigger
 } from '@/components/ui/Dropdown'
-import { ChevronRight, Hash } from 'lucide-react'
+import {
+  ChevronRight,
+  Facebook,
+  Github,
+  Instagram,
+  Linkedin,
+  Twitch,
+  Twitter,
+  Youtube
+} from 'lucide-react'
 import { useState } from 'react'
 
 export default function DropdownExample() {
@@ -39,20 +48,23 @@ export default function DropdownExample() {
           </DropdownLabel>
           <DropdownSeparator />
           <DropdownItem>
-            Instagram
-            <Hash />
+            <span className='w-2/3 truncate'>
+              Instagram uahudahusfdhaushd ihaiu fhaiusdh iusahdfiu
+              hasdifuhaisudf haiusdhf iausdh
+            </span>
+            <Instagram />
           </DropdownItem>
           <DropdownItem>
-            TikTok
-            <Hash />
+            Facebook
+            <Facebook />
+          </DropdownItem>
+          <DropdownItem>
+            Youtube
+            <Youtube />
           </DropdownItem>
           <DropdownItem disabled>
-            Youtube
-            <Hash />
-          </DropdownItem>
-          <DropdownItem>
             Twitter
-            <Hash />
+            <Twitter />
           </DropdownItem>
           <DropdownLabel className='p-2 text-sm'>Sub Menu</DropdownLabel>
           <DropdownSeparator />
@@ -60,22 +72,22 @@ export default function DropdownExample() {
             <DropdownSubTrigger>
               More Links <ChevronRight />
             </DropdownSubTrigger>
-            <DropdownSubContent>
+            <DropdownSubContent sideOffset={-200}>
               <DropdownLabel className='text-sm p-2'>
                 Sub Menu Options
               </DropdownLabel>
               <DropdownSeparator />
               <DropdownItem>
-                Discord
-                <Hash />
+                Twitch
+                <Twitch />
               </DropdownItem>
               <DropdownItem>
                 Github
-                <Hash />
+                <Github />
               </DropdownItem>
               <DropdownItem>
-                Instagram
-                <Hash />
+                LinkedIn
+                <Linkedin />
               </DropdownItem>
               <DropdownItem>
                 <span>More...</span>

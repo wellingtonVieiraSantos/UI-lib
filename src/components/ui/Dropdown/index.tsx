@@ -18,7 +18,7 @@ const DropdownContent = forwardRef<
     <DropdownPortal>
       <DropdownRadix.Content
         className={twMerge(
-          ` bg-secondary border border-terciary/30 rounded py-1`,
+          ` bg-secondary border border-terciary/30 rounded py-1 overflow-x-hidden overflow-y-auto`,
           className
         )}
         ref={ref}
@@ -39,7 +39,7 @@ const DropdownSubContent = forwardRef<
     <DropdownPortal>
       <DropdownRadix.SubContent
         className={twMerge(
-          ` bg-secondary border border-terciary/30 rounded py-1`,
+          `min-w-50 bg-secondary border border-terciary/30 rounded py-1 overflow-hidden`,
           className
         )}
         ref={ref}
@@ -78,7 +78,7 @@ const DropdownItem = forwardRef<
   return (
     <DropdownRadix.Item
       className={twMerge(
-        `w-full h-8 flex justify-between select-none px-3 items-center text-sm outline-none focus:bg-terciary/20 [&>svg]:size-4
+        `w-full max-w-sm h-8 flex justify-between select-none px-3 items-center text-sm outline-none focus:bg-terciary/20 [&>svg]:size-4
         hover:bg-terciary/20 cursor-default data-disabled:cursor-not-allowed data-disabled:text-terciary/50 transition duration-300`,
         className
       )}
