@@ -98,6 +98,16 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/Select'
+import {
+  NavigationContent,
+  NavigationIndicator,
+  NavigationItem,
+  NavigationLink,
+  NavigationList,
+  NavigationMenu,
+  NavigationTrigger,
+  NavigationViewport
+} from '@/components/ui/NavegationMenu'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
@@ -376,14 +386,18 @@ export default function Home() {
             <SelectLabel>Frameworks</SelectLabel>
             <SelectItem value='text-4'>React</SelectItem>
             <SelectItem value='text-5'>Vue</SelectItem>
-            <SelectItem value='text-6'>Angular</SelectItem>
+            <SelectItem value='text-6' disabled>
+              Angular
+            </SelectItem>
           </SelectGroup>
           <SelectSeparator />
           <SelectGroup>
             <SelectLabel>Back-End</SelectLabel>
             <SelectItem value='text-7'>Java</SelectItem>
             <SelectItem value='text-8'>Node</SelectItem>
-            <SelectItem value='text-9'>PHP</SelectItem>
+            <SelectItem value='text-9' disabled>
+              PHP
+            </SelectItem>
             <SelectItem value='text-10'>Python</SelectItem>
           </SelectGroup>
           <SelectSeparator />
@@ -391,7 +405,9 @@ export default function Home() {
             <SelectLabel>Databases</SelectLabel>
             <SelectItem value='text-11'>MySql</SelectItem>
             <SelectItem value='text-12'>MongoDB</SelectItem>
-            <SelectItem value='text-13'>MariaDB</SelectItem>
+            <SelectItem value='text-13' disabled>
+              MariaDB
+            </SelectItem>
             <SelectItem value='text-14'>PostgreSql</SelectItem>
           </SelectGroup>
         </SelectContent>
@@ -699,6 +715,45 @@ export default function Home() {
           </PaginationItem>
         </PaginationContent>
       </Pagination>
+      {/* NavigationMenu Component example */}
+      <NavigationMenu className='w-md'>
+        <NavigationList>
+          <NavigationItem>
+            <NavigationTrigger>Products</NavigationTrigger>
+            <NavigationContent>
+              <div className='w-[200px] flex flex-col'>
+                <NavigationLink className='w-full' href='#'>
+                  Link 1
+                </NavigationLink>
+                <NavigationLink href='/drawer' className='w-full'>
+                  Link 2
+                </NavigationLink>
+              </div>
+            </NavigationContent>
+          </NavigationItem>
+          <NavigationItem>
+            <NavigationTrigger>About</NavigationTrigger>
+            <NavigationContent>
+              <div className='w-[400px] flex flex-col'>
+                <NavigationLink href='/' className='w-full'>
+                  Link 1
+                </NavigationLink>
+                <NavigationLink href='/dropdown' className='w-full'>
+                  Link 2
+                </NavigationLink>
+                <NavigationLink href='/login' className='w-full'>
+                  Link 3
+                </NavigationLink>
+              </div>
+            </NavigationContent>
+          </NavigationItem>
+          <NavigationItem>
+            <NavigationLink href='/teste'>Perfil</NavigationLink>
+          </NavigationItem>
+          <NavigationIndicator />
+        </NavigationList>
+        <NavigationViewport />
+      </NavigationMenu>
       <div className='h-screen w-md'></div>
     </div>
   )

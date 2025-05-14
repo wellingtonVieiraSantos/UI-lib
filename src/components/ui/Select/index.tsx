@@ -15,7 +15,8 @@ const SelectTrigger = forwardRef<
     <SelectRadix.Trigger
       className={twMerge(
         `border border-terciary/30 rounded flex justify-between items-center w-full h-8 px-2
-         data-placeholder:text-terciary/70 data-[state=open]:[&>svg]:rotate-180 [&>span]:line-clamp-1`,
+         data-placeholder:text-terciary/70 data-[state=open]:[&>svg]:rotate-180 [&>span]:line-clamp-1
+         data-disabled:cursor-not-allowed data-disabled:bg-terciary/20`,
         className
       )}
       ref={ref}
@@ -84,7 +85,8 @@ const SelectContent = forwardRef<
         <SelectRadix.Content
           className={twMerge(
             `z-50 max-h-[var(--radix-select-content-available-height)] w-full bg-secondary 
-            overflow-y-auto overflow-x-hidden border border-terciary/30 rounded`,
+            overflow-y-auto overflow-x-hidden border border-terciary/30 rounded
+            data-[state=open]:animate-fadeIn data-[state=closed]:animate-fadeOut origin-[var(--radix-select-content-transform-origin)]`,
             className
           )}
           ref={ref}
@@ -120,7 +122,8 @@ const SelectItem = forwardRef<
     <SelectRadix.SelectItem
       className={twMerge(
         `relative h-8 p-1.5 pl-2 pr-8 flex w-full cursor-default select-none items-center outline-none
-         hover:bg-terciary/20 focus:bg-terciary/20 data-[state=checked]:bg-button-secondary`,
+         hover:bg-terciary/20 focus:bg-terciary/20 data-[state=checked]:bg-button-secondary
+         data-disabled:cursor-not-allowed data-disabled:text-terciary/50`,
         className
       )}
       ref={ref}

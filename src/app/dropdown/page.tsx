@@ -48,10 +48,7 @@ export default function DropdownExample() {
           </DropdownLabel>
           <DropdownSeparator />
           <DropdownItem>
-            <span className='w-2/3 truncate'>
-              Instagram uahudahusfdhaushd ihaiu fhaiusdh iusahdfiu
-              hasdifuhaisudf haiusdhf iausdh
-            </span>
+            <span className='w-2/3 truncate'>Instagram</span>
             <Instagram />
           </DropdownItem>
           <DropdownItem>
