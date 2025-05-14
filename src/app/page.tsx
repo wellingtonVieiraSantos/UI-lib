@@ -88,6 +88,16 @@ import {
   DropdownSubContent,
   DropdownSubTrigger
 } from '@/components/ui/Dropdown'
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue
+} from '@/components/ui/Select'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
@@ -350,11 +360,42 @@ export default function Home() {
         </DropdownContent>
       </Dropdown>
       {/* Select input example */}
-      {/*  <Select.Root>
-        <Select.Item>Item 1</Select.Item>
-        <Select.Item>Item 2</Select.Item>
-        <Select.Item>Item 3</Select.Item>
-      </Select.Root> */}
+      <Select>
+        <SelectTrigger className='w-[180px]'>
+          <SelectValue placeholder='Select language' />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectGroup>
+            <SelectLabel>Front-End</SelectLabel>
+            <SelectItem value='text-1'>HTML</SelectItem>
+            <SelectItem value='text-2'>CSS</SelectItem>
+            <SelectItem value='text-3'>JavaScript</SelectItem>
+          </SelectGroup>
+          <SelectSeparator />
+          <SelectGroup>
+            <SelectLabel>Frameworks</SelectLabel>
+            <SelectItem value='text-4'>React</SelectItem>
+            <SelectItem value='text-5'>Vue</SelectItem>
+            <SelectItem value='text-6'>Angular</SelectItem>
+          </SelectGroup>
+          <SelectSeparator />
+          <SelectGroup>
+            <SelectLabel>Back-End</SelectLabel>
+            <SelectItem value='text-7'>Java</SelectItem>
+            <SelectItem value='text-8'>Node</SelectItem>
+            <SelectItem value='text-9'>PHP</SelectItem>
+            <SelectItem value='text-10'>Python</SelectItem>
+          </SelectGroup>
+          <SelectSeparator />
+          <SelectGroup>
+            <SelectLabel>Databases</SelectLabel>
+            <SelectItem value='text-11'>MySql</SelectItem>
+            <SelectItem value='text-12'>MongoDB</SelectItem>
+            <SelectItem value='text-13'>MariaDB</SelectItem>
+            <SelectItem value='text-14'>PostgreSql</SelectItem>
+          </SelectGroup>
+        </SelectContent>
+      </Select>
       {/* Accordion component example */}
       <Accordion
         type='multiple'
