@@ -13,7 +13,6 @@ import { Button } from '../ui/Button'
 import { Badge } from '../ui/Badge'
 
 const navLinks = [
-  { path: '/', textLink: 'Home', iconLink: Home },
   {
     path: '/dropdown',
     textLink: 'Messages',
@@ -21,6 +20,7 @@ const navLinks = [
     notification: 2
   },
   { path: '/radio', textLink: 'Likes', iconLink: Heart },
+  { path: '/', textLink: 'Home', iconLink: Home },
   { path: '/drawer', textLink: 'Settings', iconLink: Settings },
   { path: '/login', textLink: 'Profile', iconLink: User }
 ]
@@ -30,7 +30,7 @@ export default function Header() {
 
   return (
     <>
-      <div className='hidden md:block md:fixed top-0 w-full h-15 bg-primary px-2 z-10'>
+      <div className='hidden md:block md:fixed top-0 w-full h-20 bg-primary px-2 z-10'>
         <nav className='h-full flex justify-between items-center'>
           <h2 className='flex-1'>Logo</h2>
           <ul className='flex flex-1 gap-2 text-terciary/50'>
@@ -65,7 +65,7 @@ export default function Header() {
       </div>
       {/* Mobile navbar bottom */}
       <div
-        className={`md:hidden w-dvw h-18 fixed bottom-0 rounded-t-3xl bg-primary text-[12px] 
+        className={`md:hidden w-dvw h-17 fixed bottom-0 rounded-t-3xl bg-primary text-[12px] 
         z-10 shadow-[1px_-14px_0_0_theme(--color-terciary)] dark:shadow-[0px_-14px_0_0_theme(--color-secondary)]`}
       >
         <nav className='h-full'>
@@ -83,8 +83,7 @@ export default function Header() {
                 >
                   <span className='relative inline-block z-10'>
                     <link.iconLink
-                      size={26}
-                      className={`${
+                      className={`size-6 ${
                         pathName === link.path
                           ? '-translate-y-[18px]'
                           : 'translate-y-2'
@@ -113,7 +112,7 @@ export default function Header() {
                   <div
                     className={`${
                       pathName === link.path ? 'absolute' : 'hidden'
-                    } -top-10 size-18 bg-button-secondary rounded-full border-6 dark:border-secondary
+                    } -top-10 size-17 bg-button-secondary rounded-full border-6 dark:border-secondary
                       after:absolute after:size-7 after:bg-transparent after:-left-[30px] after:top-[22px]
                       after:rounded-tr-full after:shadow-[1px_-14px_0_0_theme(--color-terciary)] dark:after:shadow-[0px_-14px_0_0_theme(--color-secondary)]
                       before:absolute before:size-7 before:bg-transparent before:-right-[30px] before:top-[22px]
