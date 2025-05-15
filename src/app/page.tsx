@@ -19,7 +19,8 @@ import {
   Mail,
   FileJson,
   Send,
-  Calculator
+  Calculator,
+  ChevronsUpDown
 } from 'lucide-react'
 import { Badge } from '@/components/ui/Badge'
 
@@ -108,6 +109,11 @@ import {
   NavigationTrigger,
   NavigationViewport
 } from '@/components/ui/NavegationMenu'
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger
+} from '@/components/ui/Collapsible'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
@@ -754,6 +760,28 @@ export default function Home() {
         </NavigationList>
         <NavigationViewport />
       </NavigationMenu>
+      {/* Collapsible component example */}
+      <Collapsible className='max-w-sm p-2 flex flex-col gap-3'>
+        <div className='flex items-center gap-4 text-sm'>
+          <span>@Peduarte starred 3 repositiories</span>
+          <CollapsibleTrigger asChild>
+            <Button icon={ChevronsUpDown} size='icon' variant='border' />
+          </CollapsibleTrigger>
+        </div>
+        <div className='border border-terciary/20 rounded py-1 px-2 text-sm w-2/3'>
+          <span>@radix-ui/primitives</span>
+        </div>
+        <CollapsibleContent>
+          <div className='flex flex-col gap-3'>
+            <span className='border border-terciary/20 rounded py-1 px-2 text-sm w-2/3'>
+              @radix-ui/colors
+            </span>
+            <span className='border border-terciary/20 rounded py-1 px-2 text-sm w-2/3'>
+              @stitches/react
+            </span>
+          </div>
+        </CollapsibleContent>
+      </Collapsible>
       <div className='h-screen w-md'></div>
     </div>
   )

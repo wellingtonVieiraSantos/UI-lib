@@ -32,7 +32,7 @@ export default function DropdownExample() {
   const [itemRadioOption, setItemRadioOption] = useState('1')
 
   return (
-    <div className='max-h-screen grid place-content-center mt-20'>
+    <div className='w-full h-[calc(100dvh-80px)] flex justify-center md:py-10'>
       <Dropdown>
         <DropdownTrigger asChild>
           <Button variant='border'>
@@ -69,7 +69,7 @@ export default function DropdownExample() {
             <DropdownSubTrigger>
               More Links <ChevronRight />
             </DropdownSubTrigger>
-            <DropdownSubContent sideOffset={-200}>
+            <DropdownSubContent>
               <DropdownLabel className='text-sm p-2'>
                 Sub Menu Options
               </DropdownLabel>

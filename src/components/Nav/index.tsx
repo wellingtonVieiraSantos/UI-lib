@@ -66,7 +66,7 @@ export default function Header() {
       {/* Mobile navbar bottom */}
       <div
         className={`md:hidden w-dvw h-17 fixed bottom-0 rounded-t-3xl bg-primary text-[12px] 
-        z-10 shadow-[1px_-14px_0_0_theme(--color-terciary)] dark:shadow-[0px_-14px_0_0_theme(--color-secondary)]`}
+        z-10 shadow-[1px_-14px_0_0_theme(--color-terciary)] dark:shadow-[0px_-6px_0_0_theme(--color-secondary)]`}
       >
         <nav className='h-full'>
           <ul className='h-full flex items-center text-terciary'>
@@ -113,10 +113,10 @@ export default function Header() {
                     className={`${
                       pathName === link.path ? 'absolute' : 'hidden'
                     } -top-10 size-17 bg-button-secondary rounded-full border-6 dark:border-secondary
-                      after:absolute after:size-7 after:bg-transparent after:-left-[30px] after:top-[22px]
-                      after:rounded-tr-full after:shadow-[1px_-14px_0_0_theme(--color-terciary)] dark:after:shadow-[0px_-14px_0_0_theme(--color-secondary)]
-                      before:absolute before:size-7 before:bg-transparent before:-right-[30px] before:top-[22px]
-                      before:rounded-tl-full before:shadow-[-1px_-14px_0_0_theme(--color-terciary)] dark:before:shadow-[0px_-14px_0_0_theme(--color-secondary)]`}
+                      after:absolute after:w-7 after:h-5 after:bg-transparent after:-left-[32px] after:top-[23px]
+                      after:rounded-tr-full after:shadow-[3px_-6px_0_0_theme(--color-terciary)] dark:after:shadow-[3px_-6px_0_0_theme(--color-secondary)]
+                      before:absolute before:w-7 before:h-5 before:bg-transparent before:-right-[32px] before:top-[23px]
+                      before:rounded-tl-full before:shadow-[-3px_-6px_0_0_theme(--color-terciary)] dark:before:shadow-[-3px_-6px_0_0_theme(--color-secondary)]`}
                   ></div>
                 </Link>
               </li>

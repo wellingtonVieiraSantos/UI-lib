@@ -4,7 +4,6 @@
   --bg-color: #fffdf2;
   --text-color: #242629;
 }
-
 @theme {
   /* colors */
   --color-primary: oklch(0.2 0.0079 285.67);
@@ -19,6 +18,9 @@
   --animate-fadeIn: fadeIn 0.3s ease-in-out;
   --animate-fadeOut: fadeOut 0.3s ease-in-out;
   --animate-skeletonShimmer: SkeletonShimmer 1.5s linear infinite;
+  /* collapsible animates */
+  --animate-slideDownCollapsible: slideDownCollapsible 0.3s ease-in-out;
+  --animate-slideUpCollapsible: slideUpCollapsible 0.3s ease-in-out;
   /* accordion animates */
   --animate-AccordionSlideDown: AccordionSlideDown 0.3s ease-out;
   --animate-AccordionSlideUp: AccordionSlideUp 0.3s ease-out;
@@ -31,6 +33,23 @@
 
   --animate-DrawerRightInitial: DrawerRightInitial 0.3s ease-in-out;
   --animate-DrawerRightFinal: DrawerRightFinal 0.3s ease-in-out;
+
+  @keyframes slideDownCollapsible {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-collapsible-content-height);
+    }
+  }
+  @keyframes slideUpCollapsible {
+    from {
+      height: var(--radix-collapsible-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
 
   @keyframes AccordionSlideDown {
     from {

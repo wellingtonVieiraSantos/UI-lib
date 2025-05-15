@@ -16,7 +16,7 @@ import {
 
 export default function Login() {
   return (
-    <main className='size-full grid place-content-center'>
+    <main className='w-full h-[calc(100dvh-80px)] grid place-content-center'>
       <Tabs
         defaultValue='login'
         className='w-full max-w-lg border border-terciary/30 rounded data-[orientation=vertical]:flex'
