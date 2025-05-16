@@ -11,7 +11,7 @@ interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
 const variantClass: Record<variantTypes, string> = {
   outline: 'bg-transparent border border-terciary/70',
   info: 'bg-sky-800',
-  success: 'bg-emerald-800',
+  success: 'bg-emerald-700',
   warning: 'bg-amber-700',
   error: 'bg-red-800'
 }

@@ -24,7 +24,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           className={twMerge(
             `${
               Icon ? 'px-10' : 'pl-2 pr-8'
-            } w-full appearance-none py-2 border rounded border-secondary/50 dark:border-terciary/30 placeholder:text-sm
+            } w-full h-9 appearance-none border rounded border-secondary/50 dark:border-terciary/30 placeholder:text-sm
           outline-none no-spinner peer focus-within:ring-1 focus-within:ring-secondary/80 dark:focus-within:ring-terciary/80`,
             className
           )}
@@ -32,13 +32,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         />
         <X
           size={16}
-          className={`absolute bottom-3 hidden peer-focus:block cursor-pointer right-2`}
+          className={`absolute bottom-2.5 hidden peer-focus:block cursor-pointer right-2`}
           onMouseDown={handleDelete}
         />
         {Icon && (
           <Icon
-            size={20}
-            className={`absolute bottom-3 left-2  pointer-events-none`}
+            size={18}
+            className={`absolute bottom-2.5 left-2  pointer-events-none`}
           />
         )}
       </div>

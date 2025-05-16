@@ -2,7 +2,7 @@
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 
-import { useEffect, useRef, useState } from 'react'
+import { FormEvent, useEffect, useRef, useState } from 'react'
 import {
   Plus,
   Minus,
@@ -20,7 +20,10 @@ import {
   FileJson,
   Send,
   Calculator,
-  ChevronsUpDown
+  ChevronsUpDown,
+  SendHorizonal,
+  Lock,
+  ChevronLeft
 } from 'lucide-react'
 import { Badge } from '@/components/ui/Badge'
 
@@ -114,11 +117,22 @@ import {
   CollapsibleContent,
   CollapsibleTrigger
 } from '@/components/ui/Collapsible'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormLabel,
+  FormMessage,
+  FormSubmit,
+  FormSubmitError
+} from '@/components/ui/Form'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
   const [count, setCount] = useState(0)
   const [value, setValue] = useState(0)
+  const [loading, setLoading] = useState(false)
+  const [errorPaswword, setErrorPaswword] = useState<string | null>(null)
 
   useEffect(() => {
     const progress = setInterval(() => {
@@ -135,11 +149,26 @@ export default function Home() {
   }, [value])
 
   const inputRef = useRef<HTMLInputElement | null>(null)
+  const inputPasswordRef = useRef<HTMLInputElement | null>(null)
   const handleDelete = () => {
     console.log(inputRef.current)
 
     if (!inputRef.current) return
     inputRef.current.value = ''
+  }
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+      if (inputPasswordRef.current?.value !== 'teste') {
+        setErrorPaswword('Incorrect username or password.')
+        return
+      }
+    }, 3000)
+    setErrorPaswword(null)
+    console.log('connected')
   }
 
   return (
@@ -163,23 +192,49 @@ export default function Home() {
       <Button
         size='md'
         variant='border'
-        icon={showDescribe ? Minus : Plus}
         onClick={() => setShowDescribe(!showDescribe)}
       >
+        {showDescribe ? <Minus /> : <Plus />}
         <span>{showDescribe ? 'Ver menos' : 'Ver mais'}</span>
       </Button>
-      <Button
-        iconPosition='right'
-        size='lg'
-        icon={ArrowUpRight}
-        onClick={() => setCount(prev => prev + 10)}
-      >
+      <Button size='lg' onClick={() => setCount(prev => prev + 10)}>
         <span>show more</span>
+        <ArrowUpRight />
       </Button>
-      <Button size='sm' variant='ghost' icon={LinkIcon}>
+      <Button variant='ghost'>
+        <LinkIcon />
         <span>link for inscription</span>
       </Button>
-      <Button icon={X} size='icon' />
+      <div className='max-w-sm border border-terciary/30 rounded p-4 grid gap-2'>
+        <span>Buttons variants</span>
+        <Button>
+          <span>Default</span>
+        </Button>
+        <Button variant='border'>
+          <span>Border</span>
+        </Button>
+        <Button variant='ghost'>
+          <span>Ghost</span>
+        </Button>
+        <Button variant='link'>
+          <span>Link</span>
+        </Button>
+        <Button disabled>
+          <span>Disabled</span>
+        </Button>
+        <Button variant='loading'>
+          <span>Loading</span>
+        </Button>
+        <Button variant='success'>
+          <span>Success</span>
+        </Button>
+        <Button variant='error'>
+          <span>Error</span>
+        </Button>
+      </div>
+      <Button size='icon'>
+        <X />
+      </Button>
       {/* Input Components example */}
       <Input id='nome' placeholder='escreva aqui' type='password' icon={User} />
       <Input
@@ -230,7 +285,8 @@ export default function Home() {
             <Input id='name' placeholder='Envie uma mensagem' />
           </div>
           <ModalActions>
-            <Button size='md' icon={Send} className='w-full sm:w-fit'>
+            <Button size='md' className='w-full sm:w-fit'>
+              <Send />
               <span>Enviar Menssagem</span>
             </Button>
           </ModalActions>
@@ -260,12 +316,9 @@ export default function Home() {
       {/* Dropdown menu example */}
       <Dropdown>
         <DropdownTrigger asChild>
-          <Button
-            variant='border'
-            size='icon'
-            icon={Share2}
-            className='size-13'
-          />
+          <Button variant='border' size='icon' className='size-13'>
+            <Share2 />
+          </Button>
         </DropdownTrigger>
         <DropdownContent sideOffset={4}>
           <DropdownLabel className='p-2 text-sm'>
@@ -276,38 +329,26 @@ export default function Home() {
           </DropdownLabel>
           <DropdownSeparator />
           <DropdownItem>
-            <Button
-              variant='ghost'
-              icon={ChevronRight}
-              className='w-full justify-start'
-            >
+            <Button variant='ghost' className='w-full justify-start'>
+              <ChevronDown />
               <span>Instagram</span>
             </Button>
           </DropdownItem>
           <DropdownItem>
-            <Button
-              variant='ghost'
-              icon={ChevronRight}
-              className='w-full justify-start'
-            >
+            <Button variant='ghost' className='w-full justify-start'>
+              <ChevronDown />
               <span>TikTok</span>
             </Button>
           </DropdownItem>
           <DropdownItem>
-            <Button
-              variant='ghost'
-              icon={ChevronRight}
-              className='w-full justify-start'
-            >
+            <Button variant='ghost' className='w-full justify-start'>
+              <ChevronDown />
               <span>Youtube</span>
             </Button>
           </DropdownItem>
           <DropdownItem>
-            <Button
-              variant='ghost'
-              icon={ChevronRight}
-              className='w-full justify-start'
-            >
+            <Button variant='ghost' className='w-full justify-start'>
+              <ChevronDown />
               <span>Twitter</span>
             </Button>
           </DropdownItem>
@@ -315,13 +356,9 @@ export default function Home() {
           <DropdownSeparator />
           <DropdownSub>
             <DropdownSubTrigger asChild>
-              <Button
-                variant='ghost'
-                icon={ChevronRight}
-                iconPosition='right'
-                className='w-full justify-between'
-              >
+              <Button variant='ghost' className='w-full justify-between'>
                 <span>More Links</span>
+                <ChevronRight />
               </Button>
             </DropdownSubTrigger>
             <DropdownSubContent>
@@ -330,29 +367,20 @@ export default function Home() {
               </DropdownLabel>
               <DropdownSeparator />
               <DropdownItem>
-                <Button
-                  variant='ghost'
-                  icon={ChevronRight}
-                  className='w-full justify-start'
-                >
+                <Button variant='ghost' className='w-full justify-start'>
+                  <ChevronDown />
                   <span>Discord</span>
                 </Button>
               </DropdownItem>
               <DropdownItem>
-                <Button
-                  variant='ghost'
-                  icon={ChevronRight}
-                  className='w-full justify-start'
-                >
+                <Button variant='ghost' className='w-full justify-start'>
+                  <ChevronDown />
                   <span>Github</span>
                 </Button>
               </DropdownItem>
               <DropdownItem>
-                <Button
-                  variant='ghost'
-                  icon={ChevronRight}
-                  className='w-full justify-start'
-                >
+                <Button variant='ghost' className='w-full justify-start'>
+                  <ChevronDown />
                   <span>Twitch</span>
                 </Button>
               </DropdownItem>
@@ -446,9 +474,9 @@ export default function Home() {
                 <Button
                   variant='ghost'
                   size='md'
-                  icon={ChevronDown}
                   className='w-full justify-start'
                 >
+                  <ChevronDown />
                   <span>Button 1</span>
                 </Button>
               </li>
@@ -456,9 +484,9 @@ export default function Home() {
                 <Button
                   variant='ghost'
                   size='md'
-                  icon={ChevronDown}
                   className='w-full justify-start'
                 >
+                  <ChevronDown />
                   <span>Button 2</span>
                 </Button>
               </li>
@@ -466,9 +494,9 @@ export default function Home() {
                 <Button
                   variant='ghost'
                   size='md'
-                  icon={ChevronDown}
                   className='w-full justify-start'
                 >
+                  <ChevronDown />
                   <span>Button 3</span>
                 </Button>
               </li>
@@ -525,7 +553,8 @@ export default function Home() {
       {/* Drawer component example */}
       <Drawer>
         <DrawerTrigger asChild>
-          <Button icon={Plus} size='lg'>
+          <Button size='lg'>
+            <Plus />
             <span>Abrir Drawer</span>
           </Button>
         </DrawerTrigger>
@@ -542,21 +571,13 @@ export default function Home() {
               product
             </div>
             <DrawerActions>
-              <Button
-                icon={ArrowLeft}
-                variant='border'
-                size='md'
-                className='w-full sm:w-auto'
-              >
+              <Button variant='border' size='md' className='w-full sm:w-auto'>
+                <ArrowLeft />
                 <span>Back</span>
               </Button>
-              <Button
-                icon={Check}
-                size='md'
-                iconPosition='right'
-                className='w-full sm:w-auto'
-              >
+              <Button size='md' className='w-full sm:w-auto'>
                 <span>Confirm</span>
+                <Check />
               </Button>
             </DrawerActions>
           </div>
@@ -673,13 +694,20 @@ export default function Home() {
         <Divider className='w-1/2 flex-none' />
         <Divider orientation='vertical' />
       </div>
-      <Button icon={LinkIcon} variant='link'>
+      <Button variant='link'>
+        <LinkIcon />
         <span>go to destination</span>
       </Button>
       <div className='flex gap-2'>
-        <Button icon={X} variant='border' size='icon' />
-        <Button icon={X} variant='ghost' size='icon' />
-        <Button icon={X} size='icon' />
+        <Button variant='border' size='icon'>
+          <X />
+        </Button>
+        <Button variant='ghost' size='icon'>
+          <X />
+        </Button>
+        <Button size='icon'>
+          <X />
+        </Button>
       </div>
       <ToggleGroup type='multiple' disabled>
         <ToggleGroupItem value='1'>html</ToggleGroupItem>
@@ -765,7 +793,9 @@ export default function Home() {
         <div className='flex items-center gap-4 text-sm'>
           <span>@Peduarte starred 3 repositiories</span>
           <CollapsibleTrigger asChild>
-            <Button icon={ChevronsUpDown} size='icon' variant='border' />
+            <Button size='icon' variant='border'>
+              <ChevronsUpDown />
+            </Button>
           </CollapsibleTrigger>
         </div>
         <div className='border border-terciary/20 rounded py-1 px-2 text-sm w-2/3'>
@@ -782,6 +812,60 @@ export default function Home() {
           </div>
         </CollapsibleContent>
       </Collapsible>
+      {/* Form component example */}
+      <Form
+        className='border border-terciary/30 max-w-sm p-4 flex flex-col gap-4 rounded'
+        onSubmit={e => handleSubmit(e)}
+      >
+        <h1 className=' text-center'>Login</h1>
+
+        <FormField name='email'>
+          <FormLabel>Email</FormLabel>
+          <FormControl asChild>
+            <Input
+              id='emailform'
+              type='email'
+              required
+              className='data-[invalid]:border-red-500 data-[invalid]:focus:ring-0'
+            />
+          </FormControl>
+          <FormMessage match='typeMismatch'>Incorrect email</FormMessage>
+          <FormMessage match='valueMissing'>Required email</FormMessage>
+        </FormField>
+        <FormField name='senha'>
+          <FormLabel>Senha</FormLabel>
+          <FormControl asChild ref={inputPasswordRef}>
+            <Input
+              id='senhaform'
+              type='password'
+              icon={Lock}
+              required
+              className='data-[invalid]:border-red-500 data-[invalid]:focus:ring-0'
+            />
+          </FormControl>
+          <FormMessage match='valueMissing'>Required password</FormMessage>
+        </FormField>
+        {errorPaswword && <FormSubmitError>{errorPaswword}</FormSubmitError>}
+        <FormSubmit asChild>
+          <Button
+            className='w-full disabled:bg-button-secondary/30 disabled:cursor-wait'
+            type='submit'
+            disabled={loading}
+          >
+            {loading ? (
+              <div className='flex items-center gap-2'>
+                <div className='size-4 border-1 border-b-transparent rounded-full animate-spin' />
+                Connecting...
+              </div>
+            ) : (
+              <div className='flex items-center gap-2'>
+                <SendHorizonal />
+                Send
+              </div>
+            )}
+          </Button>
+        </FormSubmit>
+      </Form>
       <div className='h-screen w-md'></div>
     </div>
   )
