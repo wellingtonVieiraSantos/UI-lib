@@ -9,7 +9,7 @@ const Label = forwardRef<
   return (
     <LabelRadix.Root
       className={twMerge(
-        `inline-flex flex-col peer-disabled:cursor-not-allowed peer-disabled:text-terciary/50 cursor-pointer`,
+        `inline-flex flex-col peer-disabled:cursor-not-allowed peer-disabled:text-secondary/50 dark:peer-disabled:text-terciary/50 cursor-pointer`,
         className
       )}
       ref={ref}

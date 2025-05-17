@@ -27,11 +27,11 @@ const variantClasses: Record<variant, string> = {
   default: 'bg-button-secondary text-terciary hover:bg-button-secondary/70',
   border:
     'border border-secondary/30 dark:border-terciary/30 hover:border-secondary dark:hover:border-terciary',
-  ghost: 'hover:bg-secondary/10 dark:hover:bg-terciary/20',
-  link: 'after:absolute after:bottom-1 after:w-0 after:h-[1px] after:bg-terciary/50 hover:after:w-full after:transition-all after:duration-300',
-  loading: 'bg-button-secondary/80 cursor-wait ',
-  success: 'bg-emerald-600 pointer-events-none animate-shake',
-  error: 'bg-red-800 pointer-events-none animate-shake'
+  ghost: 'hover:bg-secondary/30 dark:hover:bg-terciary/30',
+  link: 'after:absolute after:bottom-1 after:w-0 after:h-[1px] after:bg-secondary/50 dark:after:bg-terciary/50 hover:after:w-full after:transition-all after:duration-300',
+  loading: 'bg-button-secondary/80 cursor-wait text-terciary',
+  success: 'bg-emerald-600 pointer-events-none animate-shake text-terciary',
+  error: 'bg-red-800 pointer-events-none animate-shake text-terciary'
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -43,7 +43,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         className={twMerge(
           `w-max relative flex items-center justify-center rounded cursor-pointer transition-color duration-300
-           disabled:bg-terciary/20 disabled:cursor-not-allowed disabled disabled:text-terciary/70`,
+           disabled:bg-secondary/20 dark:disabled:bg-terciary/20 disabled:cursor-not-allowed disabled disabled:text-secondary/50 dark:disabled:text-terciary/70`,
           sizeClasses[size],
           variantClasses[variant],
           variant === 'link' &&

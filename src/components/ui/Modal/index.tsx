@@ -39,13 +39,13 @@ const ModalContent = forwardRef<
         ref={ref}
         {...props}
         className={twMerge(
-          `fixed z-20 inset-1/2 -translate-1/2 w-full max-w-lg min-h-fit bg-primary p-6 rounded
-          grid gap-4 data-[state=open]:animate-fadeIn data-[state=closed]:animate-fadeOut border border-terciary/30`,
+          `fixed z-20 inset-1/2 -translate-1/2 w-full max-w-lg min-h-fit bg-terciary dark:bg-primary p-6 rounded
+          grid gap-4 data-[state=open]:animate-fadeIn data-[state=closed]:animate-fadeOut shadow dark:shadow-none dark:border dark:border-terciary/30`,
           className
         )}
       >
         {children}
-        <ModalClose className='text-terciary/50 hover:text-terciary absolute top-2 right-2 cursor-pointer transition duration-300'>
+        <ModalClose className='text-secondary/50 dark:text-terciary/50 hover:text-secondary dark:hover:text-terciary absolute top-2 right-2 cursor-pointer transition duration-300'>
           <X className='size-5' />
         </ModalClose>
       </DialogRadix.Content>

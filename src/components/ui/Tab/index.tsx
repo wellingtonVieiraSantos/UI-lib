@@ -14,7 +14,8 @@ const TabList = forwardRef<
       {...props}
       className={twMerge(
         `flex data-[orientation=vertical]:flex-col data-[orientation=vertical]:justify-evenly
-         items-center text-terciary/50 border-b data-[orientation=vertical]:border-r border-terciary/30 `,
+         items-center text-secondary/50 dark:text-terciary/50 border-b data-[orientation=vertical]:border-r
+          border-secondary/30 dark:border-terciary/30`,
         className
       )}
     />
@@ -33,8 +34,8 @@ const TabTrigger = forwardRef<
       {...props}
       className={twMerge(
         `data-[orientation=horizontal]:flex-1 h-11 px-3 flex justify-center items-center text-nowrap data-[state=active]:border-b-2
-         data-[state=active]:border-b-button-secondary data-[state=active]:text-terciary
-         transition duration-300 cursor-pointer hover:bg-terciary/30 disabled:bg-terciary/20 disabled:cursor-not-allowed`,
+         data-[state=active]:border-b-button-secondary data-[state=active]:text-secondary dark:data-[state=active]:text-terciary
+         transition duration-300 cursor-pointer hover:bg-secondary/30 dark:hover:bg-terciary/30 disabled:bg-secondary/20 dark:disabled:bg-terciary/20 disabled:cursor-not-allowed`,
         className
       )}
     />

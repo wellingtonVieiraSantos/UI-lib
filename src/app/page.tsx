@@ -209,7 +209,7 @@ export default function Home() {
         <LinkIcon />
         <span>link for inscription</span>
       </Button>
-      <div className='max-w-sm border border-terciary/30 rounded p-4 grid gap-2'>
+      <div className='max-w-sm border dark:border-terciary/30 rounded p-4 grid gap-2'>
         <span>Buttons variants</span>
         <Button>
           <span>Default</span>
@@ -246,6 +246,7 @@ export default function Home() {
         placeholder='Quanto é 2 + 3'
         type='number'
         icon={Calculator}
+        disabled
       />
       <Input
         id='busca'
@@ -279,7 +280,7 @@ export default function Home() {
               <h2 className='text-xl'>Titulo</h2>
             </ModalTitle>
             <ModalDescription asChild>
-              <p className='text-terciary/80 text-sm text-justify'>
+              <p className='text-sm text-justify'>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero
                 mollitia autem ratione numquam doloribus. Quibusdam.
               </p>
@@ -299,21 +300,21 @@ export default function Home() {
       {/* Radio Component example  */}
       <RadioRoot
         defaultValue='masculino'
-        className='w-sm max-w-md border border-terciary/30 rounded px-4 py-2'
+        className='w-sm max-w-md border dark:border-terciary/30 rounded px-4 py-2 shadow-md'
       >
         <h2 className='py-2'>Qual seu sexo?</h2>
-        <div className='flex flex-row-reverse justify-between items-center gap-2 border border-terciary/30 p-2 rounded cursor-pointer'>
+        <div className='flex flex-row-reverse justify-between items-center gap-2 border dark:border-terciary/30 p-2 rounded cursor-pointer '>
           <RadioItem value='masculino' id='masculino' disabled />
           <Label htmlFor='masculino'>
             Masculino
-            <span className='text-[12px] text-terciary/50'>Homem</span>
+            <span className='text-[12px] dark:text-terciary/50'>Homem</span>
           </Label>
         </div>
-        <div className='flex flex-row-reverse justify-between items-center gap-2 border border-terciary/30 p-2 rounded cursor-pointer'>
+        <div className='flex flex-row-reverse justify-between items-center gap-2 border dark:border-terciary/30 p-2 rounded cursor-pointer'>
           <RadioItem value='feminino' id='feminino' />
           <Label htmlFor='feminino'>
             Feminino{' '}
-            <span className='text-[12px] text-terciary/50'>Mulher</span>
+            <span className='text-[12px] dark:text-terciary/50'>Mulher</span>
           </Label>
         </div>
       </RadioRoot>
@@ -453,7 +454,7 @@ export default function Home() {
       {/* Accordion component example */}
       <Accordion
         type='multiple'
-        className='border max-w-md border-terciary/30 rounded divide-y-1 divide-terciary/30'
+        className='border max-w-md border-secondary/30 dark:border-terciary/30 rounded divide-y-1 divide-secondary/30 dark:divide-terciary/30'
       >
         <AccordionItem value='item-1' disabled>
           <AccordionTrigger>
@@ -530,7 +531,7 @@ export default function Home() {
       {/*  Tab component example */}
       <Tabs
         defaultValue='item-1'
-        className='max-w-sm border border-terciary/30 rounded data-[orientation=vertical]:flex'
+        className='max-w-sm border border-secondary/30 dark:border-terciary/30 rounded data-[orientation=vertical]:flex'
       >
         <TabList>
           <TabTrigger value='item-1'>Item 1</TabTrigger>
