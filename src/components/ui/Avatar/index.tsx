@@ -26,7 +26,7 @@ const AvatarImage = forwardRef<
 >(({ className, ...props }, ref) => {
   return (
     <AvatarRadix.Image
-      className={twMerge(`aspect-square size-full`, className)}
+      className={twMerge(`bg-center bg-cover`, className)}
       ref={ref}
       {...props}
     />
@@ -42,7 +42,7 @@ const AvatarFallback = forwardRef<
   return (
     <AvatarRadix.Fallback
       className={twMerge(
-        `size-full grid place-content-center rounded-full bg-terciary/20`,
+        `size-full grid place-content-center rounded-full bg-secondary/20 dark:bg-terciary/20 font-montserrat`,
         className
       )}
       ref={ref}

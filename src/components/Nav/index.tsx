@@ -31,7 +31,7 @@ export default function Header() {
 
   return (
     <>
-      <div className='hidden md:block md:fixed top-0 w-full h-20 bg-primary px-2 z-10'>
+      <div className='hidden md:block md:fixed top-0 w-full h-20 text-terciary bg-primary px-2 z-10'>
         <nav className='h-full flex justify-between items-center'>
           <h2 className='flex-1'>Logo</h2>
           <ul className='flex flex-1 gap-2 text-terciary/50'>

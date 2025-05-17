@@ -185,21 +185,20 @@
 @layer utilities {
   .scrollbar-custom {
     scrollbar-width: thin;
-    scrollbar-color: theme(--color-primary) theme(--color-secondary);
+    scrollbar-color: theme(--color-secondary/50) theme(--color-terciary);
   }
-
   .scrollbar-custom::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
 
   .scrollbar-custom::-webkit-scrollbar-thumb {
-    background-color: theme(--color-secondary);
+    background-color: theme(--color-secondary/70);
     border-radius: 4px;
   }
 
   .scrollbar-custom::-webkit-scrollbar-track {
-    background-color: theme(--color-terciary/80);
+    background-color: theme(--color-terciary);
   }
 
   input[type='search']::-webkit-search-cancel-button {
@@ -217,6 +216,18 @@
     input:-webkit-autofill {
       -webkit-box-shadow: 0 0 0px 1000px theme(--color-secondary) inset !important; /* bg desejado */
       -webkit-text-fill-color: theme(--color-terciary) !important;
+    }
+    .scrollbar-custom {
+      scrollbar-width: thin;
+      scrollbar-color: theme(--color-primary) theme(--color-secondary);
+    }
+    .scrollbar-custom::-webkit-scrollbar-thumb {
+      background-color: theme(--color-secondary);
+      border-radius: 4px;
+    }
+
+    .scrollbar-custom::-webkit-scrollbar-track {
+      background-color: theme(--color-terciary/80);
     }
   }
 }

@@ -16,9 +16,8 @@ const Divider = forwardRef<
         orientation={orientation}
         decorative={decorative}
         className={twMerge(
-          `shrink-0 ${
-            orientation === 'horizontal' ? ' h-[1px] flex-1' : 'w-[1px] h-full'
-          } bg-terciary/30`,
+          `shrink-0 bg-secondary/30 dark:bg-terciary/30`,
+          orientation === 'horizontal' ? ' h-[1px] flex-1' : 'w-[1px] h-full',
           className
         )}
         {...props}

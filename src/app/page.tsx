@@ -132,6 +132,7 @@ export default function Home() {
   const [value, setValue] = useState(0)
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
+  const [error, setError] = useState(false)
   const [errorPaswword, setErrorPaswword] = useState<string | null>(null)
 
   useEffect(() => {
@@ -164,6 +165,7 @@ export default function Home() {
       setLoading(false)
       if (inputPasswordRef.current?.value !== 'teste') {
         setErrorPaswword('Incorrect username or password.')
+        setError(true)
         return
       } else {
         setSuccess(true)
@@ -171,7 +173,10 @@ export default function Home() {
       }
     }, 3000)
     setErrorPaswword(null)
-    setTimeout(() => setSuccess(false), 4000)
+    setTimeout(() => {
+      setSuccess(false)
+      setError(false)
+    }, 4000)
     console.log(success)
   }
 
@@ -567,7 +572,7 @@ export default function Home() {
           <div className='max-w-lg m-auto grid gap-8 mt-8'>
             <DrawerHeader>
               <DrawerTitle className='text-2xl'>Title</DrawerTitle>
-              <DrawerDescription className='text-sm text-terciary/70'>
+              <DrawerDescription className='text-sm text-secondary/70 dark:text-terciary/70'>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. At,
                 aut sapiente.
               </DrawerDescription>
@@ -603,33 +608,27 @@ export default function Home() {
         </div>
       </div>
       {/* Checkbox component example */}
-      <div className='grid place-content-center gap-4 border border-terciary/30 max-w-90 py-4 rounded'>
+      <div className='grid place-content-center gap-4 border border-secondary/30 dark:border-terciary/30 max-w-90 py-4 rounded'>
         <div className='flex items-center gap-2'>
           <Checkbox id='check-1' />
           <Label htmlFor='check-1'>Checkbox 1</Label>
         </div>
         <div className='flex items-center gap-2'>
           <Checkbox id='check-2' disabled />
-          <Label
-            htmlFor='check-2'
-            className='peer-disabled:cursor-not-allowed peer-disabled:text-terciary/50 cursor-pointer'
-          >
-            Checkbox 2
-          </Label>
+          <Label htmlFor='check-2'>Checkbox 2</Label>
         </div>
         <div className='flex items-center gap-2'>
           <Checkbox id='check-3' defaultChecked />
-          <Label
-            htmlFor='check-3'
-            className='peer-disabled:cursor-not-allowed peer-disabled:text-terciary/50 cursor-pointer'
-          >
-            Checkbox 3
-          </Label>
+          <Label htmlFor='check-3'>Checkbox 3</Label>
         </div>
       </div>
 
       {/* Textarea component example */}
-      <Textarea placeholder='Escreva a menssagem' rows={4} />
+      <Textarea
+        placeholder='Escreva a menssagem'
+        rows={4}
+        className='max-w-lg'
+      />
       <Input
         id='email'
         handleDelete={handleDelete}
@@ -638,7 +637,7 @@ export default function Home() {
         placeholder='exemplo@email.com'
       />
       {/* ProgressBar component example */}
-      <div className='max-w-lg py-2 px-6 text-sm grid gap-2 border border-terciary/30'>
+      <div className='max-w-sm py-2 px-6 text-sm grid gap-2 border border-terciary/30'>
         <p className='text-terciary/70'>
           {value < 100 ? 'Loading...' : 'Completed!'}
         </p>
@@ -656,7 +655,7 @@ export default function Home() {
             <TooltipTrigger asChild>
               <Button variant='border'>Tooltip hover</Button>
             </TooltipTrigger>
-            <TooltipContent side='left'>
+            <TooltipContent side='bottom'>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iste
               dignissimos explicabo aut, exercitationem deserunt incidunt
               praesentium nesciunt porro, odit delectus nemo dolorum doloremque
@@ -668,7 +667,7 @@ export default function Home() {
           <Tooltip delayDuration={0}>
             <TooltipTrigger className=''>
               <Avatar className='size-20'>
-                <AvatarImage src={'/rperfil.png'} alt='foto perfil' />
+                <AvatarImage alt='foto perfil' />
                 <AvatarFallback>WV</AvatarFallback>
               </Avatar>
             </TooltipTrigger>
@@ -677,7 +676,7 @@ export default function Home() {
         </TooltipProvider>
       </div>
       {/* Toggle Component example */}
-      <div className='border border-terciary/30 w-full max-w-90 p-2 flex gap-4'>
+      <div className='border border-secondary/30 dark:border-terciary/30 w-full max-w-90 p-2 flex gap-4'>
         <h2 className='grid place-content-center flex-1'>Toggle Buttons </h2>
         <div className='grid gap-2 flex-1'>
           <Toggle disabled className='w-full'>
@@ -695,7 +694,7 @@ export default function Home() {
         </div>
       </div>
       {/* Divider Componente Example */}
-      <div className='size-90 flex border border-terciary/30 items-center'>
+      <div className='size-90 flex border border-secondary/30 dark:border-terciary/30 items-center'>
         <Divider className='w-1/2 flex-none' />
         <Divider orientation='vertical' />
       </div>
@@ -714,6 +713,7 @@ export default function Home() {
           <X />
         </Button>
       </div>
+      {/* ToggleGroup component example */}
       <ToggleGroup type='multiple' disabled>
         <ToggleGroupItem value='1'>html</ToggleGroupItem>
         <ToggleGroupItem value='2'>css</ToggleGroupItem>
@@ -726,7 +726,7 @@ export default function Home() {
         </ToggleGroupItem>
         <ToggleGroupItem value='6'>javascript</ToggleGroupItem>
       </ToggleGroup>
-      {/* Pagination component exemple */}
+      {/* Pagination component example */}
       <Pagination className='place-content-start'>
         <PaginationContent>
           <PaginationItem>
@@ -803,15 +803,15 @@ export default function Home() {
             </Button>
           </CollapsibleTrigger>
         </div>
-        <div className='border border-terciary/20 rounded py-1 px-2 text-sm w-2/3'>
+        <div className='border border-secondary/30 dark:border-terciary/30 rounded py-1 px-2 text-sm w-2/3'>
           <span>@radix-ui/primitives</span>
         </div>
         <CollapsibleContent>
           <div className='flex flex-col gap-3'>
-            <span className='border border-terciary/20 rounded py-1 px-2 text-sm w-2/3'>
+            <span className='border border-secondary/30 dark:border-terciary/30 rounded py-1 px-2 text-sm w-2/3'>
               @radix-ui/colors
             </span>
-            <span className='border border-terciary/20 rounded py-1 px-2 text-sm w-2/3'>
+            <span className='border border-secondary/30 dark:border-terciary/30 rounded py-1 px-2 text-sm w-2/3'>
               @stitches/react
             </span>
           </div>
@@ -819,7 +819,7 @@ export default function Home() {
       </Collapsible>
       {/* Form component example */}
       <Form
-        className='border border-terciary/30 max-w-sm p-4 flex flex-col gap-4 rounded'
+        className='border border-secondary/30 dark:border-terciary/30 max-w-sm p-4 flex flex-col gap-4 rounded'
         onSubmit={e => handleSubmit(e)}
       >
         <h1 className=' text-center'>Login</h1>
@@ -858,12 +858,22 @@ export default function Home() {
           <Button
             className='w-full'
             type='submit'
-            variant={loading ? 'loading' : success ? 'success' : 'default'}
+            variant={
+              loading
+                ? 'loading'
+                : error
+                ? 'error'
+                : success
+                ? 'success'
+                : 'default'
+            }
           >
             {loading ? (
               'Connecting...'
+            ) : error ? (
+              'Error'
             ) : success ? (
-              'Connected'
+              'Conected!'
             ) : (
               <span className='flex items-center justify-center gap-2'>
                 <SendHorizonal />

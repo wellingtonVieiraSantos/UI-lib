@@ -19,7 +19,7 @@ export default function Login() {
     <main className='w-full h-[calc(100dvh-80px)] grid place-content-center'>
       <Tabs
         defaultValue='login'
-        className='w-full max-w-lg border border-terciary/30 rounded data-[orientation=vertical]:flex'
+        className='w-full max-w-lg border border-secondary/30 dark:border-terciary/30 rounded data-[orientation=vertical]:flex'
       >
         <TabList>
           <TabTrigger value='login'>
@@ -31,21 +31,19 @@ export default function Login() {
         </TabList>
         <TabContent value='login'>
           <form className='grid p-2 gap-2'>
-            <div className='text-sm text-center text-terciary/70 py-2 grid gap-2'>
+            <div className='text-sm text-center text-secondary dark:text-terciary/70 py-2 grid gap-2'>
               <div className='w-full flex items-center gap-2'>
                 <Divider />
                 <p>login com</p>
                 <Divider />
               </div>
               <div className='flex gap-1'>
-                <Button variant='border' icon={Github} className='flex-1 gap-2'>
+                <Button variant='border' className='flex-1 gap-2'>
+                  <Github />
                   <span>Github</span>
                 </Button>
-                <Button
-                  variant='border'
-                  icon={Facebook}
-                  className='flex-1 gap-2'
-                >
+                <Button variant='border' className='flex-1 gap-2'>
+                  <Facebook />
                   <span>Facebook</span>
                 </Button>
               </div>
@@ -82,13 +80,9 @@ export default function Login() {
                 </Button>
               </a>
             </div>
-            <Button
-              type='submit'
-              iconPosition='right'
-              icon={ChevronRight}
-              className='w-full'
-            >
+            <Button type='submit' className='w-full'>
               <span>Login</span>
+              <ChevronRight />
             </Button>
           </form>
         </TabContent>
@@ -129,13 +123,9 @@ export default function Login() {
                 Aceito as Politicas de Privacidade
               </Label>
             </div>
-            <Button
-              type='submit'
-              iconPosition='right'
-              icon={ChevronRight}
-              className='w-full'
-            >
+            <Button type='submit' className='w-full'>
               <span>Registrar</span>
+              <ChevronRight />
             </Button>
           </form>
         </TabContent>

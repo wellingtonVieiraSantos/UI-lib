@@ -10,8 +10,9 @@ const Checkbox = forwardRef<
   return (
     <CheckboxRadix.Root
       className={twMerge(
-        `relative cursor-pointer size-5 border border-terciary/30 rounded data-[state=checked]:bg-button-secondary
-        disabled:bg-terciary/20 disabled:cursor-not-allowed peer`,
+        `relative cursor-pointer size-5 border border-secondary/30 dark:border-terciary/30 rounded
+         data-[state=checked]:bg-button-secondary data-[state=checked]:text-terciary
+        disabled:bg-secondary/20 dark:disabled:bg-terciary/20 disabled:cursor-not-allowed peer`,
         className
       )}
       ref={ref}

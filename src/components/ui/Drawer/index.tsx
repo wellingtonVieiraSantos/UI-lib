@@ -58,13 +58,16 @@ const DrawerContent = forwardRef<
         ref={ref}
         {...props}
         className={twMerge(
-          `fixed size-auto bg-primary p-6 rounded z-20`,
+          `fixed size-auto bg-terciary dark:bg-primary p-6 rounded z-20 shadow`,
           `${OrientationClasses[finalOrientation]}`,
           className
         )}
       >
         {children}
-        <DrawerClose className='text-terciary/50 hover:text-terciary absolute top-2 right-2 cursor-pointer transition duration-300'>
+        <DrawerClose
+          className='text-secondary/50 dark:text-terciary/50 hover:text-secondary dark:hover:text-terciary
+         absolute top-2 right-2 cursor-pointer transition duration-300'
+        >
           <X className='size-5' />
         </DrawerClose>
       </DialogRadix.Content>

@@ -14,8 +14,8 @@ const TooltipContent = forwardRef<
     <TooltipRadix.Portal>
       <TooltipRadix.Content
         className={twMerge(
-          `z-50 max-w-lg overflow-hidden flex justify-center px-4 py-1 items-center
-          bg-terciary text-secondary rounded data-[state=delayed-open]:animate-fadeIn
+          `z-50 w-screen max-w-md overflow-hidden flex justify-center px-4 py-1 items-center
+           bg-terciary border dark:border-none border-secondary/30 text-secondary rounded data-[state=delayed-open]:animate-fadeIn
           data-[state=closed]:animate-fadeOut`,
           className
         )}
@@ -24,7 +24,7 @@ const TooltipContent = forwardRef<
         {...props}
       >
         {children}
-        <TooltipRadix.Arrow className='w-3 h-1 fill-terciary duration-200' />
+        <TooltipRadix.Arrow className='w-3 h-1 fill-secondary/30 dark:fill-terciary duration-200' />
       </TooltipRadix.Content>
     </TooltipRadix.Portal>
   )
