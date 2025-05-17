@@ -290,7 +290,7 @@ export default function Home() {
             <Input id='name' placeholder='Envie uma mensagem' />
           </div>
           <ModalActions>
-            <Button size='md' className='w-full sm:w-fit'>
+            <Button className='w-full sm:w-fit'>
               <Send />
               <span>Enviar Menssagem</span>
             </Button>
@@ -563,7 +563,7 @@ export default function Home() {
             <span>Abrir Drawer</span>
           </Button>
         </DrawerTrigger>
-        <DrawerContent orientation='left'>
+        <DrawerContent orientation='right'>
           <div className='max-w-lg m-auto grid gap-8 mt-8'>
             <DrawerHeader>
               <DrawerTitle className='text-2xl'>Title</DrawerTitle>
@@ -830,7 +830,9 @@ export default function Home() {
             <Input
               id='emailform'
               type='email'
+              icon={Mail}
               required
+              placeholder='Email'
               className='data-[invalid]:border-red-500 data-[invalid]:focus:ring-0'
             />
           </FormControl>
@@ -844,6 +846,7 @@ export default function Home() {
               id='senhaform'
               type='password'
               icon={Lock}
+              placeholder='Password'
               required
               className='data-[invalid]:border-red-500 data-[invalid]:focus:ring-0'
             />
@@ -853,9 +856,8 @@ export default function Home() {
         {errorPaswword && <FormSubmitError>{errorPaswword}</FormSubmitError>}
         <FormSubmit asChild>
           <Button
-            className='w-full disabled:bg-button-secondary/30 disabled:cursor-wait'
+            className='w-full'
             type='submit'
-            disabled={loading}
             variant={loading ? 'loading' : success ? 'success' : 'default'}
           >
             {loading ? (

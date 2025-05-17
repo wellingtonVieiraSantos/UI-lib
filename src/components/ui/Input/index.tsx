@@ -1,11 +1,11 @@
-import { X } from 'lucide-react'
-import { ElementType, forwardRef, InputHTMLAttributes } from 'react'
+import { LucideIcon, X } from 'lucide-react'
+import { forwardRef, InputHTMLAttributes } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   id: string
   type?: 'text' | 'number' | 'password' | 'email' | 'search'
-  icon?: ElementType
+  icon?: LucideIcon
   handleDelete?: () => void
 }
 
@@ -22,23 +22,23 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           id={id}
           ref={ref}
           className={twMerge(
-            `${
-              Icon ? 'px-10' : 'pl-2 pr-8'
-            } w-full h-9 appearance-none border rounded border-secondary/50 dark:border-terciary/30 placeholder:text-sm
-          outline-none no-spinner peer focus-within:ring-1 focus-within:ring-secondary/80 dark:focus-within:ring-terciary/80`,
+            `w-full h-8 text-sm appearance-none border rounded border-secondary/50 dark:border-terciary/30 placeholder:text-sm
+          outline-none no-spinner peer focus-within:ring-1 focus-within:ring-secondary/80 dark:focus-within:ring-terciary/80
+          disabled:bg-terciary/10 disabled:cursor-not-allowed disabled:text-terciary/50`,
+            Icon ? 'px-10' : 'pl-2 pr-8',
             className
           )}
           {...props}
         />
         <X
           size={16}
-          className={`absolute bottom-2.5 hidden peer-focus:block cursor-pointer right-2`}
+          className={`absolute bottom-2 hidden peer-focus:block cursor-pointer right-2`}
           onMouseDown={handleDelete}
         />
         {Icon && (
           <Icon
             size={18}
-            className={`absolute bottom-2.5 left-2  pointer-events-none`}
+            className={`absolute bottom-2 left-2  pointer-events-none peer-disabled:text-terciary/50`}
           />
         )}
       </div>
