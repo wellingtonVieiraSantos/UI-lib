@@ -11,6 +11,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Button } from '../ui/Button'
 import { Badge } from '../ui/Badge'
+import { Avatar, AvatarFallback, AvatarImage } from '../ui/Avatar'
 
 const navLinks = [
   {
@@ -49,17 +50,16 @@ export default function Header() {
             ))}
           </ul>
           <div className='flex flex-1 justify-end items-center gap-4'>
-            <Button variant='ghost' icon={Bell} size='icon'>
+            <Button variant='ghost' size='icon'>
               <Badge isNotification className='-right-2 -top-2'>
                 2
               </Badge>
+              <Bell />
             </Button>
-            <Button
-              variant='border'
-              icon={User}
-              size='icon'
-              className='rounded-full'
-            />
+            <Avatar className='border border-terciary/50'>
+              <AvatarImage src={'/perfil.png'} alt='foto perfil' />
+              <AvatarFallback>WV</AvatarFallback>
+            </Avatar>
           </div>
         </nav>
       </div>

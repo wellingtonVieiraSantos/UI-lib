@@ -1,3 +1,4 @@
+import { Check, X } from 'lucide-react'
 import { ButtonHTMLAttributes, forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
@@ -17,7 +18,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const sizeClasses: Record<size, string> = {
-  sm: 'h-8 px-3 text-sm gap-1 [&>svg]:size-4',
+  sm: 'h-8 px-3 text-sm gap-2 [&>svg]:size-4',
   md: 'h-11 px-6 gap-2 [&>svg]:size-5',
   lg: 'h-13 px-9 gap-2 [&>svg]:size-6',
   icon: 'size-8 [&>svg]:size-5'
@@ -28,16 +29,16 @@ const variantClasses: Record<variant, string> = {
     'border border-secondary/30 dark:border-terciary/30 hover:border-secondary dark:hover:border-terciary',
   ghost: 'hover:bg-secondary/10 dark:hover:bg-terciary/20',
   link: 'after:absolute after:bottom-1 after:w-0 after:h-[1px] after:bg-terciary/50 hover:after:w-full after:transition-all after:duration-300',
-  loading:
-    'pl-8 bg-button-secondary/40 cursor-wait after:absolute after:left-2 after:top-2 after:size-4 after:border-1 after:border-b-transparent after:rounded-full after:animate-spin',
-  success:
-    'pl-8 bg-emerald-700 pointer-events-none after:absolute after:left-2 after:top-2.5 after:w-4 after:h-2 after:border-2 after:border-t-transparent after:border-r-transparent after:-rotate-45',
-  error:
-    'pl-8 bg-red-800 pointer-events-none after:absolute after:left-2 after:top-4 after:size-4 after:w-4 after:h-[2px] after:bg-terciary after:rotate-45 before:absolute before:left-2 before:top-4 before:size-4 before:w-4 before:h-[2px] before:bg-terciary before:-rotate-45'
+  loading: 'bg-button-secondary/80 cursor-wait ',
+  success: 'bg-emerald-600 pointer-events-none animate-shake',
+  error: 'bg-red-800 pointer-events-none animate-shake'
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ size = 'sm', variant = 'default', className, ...props }, ref) => {
+  (
+    { size = 'sm', variant = 'default', className, children, ...props },
+    ref
+  ) => {
     return (
       <button
         className={twMerge(
@@ -51,7 +52,14 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         )}
         ref={ref}
         {...props}
-      />
+      >
+        {variant === 'loading' && (
+          <div className='size-4 border-1 border-b-transparent rounded-full animate-spin' />
+        )}
+        {variant === 'success' && <Check />}
+        {variant === 'error' && <X />}
+        {children}
+      </button>
     )
   }
 )

@@ -132,6 +132,7 @@ export default function Home() {
   const [count, setCount] = useState(0)
   const [value, setValue] = useState(0)
   const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
   const [errorPaswword, setErrorPaswword] = useState<string | null>(null)
 
   useEffect(() => {
@@ -165,10 +166,14 @@ export default function Home() {
       if (inputPasswordRef.current?.value !== 'teste') {
         setErrorPaswword('Incorrect username or password.')
         return
+      } else {
+        setSuccess(true)
+        console.log('connected')
       }
     }, 3000)
     setErrorPaswword(null)
-    console.log('connected')
+    setTimeout(() => setSuccess(false), 4000)
+    console.log(success)
   }
 
   return (
@@ -851,17 +856,17 @@ export default function Home() {
             className='w-full disabled:bg-button-secondary/30 disabled:cursor-wait'
             type='submit'
             disabled={loading}
+            variant={loading ? 'loading' : success ? 'success' : 'default'}
           >
             {loading ? (
-              <div className='flex items-center gap-2'>
-                <div className='size-4 border-1 border-b-transparent rounded-full animate-spin' />
-                Connecting...
-              </div>
+              'Connecting...'
+            ) : success ? (
+              'Connected'
             ) : (
-              <div className='flex items-center gap-2'>
+              <span className='flex items-center justify-center gap-2'>
                 <SendHorizonal />
                 Send
-              </div>
+              </span>
             )}
           </Button>
         </FormSubmit>

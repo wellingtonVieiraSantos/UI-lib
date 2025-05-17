@@ -13,7 +13,8 @@ const TabList = forwardRef<
       ref={ref}
       {...props}
       className={twMerge(
-        `flex data-[orientation=vertical]:flex-col data-[orientation=vertical]:justify-evenly items-center text-terciary/50 border-b data-[orientation=vertical]:border-r border-terciary/30 `,
+        `flex data-[orientation=vertical]:flex-col data-[orientation=vertical]:justify-evenly
+         items-center text-terciary/50 border-b data-[orientation=vertical]:border-r border-terciary/30 `,
         className
       )}
     />

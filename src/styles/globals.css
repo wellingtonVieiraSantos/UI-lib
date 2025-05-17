@@ -34,6 +34,25 @@
   --animate-DrawerRightInitial: DrawerRightInitial 0.3s ease-in-out;
   --animate-DrawerRightFinal: DrawerRightFinal 0.3s ease-in-out;
 
+  --animate-shake: shake 0.2s ease-in-out;
+  @keyframes shake {
+    0% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(5px);
+    }
+    50% {
+      transform: translateX(0);
+    }
+    75% {
+      transform: translateX(-5px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
   @keyframes slideDownCollapsible {
     from {
       height: 0;
