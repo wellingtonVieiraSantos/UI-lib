@@ -12,7 +12,7 @@ const CollapsibleContent = forwardRef<
   return (
     <CollapsibleRadix.Content
       className={twMerge(
-        `overflow-hidden data-[state=open]:animate-slideDownCollapsible data-[state=closed]:animate-slideUpCollapsible transition`,
+        `overflow-hidden data-[state=open]:animate-slideDownCollapsible data-[state=closed]:animate-slideUpCollapsible`,
         className
       )}
       ref={ref}

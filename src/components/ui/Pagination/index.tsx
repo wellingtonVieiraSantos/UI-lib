@@ -21,7 +21,7 @@ const PaginationContent = forwardRef<
   return (
     <ul
       className={twMerge(
-        `flex flex-row justify-center items-center gap-2 border p-2 border-terciary/20 rounded-xl`,
+        `flex flex-row justify-center items-center gap-2 p-2`,
         className
       )}
       ref={ref}
@@ -37,7 +37,7 @@ const PaginationItem = forwardRef<HTMLLIElement, React.ComponentProps<'li'>>(
     return (
       <li
         className={twMerge(
-          `min-w-10 h-10 flex items-center justify-center`,
+          `min-w-8 h-8 flex items-center justify-center`,
           className
         )}
         ref={ref}

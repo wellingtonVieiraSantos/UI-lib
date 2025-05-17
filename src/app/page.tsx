@@ -22,8 +22,7 @@ import {
   Calculator,
   ChevronsUpDown,
   SendHorizonal,
-  Lock,
-  ChevronLeft
+  Lock
 } from 'lucide-react'
 import { Badge } from '@/components/ui/Badge'
 

@@ -105,10 +105,10 @@ const NavigationViewport = forwardRef<
   React.ComponentPropsWithoutRef<typeof NavigationMenuRadix.Viewport>
 >(({ className, ...props }, ref) => {
   return (
-    <div className='absolute left-0 top-full flex justify-center'>
+    <div className='absolute left-0 top-full flex justify-center z-10'>
       <NavigationMenuRadix.Viewport
         className={twMerge(
-          `origin-top-left relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)]
+          `origin-top-left relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] bg-secondary
            w-full overflow-hidden border border-terciary/20 rounded md:w-[var(--radix-navigation-menu-viewport-width)]`,
           className
         )}
