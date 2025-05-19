@@ -125,6 +125,15 @@ import {
   FormSubmit,
   FormSubmitError
 } from '@/components/ui/Form'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle
+} from '@/components/ui/Card'
+import Image from 'next/image'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
@@ -305,7 +314,7 @@ export default function Home() {
       {/* Radio Component example  */}
       <RadioRoot
         defaultValue='masculino'
-        className='w-sm max-w-md border dark:border-terciary/30 rounded px-4 py-2 shadow-md'
+        className='max-w-md border dark:border-terciary/30 rounded px-4 py-2 shadow-md'
       >
         <h2 className='py-2'>Qual seu sexo?</h2>
         <div className='flex flex-row-reverse justify-between items-center gap-2 border dark:border-terciary/30 p-2 rounded cursor-pointer '>
@@ -883,6 +892,26 @@ export default function Home() {
           </Button>
         </FormSubmit>
       </Form>
+      {/* Card component example */}
+      <Card className='w-[300] group'>
+        <Image
+          width={1500}
+          height={1500}
+          src={'/cadeira.webp'}
+          alt='cadeira image'
+          className='w-full object-cover'
+        />
+        <div className='relative rounded-t-xl -mt-[150px] group-hover:mt-0 transition-[margin] duration-300 bg-secondary '>
+          <CardHeader>
+            <CardTitle className='text-sm'>Product Title</CardTitle>
+            <CardDescription>Lorem ipsum dolor</CardDescription>
+          </CardHeader>
+          <CardContent>$200</CardContent>
+          <CardFooter>
+            <Button>Buy</Button>
+          </CardFooter>
+        </div>
+      </Card>
       <div className='h-screen w-md'></div>
     </div>
   )
