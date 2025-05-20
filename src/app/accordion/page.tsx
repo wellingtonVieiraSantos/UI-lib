@@ -1,61 +1,58 @@
 'use client'
 
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import Image from 'next/image'
 import { useState } from 'react'
 
 export default function AccordionExample() {
   const [index, setIndex] = useState(0)
-  const items = ['/cadeira.webp', '/tv.webp', '/rtx4060ti.jpg']
+  const items = ['red', 'blue', 'green']
   return (
     <div className='w-full min-h-full flex flex-col gap-4 py-10 p-10'>
       <h1 className='text-xl'>Accordion component example</h1>
       {/* root */}
-      <div
-        className='relative w-[300px] overflow-hidden after:pointer-events-none after:absolute after:left-0 after:top-0 after:w-8 after:h-full
-      after:bg-gradient-to-r after:from-secondary/70 after:to-transparent before:absolute before:right-0 before:h-full before:pointer-events-none
-       before:top-0 before:w-8 before:bg-gradient-to-l before:from-secondary/70 before:to-transparent before:z-10'
-      >
+      <div className='relative w-[1200px] overflow-hidden group'>
         {/* content */}
         <div
-          className='relative flex ml-[7%] gap-2 transition-transform duration-300'
+          className='h-[400px] relative gap-2 flex transition-transform duration-300 '
           style={{
-            transform: `translateX(calc(-${index * 93.5}% )`
+            transform: `translateX(calc(-${index * 100}% - ${index * 0.5}rem))`
           }}
         >
           {items.map((item, i) => (
             /* item */
-            <div className='flex-shrink-0 object-cover aspect-square' key={i}>
-              <Image
-                width={200}
-                height={200}
-                src={item}
-                alt='teste'
-                className='size-full rounded-lg'
-              />
-            </div>
+            <div
+              className={`w-full flex-shrink-0  rounded-lg`}
+              style={{ backgroundColor: item }}
+              key={i}
+            ></div>
           ))}
         </div>
 
-        <div className='flex justify-between items-center mt-4 p-2 rounded'>
+        <div className='absolute left-1 top-1/2 -translate-y-1/2 hidden group-hover:block'>
           <button
             onClick={() => setIndex(i => (i > 0 ? i - 1 : items.length - 1))}
           >
-            <ChevronLeft />
+            <ChevronLeft className='size-10 cursor-pointer' />
           </button>
-          <div className='flex gap-1'>
-            {items.map((items, i) => (
-              <div
-                key={i}
-                className={`size-2  ${
-                  index === i ? 'bg-terciary w-4' : 'bg-terciary/30'
-                } rounded-full transition duration-300`}
-              />
-            ))}
-          </div>
+        </div>
+        <div className='absolute right-1 top-1/2 -translate-y-1/2 hidden group-hover:block'>
           <button onClick={() => setIndex(i => (i + 1) % items.length)}>
-            <ChevronRight />
+            <ChevronRight className='size-10 cursor-pointer' />
           </button>
+        </div>
+        <div
+          className=' w-full h-10 absolute flex justify-center items-center gap-1 bottom-0
+        bg-gradient-to-t from-secondary/50 to-transparent'
+        >
+          {items.map((items, i) => (
+            <div
+              key={i}
+              className={`h-2 w-8 cursor-pointer ${
+                index === i ? 'bg-terciary w-6' : 'bg-terciary/30'
+              } rounded-full transition duration-300`}
+              onClick={() => setIndex(i)}
+            />
+          ))}
         </div>
       </div>
     </div>

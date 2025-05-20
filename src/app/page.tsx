@@ -22,7 +22,8 @@ import {
   Calculator,
   ChevronsUpDown,
   SendHorizonal,
-  Lock
+  Lock,
+  Plane
 } from 'lucide-react'
 import { Badge } from '@/components/ui/Badge'
 
@@ -134,6 +135,14 @@ import {
   CardTitle
 } from '@/components/ui/Card'
 import Image from 'next/image'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselControlLeft,
+  CarouselControlMiniature,
+  CarouselControlRight,
+  CarouselItem
+} from '@/components/ui/Carousel'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
@@ -912,6 +921,35 @@ export default function Home() {
           </CardFooter>
         </div>
       </Card>
+      {/* Carousel component example */}
+      <Carousel className='w-5xl h-[400px] border border-terciary/30 rounded'>
+        <CarouselContent>
+          <CarouselItem className='relative grid place-content-center text-secondary group'>
+            <div className='absolute inset-0 bg-[url(/praia.jpg)] bg-cover bg-center group-hover:blur-xs transition duration-300' />
+            <div className='hidden group-hover:flex z-10 max-w-sm flex-col items-center text-justify gap-4'>
+              <h1 className='text-2xl'>Title</h1>
+              <span className='text-lg'>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Consequatur distinctio tempora molestias? Necessitatibus
+                aspernatur in deserunt aliquid illum nesciunt dolores nisi enim
+                ipsam, consectetur odit rerum corrupti? Magni, ut cupiditate?
+              </span>
+              <Button className='self-end px-10'>
+                Travel <Plane />
+              </Button>
+            </div>
+          </CarouselItem>
+          {['green', 'blue', 'yellow', 'purple', 'tomato', 'cyan'].map(
+            (text, i) => (
+              <CarouselItem key={i} style={{ backgroundColor: text }} />
+            )
+          )}
+          <CarouselItem className='grid place-content-center'>Fim</CarouselItem>
+        </CarouselContent>
+        <CarouselControlMiniature />
+        <CarouselControlLeft />
+        <CarouselControlRight />
+      </Carousel>
       <div className='h-screen w-md'></div>
     </div>
   )
