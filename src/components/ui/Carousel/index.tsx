@@ -43,10 +43,20 @@ const Carousel = forwardRef<
       value={{ index, setIndex, itemCount, setItemCount, itemsPerView }}
     >
       <div
+        tabIndex={0}
         className={twMerge(
           `relative w-full h-fit overflow-hidden group`,
           className
         )}
+        onKeyDown={e => {
+          if (e.key === 'ArrowLeft') {
+            setIndex(i =>
+              i > 0 ? i - 1 : Math.ceil(itemCount / itemsPerView) - 1
+            )
+          } else if (e.key === 'ArrowRight') {
+            setIndex(i => (i + 1) % Math.ceil(itemCount / itemsPerView))
+          }
+        }}
         ref={ref}
         {...props}
       />

@@ -922,8 +922,8 @@ export default function Home() {
         </div>
       </Card>
       {/* Carousel component example */}
-      <Carousel className='w-full max-w-5xl h-[400px] border border-terciary/30 rounded'>
-        <CarouselContent className=''>
+      <Carousel className='w-full max-w-5xl h-[400px] border border-terciary/30 rounded focus:border'>
+        <CarouselContent className='focus:border'>
           <CarouselItem className='relative grid place-content-center text-secondary group'>
             <div className='absolute inset-0 bg-[url(/praia.jpg)] bg-cover bg-center group-hover:blur transition duration-300' />
             <div className='hidden group-hover:flex z-10 max-w-sm flex-col items-center text-justify gap-4'>
@@ -957,7 +957,7 @@ export default function Home() {
       </Carousel>
       <Carousel
         itemsPerView={3}
-        className='w-5xl h-[150px] border overflow-auto scrollbar-custom'
+        className='w-5xl h-[150px] overflow-auto scrollbar-custom'
       >
         <CarouselContent className=''>
           <CarouselItem className='bg-red-300 w-1/3' />
