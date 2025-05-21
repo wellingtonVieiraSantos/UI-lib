@@ -910,7 +910,7 @@ export default function Home() {
           alt='cadeira image'
           className='w-full object-cover'
         />
-        <div className='relative rounded-t-xl -mt-[150px] group-hover:mt-0 transition-[margin] duration-300 bg-secondary '>
+        <div className='relative rounded-t-xl -mt-[10px]  bg-secondary '>
           <CardHeader>
             <CardTitle className='text-sm'>Product Title</CardTitle>
             <CardDescription>Lorem ipsum dolor</CardDescription>
@@ -922,10 +922,10 @@ export default function Home() {
         </div>
       </Card>
       {/* Carousel component example */}
-      <Carousel className='w-5xl h-[400px] border border-terciary/30 rounded'>
-        <CarouselContent>
+      <Carousel className='w-full max-w-5xl h-[400px] border border-terciary/30 rounded'>
+        <CarouselContent className=''>
           <CarouselItem className='relative grid place-content-center text-secondary group'>
-            <div className='absolute inset-0 bg-[url(/praia.jpg)] bg-cover bg-center group-hover:blur-xs transition duration-300' />
+            <div className='absolute inset-0 bg-[url(/praia.jpg)] bg-cover bg-center group-hover:blur transition duration-300' />
             <div className='hidden group-hover:flex z-10 max-w-sm flex-col items-center text-justify gap-4'>
               <h1 className='text-2xl'>Title</h1>
               <span className='text-lg'>
@@ -939,14 +939,37 @@ export default function Home() {
               </Button>
             </div>
           </CarouselItem>
-          {['green', 'blue', 'yellow', 'purple', 'tomato', 'cyan'].map(
-            (text, i) => (
-              <CarouselItem key={i} style={{ backgroundColor: text }} />
-            )
-          )}
+          {[
+            'bg-green-500',
+            'bg-blue-500',
+            'bg-yellow-500',
+            'bg-purple-500',
+            'bg-red-500',
+            'bg-pink-500'
+          ].map((text, i) => (
+            <CarouselItem key={i} className={`${text}`} />
+          ))}
           <CarouselItem className='grid place-content-center'>Fim</CarouselItem>
         </CarouselContent>
         <CarouselControlMiniature />
+        <CarouselControlLeft />
+        <CarouselControlRight />
+      </Carousel>
+      <Carousel
+        itemsPerView={3}
+        className='w-5xl h-[150px] border overflow-auto scrollbar-custom'
+      >
+        <CarouselContent className=''>
+          <CarouselItem className='bg-red-300 w-1/3' />
+          <CarouselItem className='bg-green-300 w-1/3' />
+          <CarouselItem className='bg-blue-300 w-1/3' />
+          <CarouselItem className='bg-red-300 w-1/3' />
+          <CarouselItem className='bg-green-300 w-1/3' />
+          <CarouselItem className='bg-blue-300 w-1/3' />
+          <CarouselItem className='bg-red-300 w-1/3' />
+          <CarouselItem className='bg-green-300 w-1/3' />
+          <CarouselItem className='bg-blue-300 w-1/3' />
+        </CarouselContent>
         <CarouselControlLeft />
         <CarouselControlRight />
       </Carousel>

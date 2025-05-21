@@ -16,6 +16,7 @@ type CarouselContextProps = {
   setIndex: Dispatch<SetStateAction<number>>
   itemCount: number
   setItemCount: Dispatch<SetStateAction<number>>
+  itemsPerView: number
 }
 
 const CarouselContext = createContext<CarouselContextProps | null>(null)
@@ -32,14 +33,14 @@ function useCarousel() {
 
 const Carousel = forwardRef<
   HTMLDivElement,
-  React.ComponentPropsWithoutRef<'div'>
->(({ className, ...props }, ref) => {
+  React.ComponentPropsWithoutRef<'div'> & { itemsPerView?: number }
+>(({ className, itemsPerView = 1, ...props }, ref) => {
   const [index, setIndex] = useState(0)
   const [itemCount, setItemCount] = useState(0)
 
   return (
     <CarouselContext.Provider
-      value={{ index, setIndex, itemCount, setItemCount }}
+      value={{ index, setIndex, itemCount, setItemCount, itemsPerView }}
     >
       <div
         className={twMerge(
@@ -59,7 +60,7 @@ const CarouselContent = forwardRef<
   HTMLDivElement,
   React.ComponentPropsWithoutRef<'div'>
 >(({ className, children, ...props }, ref) => {
-  const { index, setItemCount } = useCarousel()
+  const { index, itemCount, setItemCount, itemsPerView } = useCarousel()
 
   useEffect(() => {
     setItemCount(Children.count(children))
@@ -68,11 +69,14 @@ const CarouselContent = forwardRef<
   return (
     <div
       className={twMerge(
-        `min-h-[200px] h-full gap-2 flex transition-transform duration-300`,
+        `min-h-[200px] h-full flex transition-transform duration-300`,
         className
       )}
       style={{
-        transform: `translateX(calc(-${index * 100}% - ${index * 0.5}rem))`
+        transform: `translateX(-${
+          index * (100 / (itemCount / itemsPerView))
+        }%)`,
+        width: `${(itemCount / itemsPerView) * 100}%`
       }}
       ref={ref}
       {...props}
@@ -88,9 +92,13 @@ const CarouselItem = forwardRef<
   HTMLDivElement,
   React.ComponentPropsWithoutRef<'div'>
 >(({ className, ...props }, ref) => {
+  const { itemCount } = useCarousel()
   return (
     <div
-      className={twMerge(`w-full flex-shrink-0`, className)}
+      className={twMerge(``, className)}
+      style={{
+        width: `${100 / itemCount}%`
+      }}
       ref={ref}
       {...props}
     />
@@ -103,7 +111,7 @@ const CarouselControlLeft = forwardRef<
   HTMLDivElement,
   React.ComponentPropsWithoutRef<'div'>
 >(({ className, ...props }, ref) => {
-  const { setIndex, itemCount } = useCarousel()
+  const { setIndex, itemCount, itemsPerView } = useCarousel()
   return (
     <div
       className={twMerge(
@@ -115,7 +123,11 @@ const CarouselControlLeft = forwardRef<
     >
       <ChevronLeft
         className={twMerge(`size-10 cursor-pointer`, className)}
-        onClick={() => setIndex(i => (i > 0 ? i - 1 : itemCount - 1))}
+        onClick={() =>
+          setIndex(i =>
+            i > 0 ? i - 1 : Math.ceil(itemCount / itemsPerView) - 1
+          )
+        }
       />
     </div>
   )
@@ -127,7 +139,7 @@ const CarouselControlRight = forwardRef<
   HTMLDivElement,
   React.ComponentPropsWithoutRef<'div'>
 >(({ className, ...props }, ref) => {
-  const { setIndex, itemCount } = useCarousel()
+  const { setIndex, itemCount, itemsPerView } = useCarousel()
   return (
     <div
       className={twMerge(
@@ -139,7 +151,9 @@ const CarouselControlRight = forwardRef<
     >
       <ChevronRight
         className={twMerge(`size-10 cursor-pointer`, className)}
-        onClick={() => setIndex(i => (i + 1) % itemCount)}
+        onClick={() =>
+          setIndex(i => (i + 1) % Math.ceil(itemCount / itemsPerView))
+        }
       />
     </div>
   )
@@ -151,7 +165,7 @@ const CarouselControlMiniature = forwardRef<
   HTMLDivElement,
   React.ComponentPropsWithoutRef<'div'>
 >(({ className, ...props }, ref) => {
-  const { index, setIndex, itemCount } = useCarousel()
+  const { index, setIndex, itemCount, itemsPerView } = useCarousel()
   return (
     <div
       className={twMerge(
@@ -162,17 +176,19 @@ const CarouselControlMiniature = forwardRef<
       ref={ref}
       {...props}
     >
-      {Array.from({ length: itemCount }).map((_, i) => (
-        <div
-          key={i}
-          className={twMerge(
-            `h-2 w-8 cursor-pointer rounded-full transition duration-300`,
-            index === i ? 'bg-terciary' : 'bg-terciary/30',
-            className
-          )}
-          onClick={() => setIndex(i)}
-        />
-      ))}
+      {Array.from({ length: Math.ceil(itemCount / itemsPerView) }).map(
+        (_, i) => (
+          <div
+            key={i}
+            className={twMerge(
+              `h-2 w-8 cursor-pointer rounded-full transition duration-300`,
+              index === i ? 'bg-terciary' : 'bg-terciary/30',
+              className
+            )}
+            onClick={() => setIndex(i)}
+          />
+        )
+      )}
     </div>
   )
 })
