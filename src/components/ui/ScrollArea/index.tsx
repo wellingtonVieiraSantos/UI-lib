@@ -47,10 +47,12 @@ const ScrollArea = forwardRef<
         <Button
           variant='border'
           size='icon'
-          disabled={start}
           onClick={() => scroll('left')}
-          className='hidden group-hover:inline-flex justify-center items-center border-none
-           size-10 absolute left-1 top-1/2 -translate-y-1/2 [&>svg]:size-10 disabled:[&>svg]:text-terciary-30'
+          className={twMerge(
+            `justify-center items-center border-none
+           size-10 absolute left-1 top-1/2 -translate-y-1/2 [&>svg]:size-10 disabled:[&>svg]:text-terciary-30`,
+            start && 'hidden'
+          )}
         >
           <ChevronLeft size={30} />
         </Button>
@@ -59,11 +61,13 @@ const ScrollArea = forwardRef<
         <Button
           variant='border'
           size='icon'
-          disabled={end}
           onClick={() => scroll('right')}
-          className={`hidden group-hover:inline-flex justify-center items-center border-none
+          className={twMerge(
+            `justify-center items-center border-none
             size-10 absolute right-1 top-1/2 -translate-y-1/2 [&>svg]:size-10 disabled:[&>svg]:text-terciary-30
-         `}
+         `,
+            end && 'hidden'
+          )}
         >
           <ChevronRight />
         </Button>

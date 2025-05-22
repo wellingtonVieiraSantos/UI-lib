@@ -961,7 +961,7 @@ export default function Home() {
         orientation='vertical'
         className='w-2xl h-80 whitespace-nowrap rounded border border-terciary-30 p-2'
       >
-        <div className='w-full space-x-2 space-y-2 pb-2'>
+        <div className='w-full space-y-2 pr-2'>
           {Array.from({ length: 15 }).map((_, i) => (
             <div
               className='h-40 grid place-content-center border border-terciary-30'
@@ -975,7 +975,7 @@ export default function Home() {
       </ScrollArea>
 
       <ScrollArea className='w-2xl whitespace-nowrap rounded border border-terciary-30 p-2'>
-        <div className='w-full flex space-x-2 space-y-2 pb-2'>
+        <div className='w-full flex space-x-2 pb-2'>
           {Array.from({ length: 15 }).map((_, i) => (
             <div
               className='size-40 grid place-content-center border border-terciary-30'
