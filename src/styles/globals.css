@@ -7,8 +7,11 @@
 @theme {
   /* colors */
   --color-primary: oklch(0.2 0.0079 285.67);
+  --color-primary-30: oklch(0.2 0.0079 285.67 / 0.3);
   --color-secondary: oklch(0.27 0.0063 258.36);
+  --color-secondary-30: oklch(0.27 0.0063 258.36 / 0.3);
   --color-terciary: oklch(0.99 0.0146 98.28);
+  --color-terciary-30: oklch(0.99 0.0146 98.28 / 0.3);
   --color-button: oklch(0.91 0.15455 194.7689);
   --color-button-secondary: oklch(0.59 0.2143 289.47);
   /* fonts */
@@ -185,15 +188,16 @@
 @layer utilities {
   .scrollbar-custom {
     scrollbar-width: thin;
-    scrollbar-color: theme(--color-secondary/50) theme(--color-terciary);
+    scrollbar-color: theme(--color-secondary-30) theme(--color-terciary);
   }
+
   .scrollbar-custom::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
 
   .scrollbar-custom::-webkit-scrollbar-thumb {
-    background-color: theme(--color-secondary/70);
+    background-color: theme(--color-secondary-30);
     border-radius: 4px;
   }
 
@@ -219,15 +223,16 @@
     }
     .scrollbar-custom {
       scrollbar-width: thin;
-      scrollbar-color: theme(--color-primary) theme(--color-secondary);
+      scrollbar-color: theme(--color-terciary-30) theme(--color-secondary);
     }
+
     .scrollbar-custom::-webkit-scrollbar-thumb {
       background-color: theme(--color-secondary);
       border-radius: 4px;
     }
 
     .scrollbar-custom::-webkit-scrollbar-track {
-      background-color: theme(--color-terciary/80);
+      background-color: theme(--color-terciary-30);
     }
   }
 }

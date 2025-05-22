@@ -26,9 +26,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='en'>
+    <html lang='en' className='scrollbar-custom'>
       <body
-        className={`w-full md:mt-20 ${poppins.variable} ${montserrat.variable} antialiased`}
+        className={`w-full md:mt-20 ${poppins.variable} ${montserrat.variable} antialiased scrollbar-custom`}
       >
         <Header />
         {children}

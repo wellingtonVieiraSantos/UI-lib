@@ -143,6 +143,7 @@ import {
   CarouselControlRight,
   CarouselItem
 } from '@/components/ui/Carousel'
+import { ScrollArea, Scrollbar } from '@/components/ui/ScrollArea'
 
 export default function Home() {
   const [showDescribe, setShowDescribe] = useState(false)
@@ -955,24 +956,38 @@ export default function Home() {
         <CarouselControlLeft />
         <CarouselControlRight />
       </Carousel>
-      <Carousel
-        itemsPerView={3}
-        className='w-5xl h-[150px] overflow-auto scrollbar-custom'
+
+      <ScrollArea
+        orientation='vertical'
+        className='w-2xl h-80 whitespace-nowrap rounded border border-terciary-30 p-2'
       >
-        <CarouselContent className=''>
-          <CarouselItem className='bg-red-300 w-1/3' />
-          <CarouselItem className='bg-green-300 w-1/3' />
-          <CarouselItem className='bg-blue-300 w-1/3' />
-          <CarouselItem className='bg-red-300 w-1/3' />
-          <CarouselItem className='bg-green-300 w-1/3' />
-          <CarouselItem className='bg-blue-300 w-1/3' />
-          <CarouselItem className='bg-red-300 w-1/3' />
-          <CarouselItem className='bg-green-300 w-1/3' />
-          <CarouselItem className='bg-blue-300 w-1/3' />
-        </CarouselContent>
-        <CarouselControlLeft />
-        <CarouselControlRight />
-      </Carousel>
+        <div className='w-full space-x-2 space-y-2 pb-2'>
+          {Array.from({ length: 15 }).map((_, i) => (
+            <div
+              className='h-40 grid place-content-center border border-terciary-30'
+              key={i}
+            >
+              {i + 1}
+            </div>
+          ))}
+        </div>
+        <Scrollbar orientation='vertical' />
+      </ScrollArea>
+
+      <ScrollArea className='w-2xl whitespace-nowrap rounded border border-terciary-30 p-2'>
+        <div className='w-full flex space-x-2 space-y-2 pb-2'>
+          {Array.from({ length: 15 }).map((_, i) => (
+            <div
+              className='size-40 grid place-content-center border border-terciary-30'
+              key={i}
+            >
+              {i + 1}
+            </div>
+          ))}
+        </div>
+        <Scrollbar />
+      </ScrollArea>
+
       <div className='h-screen w-md'></div>
     </div>
   )
