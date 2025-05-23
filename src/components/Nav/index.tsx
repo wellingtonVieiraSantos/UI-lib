@@ -12,6 +12,7 @@ import { usePathname } from 'next/navigation'
 import { Button } from '../ui/Button'
 import { Badge } from '../ui/Badge'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/Avatar'
+import { useEffect, useRef } from 'react'
 
 const navLinks = [
   {
@@ -28,10 +29,30 @@ const navLinks = [
 
 export default function Header() {
   const pathName = usePathname()
+  const navbarRef = useRef<HTMLDivElement>(null)
+  const scrollYPos = useRef(0)
+
+  useEffect(() => {
+    const scroll = () => {
+      const currentScroll = window.scrollY
+      if (!navbarRef.current) return
+      if (currentScroll > scrollYPos.current) {
+        navbarRef.current.style.transform = `translateY(-80px)`
+      } else {
+        navbarRef.current.style.transform = `translateY(0)`
+      }
+      scrollYPos.current = currentScroll
+    }
+    window.addEventListener('scroll', scroll)
+    return () => window.removeEventListener('scroll', scroll)
+  }, [])
 
   return (
     <>
-      <div className='hidden md:block md:fixed top-0 w-full h-20 text-terciary bg-primary px-2 z-10'>
+      <div
+        ref={navbarRef}
+        className='hidden md:block md:fixed top-0 w-full h-20 text-terciary bg-primary px-2 z-10 transition duration-300'
+      >
         <nav className='h-full flex justify-between items-center'>
           <h2 className='flex-1'>Logo</h2>
           <ul className='flex flex-1 gap-2 text-terciary/50'>
