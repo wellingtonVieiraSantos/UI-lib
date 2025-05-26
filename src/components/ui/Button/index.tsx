@@ -2,8 +2,8 @@ import { Check, X } from 'lucide-react'
 import { ButtonHTMLAttributes, forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-type size = 'sm' | 'md' | 'lg' | 'icon'
-type variant =
+type sizeOptions = 'sm' | 'md' | 'lg' | 'icon'
+type variantOptions =
   | 'default'
   | 'border'
   | 'ghost'
@@ -13,17 +13,18 @@ type variant =
   | 'error'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  size?: size
-  variant?: variant
+  size?: sizeOptions
+  variant?: variantOptions
 }
 
-const sizeClasses: Record<size, string> = {
+const sizeClasses: Record<sizeOptions, string> = {
   sm: 'h-8 px-3 text-sm gap-2 [&>svg]:size-4',
   md: 'h-11 px-6 gap-2 [&>svg]:size-5',
   lg: 'h-13 px-9 gap-2 [&>svg]:size-6',
   icon: 'size-8 [&>svg]:size-5'
 }
-const variantClasses: Record<variant, string> = {
+
+const variantClasses: Record<variantOptions, string> = {
   default: 'bg-button-secondary text-terciary hover:bg-button-secondary/70',
   border:
     'border border-secondary/30 dark:border-terciary/30 hover:border-secondary dark:hover:border-terciary',

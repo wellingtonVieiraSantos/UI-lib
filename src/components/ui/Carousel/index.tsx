@@ -1,35 +1,7 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import {
-  Children,
-  createContext,
-  Dispatch,
-  forwardRef,
-  SetStateAction,
-  useContext,
-  useEffect,
-  useState
-} from 'react'
+import { Children, forwardRef, useEffect, useState } from 'react'
+import { useCarousel, CarouselContext } from './carouselContext'
 import { twMerge } from 'tailwind-merge'
-
-type CarouselContextProps = {
-  index: number
-  setIndex: Dispatch<SetStateAction<number>>
-  itemCount: number
-  setItemCount: Dispatch<SetStateAction<number>>
-  itemsPerView: number
-}
-
-const CarouselContext = createContext<CarouselContextProps | null>(null)
-
-function useCarousel() {
-  const context = useContext(CarouselContext)
-
-  if (!context) {
-    throw new Error('useCarousel must be used within a <Carousel />')
-  }
-
-  return context
-}
 
 const Carousel = forwardRef<
   HTMLDivElement,
