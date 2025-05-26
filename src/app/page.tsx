@@ -281,7 +281,7 @@ export default function Home() {
       {/* Badge Components example */}
       <span className='relative w-fit h-fit p-2 border border-secondary dark:border-terciary'>
         Teste
-        <Badge isNotification>{count.toString()}</Badge>
+        <Badge variant='notification'>{count.toString()}</Badge>
       </span>
       <Badge>Badge Default</Badge>
       <Badge variant='outline'>

@@ -1,51 +1,47 @@
-import { HTMLAttributes } from 'react'
+import { forwardRef, HTMLAttributes } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-type variantTypes = 'outline' | 'info' | 'success' | 'warning' | 'error'
+type variantOptions =
+  | 'default'
+  | 'outline'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'notification'
 
 interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | variantTypes
-  isNotification?: boolean
+  variant?: variantOptions
 }
 
-const variantClass: Record<variantTypes, string> = {
+const variantClasses: Record<variantOptions, string> = {
+  default: 'bg-button-secondary',
   outline:
     'bg-transparent border border-secondary/70 dark:border-terciary/70 text-secondary dark:text-terciary',
   info: 'bg-sky-800',
   success: 'bg-emerald-700',
   warning: 'bg-amber-700',
-  error: 'bg-red-800'
+  error: 'bg-red-800',
+  notification:
+    'absolute px-1 -top-1 -right-3 rounded-full px-0 bg-button-secondary'
 }
 
-const Badge = ({
-  variant = 'default',
-  isNotification = false,
-  children,
-  className
-}: BadgeProps) => {
-  return isNotification ? (
-    <div
-      className={twMerge(
-        `min-w-6 h-6 absolute px-1 -top-1 -right-3 text-sm flex justify-center
-        items-center text-terciary bg-button-secondary rounded-full pointer-events-none`,
-        className
-      )}
-    >
-      {children}
-    </div>
-  ) : (
-    <div
-      className={twMerge(
-        `h-6 max-w-fit flex justify-center items-center gap-1 bg-button-secondary 
-        px-2 rounded-md text-terciary pointer-events-none`,
-        variant !== 'default' && variantClass[variant],
-        className
-      )}
-    >
-      {children}
-    </div>
-  )
-}
+const Badge = forwardRef<HTMLDivElement, BadgeProps>(
+  ({ variant = 'default', className, ...props }, ref) => {
+    return (
+      <div
+        className={twMerge(
+          `min-w-6 h-6 w-fit px-2 text-sm flex justify-center items-center gap-1
+          rounded-md pointer-events-none`,
+          variantClasses[variant],
+          className
+        )}
+        ref={ref}
+        {...props}
+      />
+    )
+  }
+)
 
 Badge.displayName = 'Badge'
 

@@ -36,11 +36,11 @@ export default function Header() {
     const scroll = () => {
       const currentScroll = window.scrollY
       if (!navbarRef.current) return
-      if (currentScroll > scrollYPos.current) {
-        navbarRef.current.style.transform = `translateY(-80px)`
-      } else {
-        navbarRef.current.style.transform = `translateY(0)`
-      }
+      navbarRef.current.style.transform =
+        currentScroll > scrollYPos.current
+          ? `translateY(-80px)`
+          : `translateY(0)`
+
       scrollYPos.current = currentScroll
     }
     window.addEventListener('scroll', scroll)
@@ -72,7 +72,7 @@ export default function Header() {
           </ul>
           <div className='flex flex-1 justify-end items-center gap-4'>
             <Button variant='ghost' size='icon'>
-              <Badge isNotification className='-right-2 -top-2'>
+              <Badge variant='notification' className='-right-2 -top-2'>
                 2
               </Badge>
               <Bell />
@@ -112,7 +112,7 @@ export default function Header() {
                     />
                     {link.notification && (
                       <Badge
-                        isNotification
+                        variant='notification'
                         className={`${
                           link.path === pathName ? 'opacity-0' : 'opacity-100'
                         } transition duration-200`}
