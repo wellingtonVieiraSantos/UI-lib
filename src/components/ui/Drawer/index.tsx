@@ -3,27 +3,42 @@ import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { X } from 'lucide-react'
 import useIsMobile from './useIsMobile'
+import { DrawerContext, useDrawer } from './drawerContext'
 
-type OrientationProps = 'left' | 'right' | 'bottom'
-
-interface DrawerContentProps {
-  orientation?: OrientationProps
-}
-
-const OrientationClasses: Record<OrientationProps, string> = {
-  left: 'left-0 top-0 h-full data-[state=open]:animate-DrawerLeftInitial data-[state=closed]:animate-DrawerLeftFinal border-r border-terciary/30',
+const OrientationClasses = {
+  left: 'left-0 top-0 h-full data-[state=open]:animate-DrawerLeftInitial data-[state=closed]:animate-DrawerLeftFinal border-r',
   right:
-    'right-0 top-0 h-full data-[state=open]:animate-DrawerRightInitial data-[state=closed]:animate-DrawerRightFinal border-l border-terciary/30',
+    'right-0 top-0 h-full data-[state=open]:animate-DrawerRightInitial data-[state=closed]:animate-DrawerRightFinal border-l',
   bottom:
-    'bottom-0 w-full data-[state=open]:animate-DrawerBottomInitial data-[state=closed]:animate-DrawerBottomFinal rounded-t-3xl border-t border-terciary/30'
+    'bottom-0 w-full data-[state=open]:animate-DrawerBottomInitial data-[state=closed]:animate-DrawerBottomFinal rounded-t-3xl border-t'
 }
 
-const Drawer = DialogRadix.Root
+export interface DrawerContentProps {
+  orientation?: keyof typeof OrientationClasses
+}
+
 const DrawerTrigger = DialogRadix.Trigger
 const DrawerPortal = DialogRadix.Portal
 const DrawerTitle = DialogRadix.Title
 const DrawerDescription = DialogRadix.Description
 const DrawerClose = DialogRadix.Close
+
+const Drawer = ({
+  orientation = 'right',
+  ...props
+}: DrawerContentProps &
+  Omit<
+    React.ComponentPropsWithoutRef<typeof DialogRadix.Root>,
+    'orientation'
+  >) => {
+  return (
+    <DrawerContext.Provider value={{ orientation }}>
+      <DialogRadix.Root {...props} />
+    </DrawerContext.Provider>
+  )
+}
+
+Drawer.displayName = DialogRadix.Root.displayName
 
 const DrawerOverlay = forwardRef<
   React.ComponentRef<typeof DialogRadix.Overlay>,
@@ -47,9 +62,14 @@ const DrawerContent = forwardRef<
   React.ComponentRef<typeof DialogRadix.Content>,
   React.ComponentPropsWithoutRef<typeof DialogRadix.Content> &
     DrawerContentProps
->(({ children, className, orientation = 'left', ...props }, ref) => {
+>(({ children, className, ...props }, ref) => {
   const isMobile = useIsMobile()
-  const finalOrientation = isMobile ? 'bottom' : orientation
+  const { orientation } = useDrawer()
+  const finalOrientation = isMobile
+    ? 'bottom'
+    : !orientation
+    ? 'right'
+    : orientation
 
   return (
     <DrawerPortal>
@@ -58,8 +78,8 @@ const DrawerContent = forwardRef<
         ref={ref}
         {...props}
         className={twMerge(
-          `fixed size-auto bg-terciary dark:bg-primary p-6 rounded z-20 shadow`,
-          `${OrientationClasses[finalOrientation]}`,
+          `fixed size-auto bg-terciary dark:bg-primary p-6 rounded z-20 shadow border-secondary-30 dark:border-terciary-30`,
+          OrientationClasses[finalOrientation],
           className
         )}
       >

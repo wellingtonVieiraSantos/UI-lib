@@ -19,7 +19,7 @@ const Checkbox = forwardRef<
       {...props}
     >
       <CheckboxRadix.Indicator>
-        <Check size={18} className={`absolute inset-0 pointer-events-none`} />
+        <Check className={`size-4.5 absolute inset-0 pointer-events-none`} />
       </CheckboxRadix.Indicator>
     </CheckboxRadix.Root>
   )
