@@ -7,7 +7,7 @@ const useDrawer = () => {
   const context = useContext(DrawerContext)
 
   if (!context) {
-    throw new Error('useCarousel must be used within a <Carousel />')
+    throw new Error('useDrawer must be used within a <Drawer />')
   }
 
   return context

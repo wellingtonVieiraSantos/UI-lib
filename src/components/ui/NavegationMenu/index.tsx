@@ -6,7 +6,7 @@ import { twMerge } from 'tailwind-merge'
 
 const NavigationItem = NavigationMenuRadix.Item
 
-const NavigationTriggerStyle =
+const navigationTriggerStyle =
   'group inline-flex h-8 w-max items-center justify-center gap-2 px-4 py-2 hover:bg-secondary/20 dark:hover:bg-terciary/20 cursor-pointer data-disabled:cursor-not-allowed data-disabled:text-secondary/50 dark:data-disabled:text-terciary/50 transition duration-300 rounded'
 
 const NavigationMenu = forwardRef<
@@ -39,7 +39,7 @@ const NavigationLink = forwardRef<
   return (
     <Link href={href} legacyBehavior passHref>
       <NavigationMenuRadix.Link
-        className={twMerge(NavigationTriggerStyle, className)}
+        className={twMerge(navigationTriggerStyle, className)}
         ref={ref}
         {...props}
       />
@@ -73,7 +73,7 @@ const NavigationTrigger = forwardRef<
 >(({ className, children, ...props }, ref) => {
   return (
     <NavigationMenuRadix.Trigger
-      className={twMerge(NavigationTriggerStyle, `group`, className)}
+      className={twMerge(navigationTriggerStyle, `group`, className)}
       ref={ref}
       {...props}
     >
@@ -139,7 +139,7 @@ const NavigationIndicator = forwardRef<
 NavigationIndicator.displayName = NavigationMenuRadix.Indicator.displayName
 
 export {
-  NavigationTriggerStyle,
+  navigationTriggerStyle,
   NavigationMenu,
   NavigationList,
   NavigationItem,

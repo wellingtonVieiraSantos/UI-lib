@@ -31,14 +31,12 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           {...props}
         />
         <X
-          size={16}
-          className={`absolute bottom-2 hidden peer-focus:block cursor-pointer right-2`}
+          className={`size-4 absolute bottom-2 hidden peer-focus:block cursor-pointer right-2`}
           onMouseDown={handleDelete}
         />
         {Icon && (
           <Icon
-            size={18}
-            className={`absolute bottom-2 left-2 pointer-events-none peer-disabled:text-secondary/50 dark:peer-disabled:text-terciary/50`}
+            className={`size-4.5 absolute bottom-2 left-2 pointer-events-none peer-disabled:text-secondary/50 dark:peer-disabled:text-terciary/50`}
           />
         )}
       </div>

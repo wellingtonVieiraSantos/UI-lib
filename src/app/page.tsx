@@ -50,7 +50,7 @@ import { ProgressBar } from '@/components/ui/ProgressBar'
 import { Divider } from '@/components/ui/Divider'
 import { Toggle } from '@/components/ui/Toggle'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/ToogleGroup'
-import { RadioRoot, RadioItem } from '@/components/ui/Radio'
+import { Radio, RadioItem } from '@/components/ui/Radio'
 import { TabContent, TabList, Tabs, TabTrigger } from '@/components/ui/Tab'
 import {
   Modal,
@@ -298,6 +298,7 @@ export default function Home() {
             <span>Open Modal</span>
           </Button>
         </ModalTrigger>
+        F
         <ModalContent>
           <ModalHeader>
             <ModalTitle asChild>
@@ -322,7 +323,7 @@ export default function Home() {
         </ModalContent>
       </Modal>
       {/* Radio Component example  */}
-      <RadioRoot
+      <Radio
         defaultValue='masculino'
         className='max-w-md border dark:border-terciary/30 rounded px-4 py-2 shadow-md'
       >
@@ -341,7 +342,7 @@ export default function Home() {
             <span className='text-[12px] dark:text-terciary/50'>Mulher</span>
           </Label>
         </div>
-      </RadioRoot>
+      </Radio>
       {/* Dropdown menu example */}
       <Dropdown>
         <DropdownTrigger asChild>

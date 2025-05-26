@@ -5,7 +5,7 @@ import { X } from 'lucide-react'
 import useIsMobile from './useIsMobile'
 import { DrawerContext, useDrawer } from './drawerContext'
 
-const OrientationClasses = {
+const orientationClasses = {
   left: 'left-0 top-0 h-full data-[state=open]:animate-DrawerLeftInitial data-[state=closed]:animate-DrawerLeftFinal border-r',
   right:
     'right-0 top-0 h-full data-[state=open]:animate-DrawerRightInitial data-[state=closed]:animate-DrawerRightFinal border-l',
@@ -14,7 +14,7 @@ const OrientationClasses = {
 }
 
 export interface DrawerContentProps {
-  orientation?: keyof typeof OrientationClasses
+  orientation?: keyof typeof orientationClasses
 }
 
 const DrawerTrigger = DialogRadix.Trigger
@@ -27,10 +27,7 @@ const Drawer = ({
   orientation = 'right',
   ...props
 }: DrawerContentProps &
-  Omit<
-    React.ComponentPropsWithoutRef<typeof DialogRadix.Root>,
-    'orientation'
-  >) => {
+  React.ComponentPropsWithoutRef<typeof DialogRadix.Root>) => {
   return (
     <DrawerContext.Provider value={{ orientation }}>
       <DialogRadix.Root {...props} />
@@ -79,7 +76,7 @@ const DrawerContent = forwardRef<
         {...props}
         className={twMerge(
           `fixed size-auto bg-terciary dark:bg-primary p-6 rounded z-20 shadow border-secondary-30 dark:border-terciary-30`,
-          OrientationClasses[finalOrientation],
+          orientationClasses[finalOrientation],
           className
         )}
       >

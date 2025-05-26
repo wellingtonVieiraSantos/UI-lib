@@ -2,29 +2,14 @@ import { Check, X } from 'lucide-react'
 import { ButtonHTMLAttributes, forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-type sizeOptions = 'sm' | 'md' | 'lg' | 'icon'
-type variantOptions =
-  | 'default'
-  | 'border'
-  | 'ghost'
-  | 'link'
-  | 'loading'
-  | 'success'
-  | 'error'
-
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  size?: sizeOptions
-  variant?: variantOptions
-}
-
-const sizeClasses: Record<sizeOptions, string> = {
+const sizeClasses = {
   sm: 'h-8 px-3 text-sm gap-2 [&>svg]:size-4',
   md: 'h-11 px-6 gap-2 [&>svg]:size-5',
   lg: 'h-13 px-9 gap-2 [&>svg]:size-6',
   icon: 'size-8 [&>svg]:size-5'
 }
 
-const variantClasses: Record<variantOptions, string> = {
+const variantClasses = {
   default: 'bg-button-secondary text-terciary hover:bg-button-secondary/70',
   border:
     'border border-secondary/30 dark:border-terciary/30 hover:border-secondary dark:hover:border-terciary',
@@ -33,6 +18,11 @@ const variantClasses: Record<variantOptions, string> = {
   loading: 'bg-button-secondary/80 cursor-wait text-terciary',
   success: 'bg-emerald-600 pointer-events-none animate-shake text-terciary',
   error: 'bg-red-800 pointer-events-none animate-shake text-terciary'
+}
+
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  size?: keyof typeof sizeClasses
+  variant?: keyof typeof variantClasses
 }
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(

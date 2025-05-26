@@ -1,20 +1,7 @@
 import { forwardRef, HTMLAttributes } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-type variantOptions =
-  | 'default'
-  | 'outline'
-  | 'info'
-  | 'success'
-  | 'warning'
-  | 'error'
-  | 'notification'
-
-interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
-  variant?: variantOptions
-}
-
-const variantClasses: Record<variantOptions, string> = {
+const variantClasses = {
   default: 'bg-button-secondary',
   outline:
     'bg-transparent border border-secondary/70 dark:border-terciary/70 text-secondary dark:text-terciary',
@@ -24,6 +11,10 @@ const variantClasses: Record<variantOptions, string> = {
   error: 'bg-red-800',
   notification:
     'absolute px-1 -top-1 -right-3 rounded-full px-0 bg-button-secondary'
+}
+
+interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
+  variant?: keyof typeof variantClasses
 }
 
 const Badge = forwardRef<HTMLDivElement, BadgeProps>(

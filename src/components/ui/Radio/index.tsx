@@ -3,7 +3,7 @@ import * as RadioRadix from '@radix-ui/react-radio-group'
 import { twMerge } from 'tailwind-merge'
 import { Circle } from 'lucide-react'
 
-const RadioRoot = forwardRef<
+const Radio = forwardRef<
   React.ComponentRef<typeof RadioRadix.Root>,
   React.ComponentPropsWithoutRef<typeof RadioRadix.Root>
 >(({ className, ...props }, ref) => {
@@ -16,7 +16,7 @@ const RadioRoot = forwardRef<
   )
 })
 
-RadioRoot.displayName = RadioRadix.Root.displayName
+Radio.displayName = RadioRadix.Root.displayName
 
 const RadioItem = forwardRef<
   React.ComponentRef<typeof RadioRadix.Item>,
@@ -42,4 +42,4 @@ const RadioItem = forwardRef<
 
 RadioItem.displayName = RadioRadix.Item.displayName
 
-export { RadioRoot, RadioItem }
+export { Radio, RadioItem }

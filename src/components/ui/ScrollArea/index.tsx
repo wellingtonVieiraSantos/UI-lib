@@ -1,8 +1,9 @@
 import * as ScrollAreaRadix from '@radix-ui/react-scroll-area'
-import { forwardRef, useRef, useState } from 'react'
+import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 import { Button } from '../Button'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import useScrollArea from './useScrollArea'
 
 const ScrollArea = forwardRef<
   React.ComponentRef<typeof ScrollAreaRadix.Root>,
@@ -10,25 +11,7 @@ const ScrollArea = forwardRef<
     orientation?: 'vertical' | 'horizontal'
   }
 >(({ className, children, orientation = 'horizontal', ...props }, ref) => {
-  const [start, setIsStart] = useState(true)
-  const [end, setIsEnd] = useState(false)
-  const scrollRef = useRef<HTMLDivElement>(null)
-
-  const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
-    const el = e.currentTarget
-    const start = el.scrollLeft === 0
-    const end = el.scrollLeft + el.clientWidth >= el.scrollWidth
-
-    setIsStart(start)
-    setIsEnd(end)
-  }
-
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollRef.current) {
-      const scrollAmount = direction === 'left' ? -200 : 200
-      scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' })
-    }
-  }
+  const { scrollRef, start, end, scroll, handleScroll } = useScrollArea()
 
   return (
     <ScrollAreaRadix.Root
@@ -44,33 +27,32 @@ const ScrollArea = forwardRef<
         {children}
       </ScrollAreaRadix.Viewport>
       {orientation === 'horizontal' && (
-        <Button
-          variant='border'
-          size='icon'
-          onClick={() => scroll('left')}
-          className={twMerge(
-            `justify-center items-center border-none
+        <>
+          <Button
+            variant='border'
+            size='icon'
+            onClick={() => scroll('left')}
+            className={twMerge(
+              `justify-center items-center border-none
            size-10 absolute left-1 top-1/2 -translate-y-1/2 [&>svg]:size-10 disabled:[&>svg]:text-terciary-30`,
-            start && 'hidden'
-          )}
-        >
-          <ChevronLeft size={30} />
-        </Button>
-      )}
-      {orientation === 'horizontal' && (
-        <Button
-          variant='border'
-          size='icon'
-          onClick={() => scroll('right')}
-          className={twMerge(
-            `justify-center items-center border-none
-            size-10 absolute right-1 top-1/2 -translate-y-1/2 [&>svg]:size-10 disabled:[&>svg]:text-terciary-30
-         `,
-            end && 'hidden'
-          )}
-        >
-          <ChevronRight />
-        </Button>
+              start && 'hidden'
+            )}
+          >
+            <ChevronLeft />
+          </Button>
+          <Button
+            variant='border'
+            size='icon'
+            onClick={() => scroll('right')}
+            className={twMerge(
+              `justify-center items-center border-none
+            size-10 absolute right-1 top-1/2 -translate-y-1/2 [&>svg]:size-10 disabled:[&>svg]:text-terciary-30`,
+              end && 'hidden'
+            )}
+          >
+            <ChevronRight />
+          </Button>
+        </>
       )}
       <Scrollbar />
       <ScrollAreaRadix.Corner />
