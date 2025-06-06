@@ -17,7 +17,7 @@ const AccordionTrigger = forwardRef<
         {...props}
         className={twMerge(
           `flex-1 px-3 py-4 flex justify-between items-center group cursor-pointer
-          data-disabled:cursor-not-allowed data-disabled:text-secondary/50 dark:data-disabled:text-terciary/50`,
+          data-disabled:cursor-not-allowed data-disabled:text-disabled`,
           className
         )}
       >
@@ -39,7 +39,7 @@ const AccordionContent = forwardRef<
       ref={ref}
       {...props}
       className={twMerge(
-        `w-full overflow-hidden px-3 text-justify data-[state=open]:animate-AccordionSlideDown data-[state=closed]:animate-AccordionSlideUp`,
+        `w-full overflow-hidden p-1 text-justify data-[state=open]:animate-AccordionSlideDown data-[state=closed]:animate-AccordionSlideUp`,
         className
       )}
     />

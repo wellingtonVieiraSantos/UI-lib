@@ -17,7 +17,7 @@ const Carousel = forwardRef<
       <div
         tabIndex={0}
         className={twMerge(
-          `relative w-full h-fit overflow-hidden group`,
+          `relative w-full h-fit overflow-hidden border group`,
           className
         )}
         onKeyDown={e => {
@@ -51,7 +51,7 @@ const CarouselContent = forwardRef<
   return (
     <div
       className={twMerge(
-        `min-h-[200px] h-full flex transition-transform duration-300`,
+        `h-full flex transition-transform duration-300`,
         className
       )}
       style={{
@@ -77,7 +77,7 @@ const CarouselItem = forwardRef<
   const { itemCount } = useCarousel()
   return (
     <div
-      className={twMerge(``, className)}
+      className={twMerge(`bg-card`, className)}
       style={{
         width: `${100 / itemCount}%`
       }}
@@ -104,7 +104,10 @@ const CarouselControlLeft = forwardRef<
       {...props}
     >
       <ChevronLeft
-        className={twMerge(`size-10 cursor-pointer`, className)}
+        className={twMerge(
+          `size-10 cursor-pointer text-foreground-secondary`,
+          className
+        )}
         onClick={() =>
           setIndex(i =>
             i > 0 ? i - 1 : Math.ceil(itemCount / itemsPerView) - 1
@@ -132,7 +135,10 @@ const CarouselControlRight = forwardRef<
       {...props}
     >
       <ChevronRight
-        className={twMerge(`size-10 cursor-pointer`, className)}
+        className={twMerge(
+          `size-10 cursor-pointer text-foreground-secondary`,
+          className
+        )}
         onClick={() =>
           setIndex(i => (i + 1) % Math.ceil(itemCount / itemsPerView))
         }
@@ -151,8 +157,8 @@ const CarouselControlMiniature = forwardRef<
   return (
     <div
       className={twMerge(
-        `w-full h-10 absolute flex justify-center items-center gap-1 bottom-0
-        bg-gradient-to-t from-secondary/50 to-transparent`,
+        `w-full h-12 absolute flex justify-center items-center gap-1 bottom-0
+        bg-gradient-to-t from-black/50 to-transparent`,
         className
       )}
       ref={ref}
@@ -163,8 +169,10 @@ const CarouselControlMiniature = forwardRef<
           <div
             key={i}
             className={twMerge(
-              `h-2 w-8 cursor-pointer rounded-full transition duration-300`,
-              index === i ? 'bg-terciary' : 'bg-terciary/30',
+              `h-3 w-3 cursor-pointer rounded-full transition duration-300`,
+              index === i
+                ? 'bg-button-foreground w-8'
+                : 'bg-button-foreground/60',
               className
             )}
             onClick={() => setIndex(i)}

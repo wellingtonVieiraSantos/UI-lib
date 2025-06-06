@@ -11,7 +11,7 @@ const DropdownRadioGroup = DropdownRadix.RadioGroup
 const DropdownSub = DropdownRadix.Sub
 
 const ItemClasses =
-  'w-full max-w-sm h-8 flex justify-between select-none px-3 items-center text-sm outline-none focus:bg-terciary/20 [&>svg]:size-4 hover:bg-secondary/20 dark:hover:bg-terciary/20 cursor-default data-disabled:cursor-not-allowed data-disabled:text-secondary/50 dark:data-disabled:text-terciary/50 transition duration-300'
+  'w-full rounded-none max-w-sm h-8 flex gap-2 select-none px-3 items-center text-sm [&>svg]:size-4 hover:bg-hover cursor-default data-disabled:cursor-not-allowed data-disabled:text-disabled transition duration-300'
 
 const DropdownContent = forwardRef<
   React.ComponentRef<typeof DropdownRadix.Content>,
@@ -21,7 +21,7 @@ const DropdownContent = forwardRef<
     <DropdownPortal>
       <DropdownRadix.Content
         className={twMerge(
-          `bg-terciary dark:bg-secondary border border-secondary/30 dark:border-terciary/30 rounded py-1 overflow-x-hidden overflow-y-auto`,
+          `bg-background border rounded py-1 overflow-x-hidden overflow-y-auto`,
           className
         )}
         ref={ref}
@@ -42,7 +42,7 @@ const DropdownSubContent = forwardRef<
     <DropdownPortal>
       <DropdownRadix.SubContent
         className={twMerge(
-          ` bg-terciary dark:bg-secondary border border-secondary/30 dark:border-terciary/30 rounded py-1 overflow-hidden`,
+          `bg-background border rounded py-1 overflow-hidden`,
           className
         )}
         ref={ref}
@@ -120,7 +120,7 @@ const DropdownRadioItem = forwardRef<
     >
       <span className='absolute left-2 flex items-center justify-center size-3.5'>
         <DropdownRadix.ItemIndicator>
-          <Circle className={`size-2 fill-secondary dark:fill-terciary`} />
+          <Circle className={`size-2 fill-foreground`} />
         </DropdownRadix.ItemIndicator>
       </span>
       {children}
@@ -136,10 +136,7 @@ const DropdownSeparator = ({
 }: React.ComponentPropsWithoutRef<typeof DropdownRadix.Separator>) => {
   return (
     <DropdownRadix.Separator
-      className={twMerge(
-        `w-full h-[1px] bg-secondary/30 dark:bg-terciary/30`,
-        className
-      )}
+      className={twMerge(`w-full h-[1px] bg-border`, className)}
       {...props}
     />
   )

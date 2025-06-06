@@ -6,11 +6,11 @@ import useIsMobile from './useIsMobile'
 import { DrawerContext, useDrawer } from './drawerContext'
 
 const orientationClasses = {
-  left: 'left-0 top-0 h-full data-[state=open]:animate-DrawerLeftInitial data-[state=closed]:animate-DrawerLeftFinal border-r',
+  left: 'left-0 top-0 h-full data-[state=open]:animate-DrawerLeftInitial data-[state=closed]:animate-DrawerLeftFinal',
   right:
-    'right-0 top-0 h-full data-[state=open]:animate-DrawerRightInitial data-[state=closed]:animate-DrawerRightFinal border-l',
+    'right-0 top-0 h-full data-[state=open]:animate-DrawerRightInitial data-[state=closed]:animate-DrawerRightFinal',
   bottom:
-    'bottom-0 w-full data-[state=open]:animate-DrawerBottomInitial data-[state=closed]:animate-DrawerBottomFinal rounded-t-3xl border-t'
+    'bottom-0 w-full data-[state=open]:animate-DrawerBottomInitial data-[state=closed]:animate-DrawerBottomFinal rounded-t-3xl'
 }
 
 export interface DrawerContentProps {
@@ -46,7 +46,7 @@ const DrawerOverlay = forwardRef<
       ref={ref}
       {...props}
       className={twMerge(
-        `bg-primary/20 fixed inset-0 backdrop-blur grid place-content-center z-20`,
+        `fixed inset-0 backdrop-blur grid place-content-center z-20`,
         className
       )}
     />
@@ -75,17 +75,20 @@ const DrawerContent = forwardRef<
         ref={ref}
         {...props}
         className={twMerge(
-          `fixed size-auto bg-terciary dark:bg-primary p-6 rounded z-20 shadow border-secondary-30 dark:border-terciary-30`,
+          `fixed size-auto bg-card p-6 rounded z-20 border`,
           orientationClasses[finalOrientation],
           className
         )}
       >
         {children}
         <DrawerClose
-          className='text-secondary/50 dark:text-terciary/50 hover:text-secondary dark:hover:text-terciary
-         absolute top-2 right-2 cursor-pointer transition duration-300'
+          className={twMerge(
+            `text-foreground-secondary hover:text-foreground
+         absolute top-2 right-2 cursor-pointer transition duration-300`,
+            finalOrientation === 'bottom' && 'hidden'
+          )}
         >
-          <X className='size-5' />
+          <X className='size-6' />
         </DrawerClose>
       </DialogRadix.Content>
     </DrawerPortal>
@@ -94,34 +97,37 @@ const DrawerContent = forwardRef<
 
 DrawerContent.displayName = DialogRadix.Content.displayName
 
-const DrawerHeader = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => {
-  return (
-    <div
-      {...props}
-      className={twMerge(`grid text-center space-y-2 sm:text-left`, className)}
-    />
-  )
-}
+const DrawerHeader = forwardRef<HTMLDivElement, React.ComponentProps<'div'>>(
+  ({ className, ...props }, ref) => {
+    return (
+      <div
+        {...props}
+        ref={ref}
+        className={twMerge(
+          `grid text-center space-y-2 sm:text-left`,
+          className
+        )}
+      />
+    )
+  }
+)
 
 DrawerHeader.displayName = 'DrawerHeader'
 
-const DrawerActions = ({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) => {
-  return (
-    <div
-      {...props}
-      className={twMerge(
-        `flex flex-col sm:flex-row gap-2 sm:justify-end items-center`,
-        className
-      )}
-    />
-  )
-}
+const DrawerActions = forwardRef<HTMLDivElement, React.ComponentProps<'div'>>(
+  ({ className, ...props }, ref) => {
+    return (
+      <div
+        {...props}
+        ref={ref}
+        className={twMerge(
+          `flex flex-col sm:flex-row gap-2 sm:justify-end items-center`,
+          className
+        )}
+      />
+    )
+  }
+)
 
 DrawerActions.displayName = 'DrawerActions'
 

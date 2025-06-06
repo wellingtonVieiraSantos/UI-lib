@@ -7,7 +7,7 @@ import { twMerge } from 'tailwind-merge'
 const NavigationItem = NavigationMenuRadix.Item
 
 const navigationTriggerStyle =
-  'group inline-flex h-8 w-max items-center justify-center gap-2 px-4 py-2 hover:bg-secondary/20 dark:hover:bg-terciary/20 cursor-pointer data-disabled:cursor-not-allowed data-disabled:text-secondary/50 dark:data-disabled:text-terciary/50 transition duration-300 rounded'
+  'group inline-flex h-8 w-max items-center justify-center rounded-none gap-2 px-4 py-2 hover:bg-hover rounded cursor-pointer data-disabled:cursor-not-allowed data-disabled:text-disabled transition duration-300'
 
 const NavigationMenu = forwardRef<
   React.ComponentRef<typeof NavigationMenuRadix.Root>,
@@ -91,7 +91,10 @@ const NavigationContent = forwardRef<
 >(({ className, ...props }, ref) => {
   return (
     <NavigationMenuRadix.Content
-      className={twMerge(`inset-0 w-full md:absolute md:size-fit`, className)}
+      className={twMerge(
+        `inset-0 p-1 w-full md:absolute md:size-fit`,
+        className
+      )}
       ref={ref}
       {...props}
     />
@@ -108,8 +111,8 @@ const NavigationViewport = forwardRef<
     <div className='absolute left-0 top-full flex justify-center z-10'>
       <NavigationMenuRadix.Viewport
         className={twMerge(
-          `origin-top-left relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] bg-terciary dark:bg-secondary
-           w-full overflow-hidden border border-secondary/20 dark:border-terciary/20 rounded md:w-[var(--radix-navigation-menu-viewport-width)]`,
+          `origin-top-left border rounded relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] bg-background
+           w-full overflow-hidden md:w-[var(--radix-navigation-menu-viewport-width)]`,
           className
         )}
         ref={ref}
@@ -128,12 +131,12 @@ const NavigationIndicator = forwardRef<
   <NavigationMenuRadix.Indicator
     ref={ref}
     className={twMerge(
-      'top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden bg-terciary dark:bg-primary',
+      'top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden bg-background',
       className
     )}
     {...props}
   >
-    <div className='relative top-[60%] size-2 rotate-45 bg-secondary/30 dark:bg-terciary/30' />
+    <div className='relative top-[60%] size-2 rotate-45 bg-border' />
   </NavigationMenuRadix.Indicator>
 ))
 NavigationIndicator.displayName = NavigationMenuRadix.Indicator.displayName

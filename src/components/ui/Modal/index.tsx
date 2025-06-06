@@ -19,7 +19,7 @@ const ModalOverlay = forwardRef<
       ref={ref}
       {...props}
       className={twMerge(
-        `bg-primary/20 fixed inset-0 backdrop-blur grid place-content-center z-20`,
+        `fixed inset-0 backdrop-blur grid place-content-center z-20`,
         className
       )}
     />
@@ -39,13 +39,16 @@ const ModalContent = forwardRef<
         ref={ref}
         {...props}
         className={twMerge(
-          `fixed z-20 inset-1/2 -translate-1/2 w-full max-w-lg min-h-fit bg-terciary dark:bg-primary p-6 rounded
-          grid gap-4 data-[state=open]:animate-fadeIn data-[state=closed]:animate-fadeOut shadow dark:shadow-none dark:border dark:border-terciary/30`,
+          `fixed z-20 inset-1/2 -translate-1/2 w-full max-w-lg min-h-fit bg-card p-6
+          grid gap-4 data-[state=open]:animate-fadeIn data-[state=closed]:animate-fadeOut border rounded`,
           className
         )}
       >
         {children}
-        <ModalClose className='text-secondary/50 dark:text-terciary/50 hover:text-secondary dark:hover:text-terciary absolute top-2 right-2 cursor-pointer transition duration-300'>
+        <ModalClose
+          className='text-foreground-secondary hover:text-foreground absolute top-2 right-2 cursor-pointer
+        transition duration-300 rounded'
+        >
           <X className='size-5' />
         </ModalClose>
       </DialogRadix.Content>

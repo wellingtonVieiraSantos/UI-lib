@@ -2,15 +2,14 @@ import { forwardRef, HTMLAttributes } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 const variantClasses = {
-  default: 'bg-button-secondary',
-  outline:
-    'bg-transparent border border-secondary/70 dark:border-terciary/70 text-secondary dark:text-terciary',
-  info: 'bg-sky-800',
-  success: 'bg-emerald-700',
-  warning: 'bg-amber-700',
-  error: 'bg-red-800',
+  default: 'bg-badge text-badge-foreground',
+  outline: 'border',
+  info: 'bg-info text-info-foreground',
+  success: 'bg-success text-success-foreground',
+  warning: 'bg-warning text-warning-foreground',
+  error: 'bg-destructive text-destructive-foreground',
   notification:
-    'absolute px-1 -top-1 -right-3 rounded-full px-0 bg-button-secondary'
+    'absolute px-1 -top-1 -right-3 rounded-full px-0 bg-badge text-badge-foreground'
 }
 
 interface BadgeProps extends HTMLAttributes<HTMLDivElement> {

@@ -6,7 +6,7 @@ const Card = forwardRef<HTMLDivElement, React.ComponentProps<'div'>>(
     return (
       <div
         className={twMerge(
-          `relative border border-secondary/30 dark:border-terciary/30 rounded-xl overflow-hidden`,
+          `relative rounded-xl overflow-hidden bg-card border`,
           className
         )}
         ref={ref}
@@ -52,10 +52,7 @@ const CardDescription = forwardRef<
 >(({ className, ...props }, ref) => {
   return (
     <span
-      className={twMerge(
-        `text-sm text-secondary/70 dark:text-terciary/70`,
-        className
-      )}
+      className={twMerge(`text-sm text-foreground-secondary`, className)}
       ref={ref}
       {...props}
     />

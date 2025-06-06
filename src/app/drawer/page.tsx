@@ -13,7 +13,7 @@ import Image from 'next/image'
 export default async function DrawerExample() {
   await new Promise(res => setTimeout(res, 5000))
   return (
-    <div className='w-full m-auto max-w-7xl min-h-[calc(100dvh-80px)] grid grid-cols-3 p-1 gap-2 items-center justify-center'>
+    <div className='w-full m-auto max-w-7xl grid grid-cols-3 p-1 gap-2 items-center justify-center'>
       {/* <h1 className='text-xl pt-10'>Drawer component example</h1> */}
       {Array.from({ length: 6 }).map((_, i) => (
         <Card className='w-sm h-[600px] flex flex-col' key={i}>
@@ -25,7 +25,7 @@ export default async function DrawerExample() {
               className='aspect-square object-cover'
             />
           </div>
-          <div className='relative flex-1 border-secondary/30 dark:border-terciary/30 bg-terciary dark:bg-secondary'>
+          <div className='relative flex-1 '>
             <CardHeader>
               <CardTitle>RTX 4060 TI</CardTitle>
               <CardDescription>

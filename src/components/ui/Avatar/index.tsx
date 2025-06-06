@@ -42,7 +42,7 @@ const AvatarFallback = forwardRef<
   return (
     <AvatarRadix.Fallback
       className={twMerge(
-        `size-full grid place-content-center rounded-full bg-secondary/20 dark:bg-terciary/20 font-montserrat`,
+        `size-full grid place-content-center rounded-full bg-card border font-montserrat`,
         className
       )}
       ref={ref}

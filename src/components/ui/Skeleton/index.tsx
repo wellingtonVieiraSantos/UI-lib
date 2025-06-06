@@ -7,12 +7,12 @@ export default function Skeleton({
   return (
     <div
       className={twMerge(
-        `relative rounded-md bg-secondary/10 dark:bg-terciary/10 overflow-hidden`,
+        `relative rounded-md border bg-border/70 overflow-hidden`,
         className
       )}
       {...props}
     >
-      <div className='absolute inset-0 bg-gradient-to-r from-transparent via-secondary/10 dark:via-terciary/20 to-transparent animate-skeletonShimmer' />
+      <div className='absolute inset-0 bg-gradient-to-r from-transparent via-disabled to-transparent animate-skeletonShimmer' />
     </div>
   )
 }

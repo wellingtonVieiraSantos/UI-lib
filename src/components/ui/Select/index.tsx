@@ -14,9 +14,9 @@ const SelectTrigger = forwardRef<
   return (
     <SelectRadix.Trigger
       className={twMerge(
-        `border border-secondary/30 dark:border-terciary/30 rounded flex justify-between items-center w-full h-8 px-2
-         data-placeholder:text-secondary/70 dark:data-placeholder:text-terciary/70 data-[state=open]:[&>svg]:rotate-180 [&>span]:line-clamp-1
-         data-disabled:cursor-not-allowed data-disabled:bg-secondary/20 dark:data-disabled:bg-terciary/20`,
+        `border flex justify-between items-center w-full h-8 px-2 rounded
+         data-placeholder:text-foreground-secondary data-[state=open]:[&>svg]:rotate-180 [&>span]:line-clamp-1
+         data-disabled:cursor-not-allowed data-disabled:bg-disabled`,
         className
       )}
       ref={ref}
@@ -84,8 +84,8 @@ const SelectContent = forwardRef<
       <SelectRadix.Portal>
         <SelectRadix.Content
           className={twMerge(
-            `z-50 max-h-[var(--radix-select-content-available-height)] w-full bg-terciary dark:bg-secondary 
-            overflow-y-auto overflow-x-hidden border border-secondary/30 dark:border-terciary/30 rounded
+            `z-20 max-h-[var(--radix-select-content-available-height)] w-full
+            overflow-y-auto overflow-x-hidden rounded border bg-background
             data-[state=open]:animate-fadeIn data-[state=closed]:animate-fadeOut origin-[var(--radix-select-content-transform-origin)]`,
             className
           )}
@@ -121,10 +121,10 @@ const SelectItem = forwardRef<
   return (
     <SelectRadix.SelectItem
       className={twMerge(
-        `relative h-8 p-1.5 pl-2 pr-8 flex w-full cursor-default select-none items-center outline-none
-         hover:bg-secondary/20 dark:hover:bg-terciary/20 focus:bg-secondary/20 dark:focus:bg-terciary/20
-         data-[state=checked]:bg-button-secondary data-[state=checked]:text-terciary
-         data-disabled:cursor-not-allowed data-disabled:text-secondary/50 dark:data-disabled:text-terciary/50`,
+        `relative h-8 p-1.5 pl-2 pr-8 flex w-full cursor-default select-none items-center
+         hover:bg-hover rounded-none
+         data-[state=checked]:bg-button
+         data-disabled:cursor-not-allowed data-disabled:text-disabled`,
         className
       )}
       ref={ref}
@@ -163,10 +163,7 @@ const SelectSeparator = forwardRef<
 >(({ className, ...props }, ref) => {
   return (
     <SelectRadix.Separator
-      className={twMerge(
-        `w-full h-[1px] bg-secondary/30 dark:bg-terciary/30`,
-        className
-      )}
+      className={twMerge(`w-full h-[1px] bg-border`, className)}
       ref={ref}
       {...props}
     />

@@ -10,7 +10,7 @@ import Skeleton from '@/components/ui/Skeleton'
 
 export default function Loading() {
   return (
-    <div className='w-full m-auto max-w-7xl min-h-[calc(100dvh-80px)] grid grid-cols-3 p-1 gap-2 items-center justify-center'>
+    <div className='w-full m-auto max-w-7xl grid grid-cols-3 p-1 gap-2 items-center justify-center'>
       {Array.from({ length: 6 }).map((_, i) => (
         <Card className='w-sm h-[600px] flex flex-col' key={i}>
           <div className='flex-2 relative'>

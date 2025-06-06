@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 'use client'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
@@ -134,7 +135,6 @@ import {
   CardHeader,
   CardTitle
 } from '@/components/ui/Card'
-import Image from 'next/image'
 import {
   Carousel,
   CarouselContent,
@@ -204,9 +204,7 @@ export default function Home() {
       className={`w-full min-h-full overflow-hidden py-2 grid gap-4 px-2 relative`}
     >
       <h1 className='p-4 w-40 rounded text-2xl'>UI Lib</h1>
-      <div
-        className={`w-full max-w-100 border border-secondary/30 dark:border-terciary/30 p-4`}
-      >
+      <div className={`w-full max-w-100 border p-4`}>
         <span
           className={`leading-relaxed  ${showDescribe ? '' : 'line-clamp-1'}`}
         >
@@ -233,7 +231,7 @@ export default function Home() {
         <LinkIcon />
         <span>link for inscription</span>
       </Button>
-      <div className='max-w-sm border dark:border-terciary/30 rounded p-4 grid gap-2'>
+      <div className='max-w-sm border rounded p-4 grid gap-2'>
         <span>Buttons variants</span>
         <Button>
           <span>Default</span>
@@ -298,14 +296,13 @@ export default function Home() {
             <span>Open Modal</span>
           </Button>
         </ModalTrigger>
-        F
         <ModalContent>
           <ModalHeader>
             <ModalTitle asChild>
               <h2 className='text-xl'>Titulo</h2>
             </ModalTitle>
             <ModalDescription asChild>
-              <p className='text-sm text-justify'>
+              <p className='text-sm text-justify text-foreground-secondary'>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero
                 mollitia autem ratione numquam doloribus. Quibusdam.
               </p>
@@ -325,7 +322,7 @@ export default function Home() {
       {/* Radio Component example  */}
       <Radio
         defaultValue='masculino'
-        className='max-w-md border dark:border-terciary/30 rounded px-4 py-2 shadow-md'
+        className='max-w-md border rounded px-4 py-2 '
       >
         <h2 className='py-2'>Qual seu sexo?</h2>
         <div className='flex flex-row-reverse justify-between items-center gap-2 border dark:border-terciary/30 p-2 rounded cursor-pointer '>
@@ -353,71 +350,53 @@ export default function Home() {
         <DropdownContent sideOffset={4}>
           <DropdownLabel className='p-2 text-sm'>
             <h3>Jhon Doe</h3>
-            <span className='text-sm text-secondary/50 dark:text-terciary/50'>
+            <span className='text-sm text-foreground-secondary'>
               email@contato.com
             </span>
           </DropdownLabel>
           <DropdownSeparator />
           <DropdownItem>
-            <Button variant='ghost' className='w-full justify-start'>
-              <ChevronDown />
-              <span>Instagram</span>
-            </Button>
+            <ChevronDown />
+            <span>Instagram</span>
           </DropdownItem>
           <DropdownItem>
-            <Button variant='ghost' className='w-full justify-start'>
-              <ChevronDown />
-              <span>TikTok</span>
-            </Button>
+            <ChevronDown />
+            <span>TikTok</span>
           </DropdownItem>
           <DropdownItem>
-            <Button variant='ghost' className='w-full justify-start'>
-              <ChevronDown />
-              <span>Youtube</span>
-            </Button>
+            <ChevronDown />
+            <span>Youtube</span>
           </DropdownItem>
-          <DropdownItem>
-            <Button variant='ghost' className='w-full justify-start'>
-              <ChevronDown />
-              <span>Twitter</span>
-            </Button>
+          <DropdownItem disabled>
+            <ChevronDown />
+            <span>Twitter</span>
           </DropdownItem>
           <DropdownLabel className='p-2 text-sm'>Sub Menu</DropdownLabel>
           <DropdownSeparator />
           <DropdownSub>
-            <DropdownSubTrigger asChild>
-              <Button variant='ghost' className='w-full justify-between'>
-                <span>More Links</span>
-                <ChevronRight />
-              </Button>
+            <DropdownSubTrigger className='justify-between'>
+              <span>More Links</span>
+              <ChevronRight />
             </DropdownSubTrigger>
             <DropdownSubContent>
               <DropdownLabel className='text-sm p-2'>
                 Sub Menu Options
               </DropdownLabel>
               <DropdownSeparator />
-              <DropdownItem>
-                <Button variant='ghost' className='w-full justify-start'>
-                  <ChevronDown />
-                  <span>Discord</span>
-                </Button>
+              <DropdownItem disabled>
+                <ChevronDown />
+                <span>Discord</span>
               </DropdownItem>
               <DropdownItem>
-                <Button variant='ghost' className='w-full justify-start'>
-                  <ChevronDown />
-                  <span>Github</span>
-                </Button>
+                <ChevronDown />
+                <span>Github</span>
               </DropdownItem>
               <DropdownItem>
-                <Button variant='ghost' className='w-full justify-start'>
-                  <ChevronDown />
-                  <span>Twitch</span>
-                </Button>
+                <ChevronDown />
+                <span>Twitch</span>
               </DropdownItem>
               <DropdownItem>
-                <Button variant='ghost' className='w-full justify-start'>
-                  <span>More...</span>
-                </Button>
+                <span>More...</span>
               </DropdownItem>
             </DropdownSubContent>
           </DropdownSub>
@@ -479,7 +458,7 @@ export default function Home() {
       {/* Accordion component example */}
       <Accordion
         type='multiple'
-        className='border max-w-md border-secondary/30 dark:border-terciary/30 rounded divide-y-1 divide-secondary/30 dark:divide-terciary/30'
+        className=' max-w-md divide-y-1 rounded border'
       >
         <AccordionItem value='item-1' disabled>
           <AccordionTrigger>
@@ -556,7 +535,7 @@ export default function Home() {
       {/*  Tab component example */}
       <Tabs
         defaultValue='item-1'
-        className='max-w-sm border border-secondary/30 dark:border-terciary/30 rounded data-[orientation=vertical]:flex'
+        className='max-w-sm border rounded data-[orientation=vertical]:flex'
       >
         <TabList>
           <TabTrigger value='item-1'>Item 1</TabTrigger>
@@ -581,23 +560,23 @@ export default function Home() {
         </TabContent>
       </Tabs>
       {/* Drawer component example */}
-      <Drawer>
+      <Drawer orientation='bottom'>
         <DrawerTrigger asChild>
           <Button size='lg'>
             <Plus />
             <span>Abrir Drawer</span>
           </Button>
         </DrawerTrigger>
-        <DrawerContent orientation='right'>
+        <DrawerContent>
           <div className='max-w-lg m-auto grid gap-8 mt-8'>
             <DrawerHeader>
               <DrawerTitle className='text-2xl'>Title</DrawerTitle>
-              <DrawerDescription className='text-sm text-secondary/70 dark:text-terciary/70'>
+              <DrawerDescription className='text-sm text-foreground-secondary'>
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. At,
                 aut sapiente.
               </DrawerDescription>
             </DrawerHeader>
-            <div className='w-full h-80 border border-dashed dark:border-terciary grid place-items-center'>
+            <div className='w-full h-80 border border-dashed grid place-items-center'>
               product
             </div>
             <DrawerActions>
@@ -665,7 +644,10 @@ export default function Home() {
       </div>
       {/* Avatar component example */}
       <Avatar>
-        <AvatarImage src={'/perfil.png'} alt='foto perfil' />
+        <AvatarImage
+          src={'https://avatars.githubusercontent.com/u/104274788?v=4'}
+          alt='foto perfil'
+        />
         <AvatarFallback>WV</AvatarFallback>
       </Avatar>
       {/* Tooltip Component example */}
@@ -687,7 +669,6 @@ export default function Home() {
           <Tooltip delayDuration={0}>
             <TooltipTrigger className=''>
               <Avatar className='size-20'>
-                <AvatarImage alt='foto perfil' />
                 <AvatarFallback>WV</AvatarFallback>
               </Avatar>
             </TooltipTrigger>
@@ -714,7 +695,7 @@ export default function Home() {
         </div>
       </div>
       {/* Divider Componente Example */}
-      <div className='size-90 flex border border-secondary/30 dark:border-terciary/30 items-center'>
+      <div className='size-90 flex border items-center'>
         <Divider className='w-1/2 flex-none' />
         <Divider orientation='vertical' />
       </div>
@@ -823,15 +804,15 @@ export default function Home() {
             </Button>
           </CollapsibleTrigger>
         </div>
-        <div className='border border-secondary/30 dark:border-terciary/30 rounded py-1 px-2 text-sm w-2/3'>
+        <div className='border rounded py-1 px-2 text-sm w-2/3'>
           <span>@radix-ui/primitives</span>
         </div>
         <CollapsibleContent>
           <div className='flex flex-col gap-3'>
-            <span className='border border-secondary/30 dark:border-terciary/30 rounded py-1 px-2 text-sm w-2/3'>
+            <span className='border rounded py-1 px-2 text-sm w-2/3'>
               @radix-ui/colors
             </span>
-            <span className='border border-secondary/30 dark:border-terciary/30 rounded py-1 px-2 text-sm w-2/3'>
+            <span className='border rounded py-1 px-2 text-sm w-2/3'>
               @stitches/react
             </span>
           </div>
@@ -839,7 +820,7 @@ export default function Home() {
       </Collapsible>
       {/* Form component example */}
       <Form
-        className='border border-secondary/30 dark:border-terciary/30 max-w-sm p-4 flex flex-col gap-4 rounded'
+        className='border max-w-sm p-4 flex flex-col gap-4 card rounded'
         onSubmit={e => handleSubmit(e)}
       >
         <h1 className=' text-center'>Login</h1>
@@ -853,7 +834,7 @@ export default function Home() {
               icon={Mail}
               required
               placeholder='Email'
-              className='data-[invalid]:border-red-500 data-[invalid]:focus:ring-0'
+              className='data-[invalid]:border-destructive data-[invalid]:focus-visible:ring-0'
             />
           </FormControl>
           <FormMessage match='typeMismatch'>Incorrect email</FormMessage>
@@ -868,7 +849,7 @@ export default function Home() {
               icon={Lock}
               placeholder='Password'
               required
-              className='data-[invalid]:border-red-500 data-[invalid]:focus:ring-0'
+              className='data-[invalid]:border-destructive data-[invalid]:focus-visible:ring-0'
             />
           </FormControl>
           <FormMessage match='valueMissing'>Required password</FormMessage>
@@ -904,13 +885,13 @@ export default function Home() {
         </FormSubmit>
       </Form>
       {/* Card component example */}
-      <Card className='w-[300] group'>
-        <Image
-          width={1500}
-          height={1500}
-          src={'/cadeira.webp'}
+      <Card className='w-[300px] group'>
+        <img
+          src={
+            'https://images.tcdn.com.br/img/img_prod/634712/conjunto_mesa_de_jogos_carteado_bellagio_tampo_reversivel_e_6_cadeiras_madeira_poker_base_cone_pu_pr_88461_8_a837fa66ebf22042d61f6de90da57961.jpg'
+          }
           alt='cadeira image'
-          className='w-full object-cover'
+          className='w-full'
         />
         <div className='relative rounded-t-xl -mt-[10px]  bg-secondary '>
           <CardHeader>
@@ -924,10 +905,10 @@ export default function Home() {
         </div>
       </Card>
       {/* Carousel component example */}
-      <Carousel className='w-full max-w-5xl h-[400px] border border-terciary/30 rounded focus:border'>
+      <Carousel className='w-full max-w-5xl h-[400px] rounded'>
         <CarouselContent className='focus:border'>
           <CarouselItem className='relative grid place-content-center text-secondary group'>
-            <div className='absolute inset-0 bg-[url(/praia.jpg)] bg-cover bg-center group-hover:blur transition duration-300' />
+            <div className='absolute inset-0 bg-[url(https://content.presspage.com/uploads/685/c1920_fernandodenoronhabrazil-2.jpg?65057)] bg-cover bg-center group-hover:blur transition duration-300' />
             <div className='hidden group-hover:flex z-10 max-w-sm flex-col items-center text-justify gap-4'>
               <h1 className='text-2xl'>Title</h1>
               <span className='text-lg'>
@@ -960,14 +941,11 @@ export default function Home() {
 
       <ScrollArea
         orientation='vertical'
-        className='w-2xl h-80 whitespace-nowrap rounded border border-terciary-30 p-2'
+        className='w-2xl h-80 whitespace-nowrap p-2'
       >
         <div className='w-full space-y-2 pr-2'>
           {Array.from({ length: 15 }).map((_, i) => (
-            <div
-              className='h-40 grid place-content-center border border-terciary-30'
-              key={i}
-            >
+            <div className='h-40 grid place-content-center border' key={i}>
               {i + 1}
             </div>
           ))}
@@ -975,13 +953,10 @@ export default function Home() {
         <Scrollbar orientation='vertical' />
       </ScrollArea>
 
-      <ScrollArea className='w-2xl whitespace-nowrap rounded border border-terciary-30 p-2'>
+      <ScrollArea className='w-2xl whitespace-nowrap p-2'>
         <div className='w-full flex space-x-2 pb-2'>
           {Array.from({ length: 15 }).map((_, i) => (
-            <div
-              className='size-40 grid place-content-center border border-terciary-30'
-              key={i}
-            >
+            <div className='size-40 grid place-content-center border' key={i}>
               {i + 1}
             </div>
           ))}

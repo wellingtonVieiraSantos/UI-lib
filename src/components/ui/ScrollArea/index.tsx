@@ -15,7 +15,10 @@ const ScrollArea = forwardRef<
 
   return (
     <ScrollAreaRadix.Root
-      className={twMerge(`relative overflow-hidden group`, className)}
+      className={twMerge(
+        `relative overflow-hidden border bg-background rounded group`,
+        className
+      )}
       ref={ref}
       {...props}
     >
@@ -33,8 +36,8 @@ const ScrollArea = forwardRef<
             size='icon'
             onClick={() => scroll('left')}
             className={twMerge(
-              `justify-center items-center border-none
-           size-10 absolute left-1 top-1/2 -translate-y-1/2 [&>svg]:size-10 disabled:[&>svg]:text-terciary-30`,
+              `justify-center items-center border-none text-foreground-secondary
+           size-10 absolute left-1 top-1/2 -translate-y-1/2 [&>svg]:size-10 disabled:[&>svg]:text-disabled`,
               start && 'hidden'
             )}
           >
@@ -45,8 +48,8 @@ const ScrollArea = forwardRef<
             size='icon'
             onClick={() => scroll('right')}
             className={twMerge(
-              `justify-center items-center border-none
-            size-10 absolute right-1 top-1/2 -translate-y-1/2 [&>svg]:size-10 disabled:[&>svg]:text-terciary-30`,
+              `justify-center items-center border-none text-foreground-secondary
+            size-10 absolute right-1 top-1/2 -translate-y-1/2 [&>svg]:size-10 disabled:[&>svg]:text-disabled`,
               end && 'hidden'
             )}
           >
@@ -80,7 +83,7 @@ const Scrollbar = forwardRef<
       ref={ref}
       {...props}
     >
-      <ScrollAreaRadix.Thumb className='relative flex-1 rounded-full bg-terciary-30 group:data-[orientation=vertical]:bg-red-400' />
+      <ScrollAreaRadix.Thumb className='relative flex-1 rounded-full bg-border group:data-[orientation=vertical]:bg-border' />
     </ScrollAreaRadix.Scrollbar>
   )
 })
